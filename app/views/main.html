@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>#{get 'title' /}</title>
+        <title>&{'title'}</title>
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
@@ -11,6 +11,14 @@
         #{get 'moreScripts' /}
     </head>
     <body>
+    	<div id=header class="fixed_width">
+    		<div id="logo">&{'ukrainian_demotivators'}</div>
+    		<span class="menu_item">&{'about'}</span>
+    		<span class="menu_item">&{'contact'}</span>
+    		<span class="menu_item">&{'contribute'}</span>
+    		<span class="menu_item">&{'add_demotivator'}</span>
+    		<div class="clear"></div>
+    	</div>
         #{doLayout /}
     </body>
 </html>

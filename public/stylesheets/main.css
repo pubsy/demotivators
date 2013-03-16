@@ -1,0 +1,66 @@
+body{
+	font-family: 'Lato', sans-serif;
+}
+
+#header{
+	margin: 0px auto;
+	padding: 50px 0px 50px 0px;
+}
+
+#logo{
+	font-size: 24px;
+	float: left;
+}
+
+.menu_item{
+	float:right;
+	margin-right: 10px;	
+	color: #999;
+}
+
+.black_block{
+	background-color: black;
+	height: 100px;	
+}
+
+.clear{
+	clear: both;	
+}
+
+.black_block_inner{
+	color: white;	
+	margin: 0px auto;
+}
+
+.black_block_title{
+	color: white;
+	font-size: 16px;
+	padding: 10px 0px 10px 0px;	
+}
+
+.black_block_text{
+	color: #999;
+	font-size: 14px;
+	padding: 10px 0px 10px 0px;	
+}
+
+.fixed_width{
+	width: 800px;
+}
+
+#latest_demotivators{
+	margin: 0px auto;
+}
+
+.content_title{
+	color: #999;	
+}
+
+#create_demo_btn{
+	float: right;
+	background-color: green;
+	padding: 10px;
+	font-size: 20px;
+	margin-top: 30px;
+}
+
