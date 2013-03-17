@@ -15,6 +15,8 @@ public class DemotivatorCreatorImpl implements DemotivatorCreator{
 	@Override
 	public String createDemotivator(File imageFile, String title, String text) throws IOException {
 		createImageFolderIfNeeded();
+		
+		long timestamp = System.currentTimeMillis();
 
 		//Create demotivator
 		ImageUtils utils = new ImageUtils();
@@ -23,13 +25,13 @@ public class DemotivatorCreatorImpl implements DemotivatorCreator{
 		image = utils.addBorderAndTextSpace(image);
         image = utils.drawTitleAndText(image, title, text);
         
-        File outputfile = new File(IMAGE_DIR_PATH + File.separator + imageFile.getName());
+        File outputfile = new File(IMAGE_DIR_PATH + File.separator + timestamp + "." + utils.getImageFormatName(imageFile));
         ImageIO.write(image, utils.getImageFormatName(imageFile), outputfile);
         
         //Create thumbnail
         BufferedImage thumb = utils.scale(image, MAX_THUMB_WIDTH, MAX_THUMB_HEIGHT);
         
-        File thumbfile = new File(IMAGE_DIR_PATH + File.separator + "thumb." + imageFile.getName());
+        File thumbfile = new File(IMAGE_DIR_PATH + File.separator + "thumb." + timestamp + "." + utils.getImageFormatName(imageFile));
         ImageIO.write(thumb, utils.getImageFormatName(imageFile), thumbfile);
         
         return outputfile.getName();
