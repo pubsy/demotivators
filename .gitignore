@@ -5,3 +5,7 @@
 /logs
 /eclipse
 *.class
+/.classath
+/.project
+/.settings
+/public/images/demotivators

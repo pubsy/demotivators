@@ -2,22 +2,26 @@ package controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.List;
+
+import org.junit.Before;
 
 import models.Demotivator;
 import models.User;
 import net.sf.oval.constraint.MaxLength;
 import play.data.validation.Required;
+import play.i18n.Lang;
 import play.mvc.Controller;
+import play.mvc.Http.Header;
+import security.SecureController;
 import services.DemotivatorCreator;
 import services.DemotivatorCreatorImpl;
-import utils.ImageUtils;
-import utils.ImageUtils;
 
 public class Application extends Controller {
 
 	public static void index() {
-		List<Demotivator> demotivators = Demotivator.find("order by id desc").fetch(10);
+		List<Demotivator> demotivators = Demotivator.find("order by id desc").fetch(25);
 		
 		render(demotivators);
 	}
@@ -27,8 +31,26 @@ public class Application extends Controller {
 		
 		render(demotivator);
 	}
+	
+	public static void locale(String language){
+		Lang.change(language);
+		
+		Header referer = request.headers.get("referer");
+	    if(referer == null){
+	        index();
+	    }else{
+	        redirect(referer.value());
+	    }
+	}
 
-	public static void add() {
+	@SecureController
+	public static void add(){
+		try {
+			Secure.checkAccess();
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		
 		render();
 	}
 
@@ -58,6 +80,6 @@ public class Application extends Controller {
 		Demotivator d = new Demotivator(title, fileName, user);
 		d.save();
 		
-		index();
+		single(d.id);
 	}
 }

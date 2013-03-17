@@ -1,5 +1,6 @@
 title=Ukrainian Demotivators Home
-add_demotivator=Add Demotivator
+add_demotivator=Add
+best=Best
 contribute=Contribute
 contact=Contact
 about=About
@@ -18,3 +19,5 @@ no_ideas_title=Can't find a proper image?
 no_ideas_text=Having trouble making up a smart Demotivator text? Get inspired with existing collection of Demotivators and come back!
 preview=Preview
 submit=Submit
+create=Create
+home=Home

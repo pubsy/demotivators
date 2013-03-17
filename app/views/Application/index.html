@@ -2,10 +2,12 @@
 
 <div class="fixed_width margin_auto">
 	<h4 class="content_title">&{'latest_demotivators'}</h4>
-	#{list items:demotivators, as:'demo' }
-        <div class="demotivator_icon">
-        	<a href="/single/${demo.id}"><img src="/public/images/demotivators/thumb.${demo.fileName}" /></a>
-        </div>
-    #{/list}
-    <div class="clear"></div>
+	<div class="center">
+		#{list items:demotivators, as:'demo' }
+	        <div class="demotivator_icon">
+	        	<a href="/single/${demo.id}"><img src="/public/images/demotivators/thumb.${demo.fileName}" /></a>
+	        </div>
+	    #{/list}
+	    <div class="clear"></div>
+    </div>
 </div>

@@ -6,7 +6,8 @@
 GET     /                                       Application.index
 GET     /add                                    Application.add
 POST	/create									Application.create
-GET     /single/{id}                                 Application.single
+GET     /single/{id}                            Application.single
+GET     /locale/{language}                      Application.locale
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
@@ -16,3 +17,4 @@ GET     /public/                                staticDir:public
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
+*      /                						module:secure
