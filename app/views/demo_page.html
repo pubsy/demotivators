@@ -1,0 +1,21 @@
+#{extends 'main.html' /}
+
+<div class="black_block">
+	<div class="black_block_inner fixed_width">
+		<div class="black_block_title">&{'welcome_message_title'}</div>
+		<div class="black_block_text">&{'welcome_message_text'}</div>
+	</div>
+</div>
+
+#{doLayout /}
+
+<div class="black_block">
+	<div class="black_block_inner fixed_width">
+		<div class="left">
+			<div class="black_block_title">&{'create_you_own_demotivator'}</div>
+			<div class="black_block_text width_near_button">&{'just_upload_an_image'}</div>
+		</div>
+		<div class="green_btn"><a href="@{Application.add}">Create</a></div>
+		<div class="clear"></div>
+	</div>
+</div>

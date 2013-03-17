@@ -3,13 +3,17 @@ body{
 }
 
 #header{
-	margin: 0px auto;
 	padding: 50px 0px 50px 0px;
 }
 
 #logo{
 	font-size: 24px;
 	float: left;
+}
+
+#logo a{
+	text-decoration: none;
+	color: black;
 }
 
 .menu_item{
@@ -25,6 +29,10 @@ body{
 
 .clear{
 	clear: both;	
+}
+
+.margin_auto{
+	margin: 0px auto;
 }
 
 .black_block_inner{
@@ -48,19 +56,61 @@ body{
 	width: 800px;
 }
 
-#latest_demotivators{
-	margin: 0px auto;
-}
-
 .content_title{
 	color: #999;	
 }
 
-#create_demo_btn{
+.green_btn{
 	float: right;
 	background-color: green;
 	padding: 10px;
 	font-size: 20px;
 	margin-top: 30px;
+	cursor: pointer;
 }
 
+.green_btn a{
+	text-decoration: none;
+	color:white;
+}
+
+#add_demo_form{
+	padding: 20px;
+}
+
+.add_demo_field{
+	margin: 10px;
+}
+
+#add_demo_form input[type="text"], #add_demo_form input[type="file"]{
+	display: block;
+}
+
+#add_demo_form label{
+	display: block;
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+#submit, #preview{
+	margin-top: 20px;
+}
+
+.left{
+	float: left;
+}
+
+.width_near_button{
+	width: 700px;	
+}
+
+.demotivator_icon{
+	display: inline-block;
+	margin: 3px;	
+}
+
+.demotivator{
+	padding: 20px 0px 20px 0px;	
+	display: block;
+	margin: 0 auto;
+}

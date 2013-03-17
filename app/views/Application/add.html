@@ -1,0 +1,43 @@
+#{extends 'main.html' /}
+
+<div class="black_block">
+	<div class="black_block_inner fixed_width">
+		<div class="black_block_title">&{'add_demo_title'}</div>
+		<div class="black_block_text">&{'add_demo_text'}</div>
+	</div>
+</div>
+
+#{ifErrors}
+   <h1>Oops…</h1>
+ 
+   #{errors}
+       <li>${error}</li>
+   #{/errors}
+#{/ifErrors}
+
+<div id="add_demo_form" class="fixed_width margin_auto">
+	<form action="@{Application.create}" method="POST" enctype="multipart/form-data">
+	    	<label for="title">&{'demo_title'}</label>
+		    <input type="text" name="title" value=""/>
+		    
+		    <label for="text">&{'demo_text'}</label>
+		    <input type="text" name="text" value=""/>
+		    
+		    <label for="image">&{'demo_image'}</label>
+		    <input type="file" name="image"/>
+		    
+		    <input type="button" name="Priview" id="preview" value="&{'preview'}"/>
+		    <input type="submit" name="Submit" id="submit" value="&{'submit'}"/>
+	</form>
+</div>
+
+<div class="black_block">
+	<div class="black_block_inner fixed_width">
+		<div class="left">
+			<div class="black_block_title">&{'no_ideas_title'}</div>
+			<div class="black_block_text width_near_button">&{'no_ideas_text'}</div>
+		</div>
+		<div class="green_btn"><a href="@{Application.index}">Home</a></div>
+		<div class="clear"></div>
+	</div>
+</div>
