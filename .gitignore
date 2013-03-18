@@ -9,3 +9,5 @@
 /.project
 /.settings
 /public/images/demotivators
+/bin
+.classpath
