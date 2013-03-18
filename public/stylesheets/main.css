@@ -22,6 +22,11 @@ body{
 	color: #999;
 }
 
+.menu_item a{
+	text-decoration: none;
+	color: #999;
+}
+
 .black_block{
 	background-color: black;
 	height: 100px;	
@@ -102,7 +107,7 @@ body{
 }
 
 .width_near_button{
-	width: 680px;	
+	width: 610px;	
 }
 
 .demotivator_icon{
@@ -116,7 +121,7 @@ body{
 	margin: 0 auto;
 }
 
-input[type='text']{
+input[type='text'], input[type="password"]{
 	 border-radius:3px;
 	 -moz-border-radius:3px;
 	 -webkit-border-radius:3px;

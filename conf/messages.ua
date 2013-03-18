@@ -21,3 +21,13 @@ preview=Переглянути
 submit=Створити
 create=Створити
 home=Головна
+please_login=Будь ласка залогуйтеся
+user_account_warning=Ви мусите залогуватись щоб створити Демотиватор. Ви єдиний хто буде нести відповідальність та отримувати похвалу за Ваші Демотиватори.
+secure.username=E-mail
+secure.password=Пароль
+secure.remember=Запам'ятати мене
+secure.signin=Увійти
+not_registered=Ще не зареєстровані?!
+having_an_account=Зареєстровані користувачі можуть створювати власні Демотиватори, коментувати та оцінювати інші.
+Having an account on our site will give you a way to create your own Demotivators, comment and rate others.
+register=Зареєструватися

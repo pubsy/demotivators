@@ -2,23 +2,41 @@ package controllers;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.List;
-
-import org.junit.Before;
 
 import models.Demotivator;
 import models.User;
 import net.sf.oval.constraint.MaxLength;
 import play.data.validation.Required;
+import play.data.validation.Validation;
 import play.i18n.Lang;
+import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Http.Header;
 import security.SecureController;
 import services.DemotivatorCreator;
-import services.DemotivatorCreatorImpl;
+
+import com.google.inject.Inject;
 
 public class Application extends Controller {
+	
+	@Inject
+	static DemotivatorCreator creator;
+
+	/**
+	 * If action is annotated with @SecureController, check whether user is
+	 * logged in.
+	 */
+	@Before
+	public static void securityCheck() {
+		if (getActionAnnotation(SecureController.class) != null) {
+			try {
+				Secure.checkAccess();
+			} catch (Throwable e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public static void index() {
 		List<Demotivator> demotivators = Demotivator.find("order by id desc").fetch(25);
@@ -28,6 +46,10 @@ public class Application extends Controller {
 	
 	public static void single(long id) {
 		Demotivator demotivator = Demotivator.findById(id);
+		
+		if(demotivator == null){
+			index();
+		}
 		
 		render(demotivator);
 	}
@@ -44,26 +66,20 @@ public class Application extends Controller {
 	}
 
 	@SecureController
-	public static void add(){
-		try {
-			Secure.checkAccess();
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
-		
+	public static void add(){		
 		render();
 	}
 
+	@SecureController
 	public static void create(@Required @MaxLength(30) String title, @Required @MaxLength(120) String text, File[] image) {
 
-		validation.required(image[0]); //check that file is not null
-		if (validation.hasErrors()) {
-			params.flash(); // add http parameters to the flash scope
-			validation.keep(); // keep the errors for the next request
-			add(); //go back to create Demotivator page and show errors
+		validation.required(image[0]); 
+		if (Validation.hasErrors()) {
+			params.flash();
+			Validation.keep();
+			add();
 		}
 
-		DemotivatorCreator creator = new DemotivatorCreatorImpl();
 		String fileName = null;
 		try {
 			fileName = creator.createDemotivator(image[0], title, text);
@@ -72,7 +88,8 @@ public class Application extends Controller {
 			error(e.getMessage());
 		}
 		
-		//todo user!!!
+		//TODO
+		//User user = Security.connectedUser();
 		
 		User user = new User("a@a.com", "pass", "pubsy");
 		user.save();

@@ -1,5 +1,5 @@
 #{extends 'demo_page.html' /}
 
 <div class="fixed_width margin_auto">
-	<img src="/public/images/demotivators/${demotivator.fileName}" class="demotivator"/>
+	<a href="@{Application.single(demotivator.id - 1)}#single_demotivator"><img src="/public/images/demotivators/${demotivator.fileName}" class="demotivator" id="single_demotivator" /></a>
 </div>

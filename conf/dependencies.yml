@@ -3,3 +3,4 @@
 require:
     - play
     - secure
+    - play -> guice 1.2
