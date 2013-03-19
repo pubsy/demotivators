@@ -11,6 +11,10 @@ import utils.ImageUtils;
 
 public class DemotivatorCreatorImpl implements DemotivatorCreator{
 	
+	public DemotivatorCreatorImpl(){
+		
+	}
+	
 
 	@Override
 	public String createDemotivator(File imageFile, String title, String text) throws IOException {
