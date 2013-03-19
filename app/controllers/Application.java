@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import models.Demotivator;
 import models.User;
 import net.sf.oval.constraint.MaxLength;
@@ -16,7 +18,6 @@ import play.mvc.Http.Header;
 import security.SecureController;
 import services.DemotivatorCreator;
 
-import com.google.inject.Inject;
 
 public class Application extends Controller {
 	

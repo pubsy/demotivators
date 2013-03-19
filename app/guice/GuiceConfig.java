@@ -9,14 +9,9 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
 
-public class GuiceConfig extends GuiceSupport {
+public class GuiceConfig extends AbstractModule {
 	@Override
-    protected Injector configure() {
-        return Guice.createInjector(new AbstractModule() {
-            @Override
-            protected void configure() {
-                bind(DemotivatorCreator.class).to(DemotivatorCreatorImpl.class).in(Singleton.class);
-            }
-        });
+    protected void configure() {
+		bind(DemotivatorCreator.class).to(DemotivatorCreatorImpl.class).in(Singleton.class);
     }
 }
