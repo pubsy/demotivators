@@ -2,8 +2,8 @@
 
 <div class="black_block">
 	<div class="black_block_inner fixed_width">
-		<div class="black_block_title">TEXT</div>
-		<div class="black_block_text">TEXT</div>
+		<div class="black_block_title">&{'registering_is_good'}</div>
+		<div class="black_block_text">&{'having_an_account'}</div>
 	</div>
 </div>
 
@@ -23,24 +23,24 @@
 				</p>
 			#{/if}
 		
-			<p id="display-name-field">
-				<label for="displayname">display name</label>
-				<input type="text" name="displayname" id="displayname" value="${flash.displayname}" />
-			</p>
 			<p id="email-field">
-				<label for="email">email</label>
+				<label for="email">&{'secure.username'}</label>
 				<input type="text" name="email" id="email" value="${flash.email}" />
 			</p>
+			<p id="display-name-field">
+				<label for="displayname">&{'display_name'}</label>
+				<input type="text" name="displayname" id="displayname" value="${flash.displayname}" />
+			</p>
 			<p id="password-field">
-				<label for="password">password</label>
+				<label for="password">&{'secure.password'}</label>
 				<input type="password" name="password" id="password" value="${flash.email}"/>
 			</p>
 			<p id="confirm-password-field">
-				<label for="confirmpassword">confirmpassword</label>
+				<label for="confirmpassword">&{'confirm_password'}</label>
 				<input type="password" name="confirmpassword" id="confirmpassword" value="${flash.confirmpassword}" />
 			</p>
 			<p id="signin-field">
-				<input type="submit" id="register" value="Register" />
+				<input type="submit" id="register" value="&{'register'}" />
 			</p>
 		#{/form}
 	</div>
@@ -49,10 +49,10 @@
 <div class="black_block">
 	<div class="black_block_inner fixed_width">
 		<div class="left">
-			<div class="black_block_title">&{'not_registered'}</div>
-			<div class="black_block_text width_near_button">&{'having_an_account'}</div>
+			<div class="black_block_title">&{'changed_your_mind'}</div>
+			 <div class="black_block_text width_near_button">&{'you_can_come'}</div>
 		</div>
-		<div class="green_btn"><a href="@{Users.register}">&{'login'}</a></div>
+		<div class="green_btn"><a href="@{Application.index}">&{'home'}</a></div>
 		<div class="clear"></div>
 	</div>
 </div>
