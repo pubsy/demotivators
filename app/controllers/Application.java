@@ -19,25 +19,14 @@ import security.SecureController;
 import services.DemotivatorCreator;
 
 
-public class Application extends Controller {
+public class Application extends DemotivatorsController {
 	
+	/**
+	 * We don't really need IOC in here. 
+	 * It's injected just for the sake of it.
+	 */
 	@Inject
 	static DemotivatorCreator creator;
-
-	/**
-	 * If action is annotated with @SecureController, check whether user is
-	 * logged in.
-	 */
-	@Before
-	public static void securityCheck() {
-		if (getActionAnnotation(SecureController.class) != null) {
-			try {
-				Secure.checkAccess();
-			} catch (Throwable e) {
-				e.printStackTrace();
-			}
-		}
-	}
 
 	public static void index() {
 		List<Demotivator> demotivators = Demotivator.find("order by id desc").fetch(25);
@@ -89,11 +78,7 @@ public class Application extends Controller {
 			error(e.getMessage());
 		}
 		
-		//TODO
-		//User user = Security.connectedUser();
-		
-		User user = new User("a@a.com", "pass", "pubsy");
-		user.save();
+		User user = DemotivatorsSecurity.connectedUser();
 		
 		Demotivator d = new Demotivator(title, fileName, user);
 		d.save();

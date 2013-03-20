@@ -3,6 +3,7 @@ package models;
 import javax.persistence.Entity;
 
 import play.db.jpa.Model;
+import security.BCrypt;
 
 @Entity
 public class User extends Model{
@@ -12,7 +13,7 @@ public class User extends Model{
 	
 	public User(String email, String password, String displayName) {
 		this.email = email;
-		this.password = password;
+		setPassword(password);
 		this.displayName = displayName;
 	}
 
@@ -29,7 +30,8 @@ public class User extends Model{
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+		this.password = hashed;
 	}
 
 	public String getDisplayName() {
