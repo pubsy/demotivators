@@ -29,5 +29,9 @@ secure.remember=Запам'ятати мене
 secure.signin=Увійти
 not_registered=Ще не зареєстровані?!
 having_an_account=Зареєстровані користувачі можуть створювати власні Демотиватори, коментувати та оцінювати інші.
-Having an account on our site will give you a way to create your own Demotivators, comment and rate others.
 register=Зареєструватися
+registering_is_good=Реєстрація Вам не зашкодить
+changed_your_mind=Передумали?
+you_can_come=Ви завжди можете повернутись. Продовжуйте перегляд нашої колекції.
+display_name=Нік (ім'я, підпис)
+confirm_password=Підтвердіть пароль
