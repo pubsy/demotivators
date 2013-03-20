@@ -1,0 +1,58 @@
+#{extends 'main.html' /}
+
+<div class="black_block">
+	<div class="black_block_inner fixed_width">
+		<div class="black_block_title">TEXT</div>
+		<div class="black_block_text">TEXT</div>
+	</div>
+</div>
+
+<div class="fixed_width margin_auto">
+	<div id="login">
+			
+		#{form @registerNewUser()}
+			
+			#{if flash.error}
+				<p class="error">
+					&{flash.error}
+				</p>
+			#{/if}
+			#{if flash.success}
+				<p class="success">
+					&{flash.success}
+				</p>
+			#{/if}
+		
+			<p id="display-name-field">
+				<label for="displayname">display name</label>
+				<input type="text" name="displayname" id="displayname" value="${flash.displayname}" />
+			</p>
+			<p id="email-field">
+				<label for="email">email</label>
+				<input type="text" name="email" id="email" value="${flash.email}" />
+			</p>
+			<p id="password-field">
+				<label for="password">password</label>
+				<input type="password" name="password" id="password" value="${flash.email}"/>
+			</p>
+			<p id="confirm-password-field">
+				<label for="confirmpassword">confirmpassword</label>
+				<input type="password" name="confirmpassword" id="confirmpassword" value="${flash.confirmpassword}" />
+			</p>
+			<p id="signin-field">
+				<input type="submit" id="register" value="Register" />
+			</p>
+		#{/form}
+	</div>
+</div>
+
+<div class="black_block">
+	<div class="black_block_inner fixed_width">
+		<div class="left">
+			<div class="black_block_title">&{'not_registered'}</div>
+			<div class="black_block_text width_near_button">&{'having_an_account'}</div>
+		</div>
+		<div class="green_btn"><a href="@{User.register}">&{'login'}</a></div>
+		<div class="clear"></div>
+	</div>
+</div>

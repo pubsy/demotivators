@@ -26,7 +26,9 @@
     margin-top: 10px !important;
 }
 
-#username-field label, #password-field label {
+#username-field label, #password-field label, 
+#display-name-field label, #email-field label, 
+#password-field label, #confirm-password-field label {
     display: block;
     width: 150px;
     float: left;
@@ -37,13 +39,11 @@
 }
 
 #username-field input {
-    width: 200px;
     font-size: 13px;
     display: block;
 }
 
 #password-field input {
-    width: 200px;
     font-size: 13px;
     display: block;
 }
