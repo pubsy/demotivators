@@ -29,7 +29,7 @@ public class Application extends DemotivatorsController {
 	static DemotivatorCreator creator;
 
 	public static void index() {
-		List<Demotivator> demotivators = Demotivator.find("order by id desc").fetch(25);
+		List<Demotivator> demotivators = Demotivator.find("order by date desc").fetch(10);
 		
 		render(demotivators);
 	}
