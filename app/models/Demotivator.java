@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -9,6 +11,7 @@ import play.db.jpa.Model;
 public class Demotivator extends Model{
 	private String title;
 	private String fileName;
+	private Date date;
 	
 	@ManyToOne
 	private User author;
@@ -41,5 +44,13 @@ public class Demotivator extends Model{
 
 	public void setAuthor(User author) {
 		this.author = author;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Date getDate() {
+		return date;
 	}
 }

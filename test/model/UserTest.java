@@ -1,3 +1,4 @@
+package model;
 import org.junit.*;
 import java.util.*;
 import play.test.*;

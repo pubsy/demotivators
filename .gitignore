@@ -11,3 +11,4 @@
 /public/images/demotivators
 /bin
 .classpath
+conf/prod.conf

@@ -1,3 +1,4 @@
+package security;
 // Copyright (c) 2006 Damien Miller <djm@mindrot.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
@@ -20,7 +21,7 @@ import junit.framework.TestCase;
  * @author Damien Miller
  * @version 0.2
  */
-public class TestBCrypt extends TestCase {
+public class BCryptTest extends TestCase {
 	String test_vectors[][] = {
 			{ "", 
 			"$2a$06$DCq7YPn5Rq63x1Lad4cll.",
@@ -89,7 +90,7 @@ public class TestBCrypt extends TestCase {
 	 * @param args unused
 	 */
 	public static void main(String[] args) {
-		junit.textui.TestRunner.run(TestBCrypt.class);
+		junit.textui.TestRunner.run(BCryptTest.class);
 	}
 
 	/**

@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 
 import play.db.jpa.Model;
@@ -10,6 +12,7 @@ public class User extends Model{
 	private String email;
 	private String password;
 	private String displayName;
+	private Date date;
 	
 	public User(String email, String password, String displayName) {
 		this.email = email;
@@ -40,5 +43,13 @@ public class User extends Model{
 
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Date getDate() {
+		return date;
 	}
 }

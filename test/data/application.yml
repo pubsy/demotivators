@@ -1,0 +1,85 @@
+# Test data
+
+User(george):
+    displayName:    George Washington
+    email:          george.washington@gmail.com
+    password:       $2a$10$HwI4lNJD4sr3Gm06LKEe/.44.OM9p47kmY6BcXBz8NaGOhriB3VK.
+    date:           2009-03-25
+
+User(frank):
+    displayName:    Frank Sinatra
+    email:          frank.sinatra@gmail.com
+    password:       $2a$10$HwI4lNJD4sr3Gm06LKEe/.44.OM9p47kmY6BcXBz8NaGOhriB3VK.
+    date:           2009-03-26
+
+Demotivator(ugly):
+    title:          An ugly demotivator
+    date:           2010-04-03
+    author:         george
+    fileName:       ugly.jpg
+
+Demotivator(pretty):
+    title:          A pretty demotivator
+    date:           2010-04-04
+    author:         frank
+    fileName:       pretty.jpg
+
+Demotivator(three):
+    title:          Demotivator title
+    date:           2009-03-05
+    author:         george
+    fileName:       three.jpg
+
+Demotivator(four):
+    title:          Demotivator title
+    date:           2009-04-06
+    author:         frank
+    fileName:       four.jpg
+
+Demotivator(five):
+    title:          Demotivator title
+    date:           2009-04-07
+    author:         george
+    fileName:       five.jpg
+
+Demotivator(six):
+    title:          Demotivator title
+    date:           2009-04-08
+    author:         frank
+    fileName:       six.jpg
+
+Demotivator(seven):
+    title:          Demotivator title
+    date:           2009-04-09
+    author:         george
+    fileName:       seven.jpg
+
+Demotivator(eight):
+    title:          Demotivator title
+    date:           2009-04-10
+    author:         frank
+    fileName:       eight.jpg
+
+Demotivator(nine):
+    title:          Demotivator title
+    date:           2009-04-11
+    author:         george
+    fileName:       nine.jpg
+
+Demotivator(ten):
+    title:          Demotivator title
+    date:           2009-04-15
+    author:         frank
+    fileName:       ten.jpg
+
+Demotivator(eleven):
+    title:          Demotivator title
+    date:           2009-04-16
+    author:         george
+    fileName:       eleven.jpg
+
+Demotivator(twelve):
+    title:          Demotivator title
+    date:           2009-04-17
+    author:         frank
+    fileName:       twelve.jpg
