@@ -13,15 +13,18 @@ package security;
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-import security.BCrypt;
-import junit.framework.TestCase;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import play.test.UnitTest;
 
 /**
  * JUnit unit tests for BCrypt routines
  * @author Damien Miller
  * @version 0.2
  */
-public class BCryptTest extends TestCase {
+
+public class BCryptTest  extends UnitTest {
 	String test_vectors[][] = {
 			{ "", 
 			"$2a$06$DCq7YPn5Rq63x1Lad4cll.",
@@ -86,16 +89,9 @@ public class BCryptTest extends TestCase {
 		};
 
 	/**
-	 * Entry point for unit tests
-	 * @param args unused
-	 */
-	public static void main(String[] args) {
-		junit.textui.TestRunner.run(BCryptTest.class);
-	}
-
-	/**
 	 * Test method for 'BCrypt.hashpw(String, String)'
 	 */
+	@Test
 	public void testHashpw() {
 		System.out.print("BCrypt.hashpw(): ");
 		for (int i = 0; i < test_vectors.length; i++) {
@@ -112,6 +108,7 @@ public class BCryptTest extends TestCase {
 	/**
 	 * Test method for 'BCrypt.gensalt(int)'
 	 */
+	@Test
 	public void testGensaltInt() {
 		System.out.print("BCrypt.gensalt(log_rounds):");
 		for (int i = 4; i <= 12; i++) {
@@ -131,6 +128,7 @@ public class BCryptTest extends TestCase {
 	/**
 	 * Test method for 'BCrypt.gensalt()'
 	 */
+	@Test
 	public void testGensalt() {
 		System.out.print("BCrypt.gensalt(): ");
 		for (int i = 0; i < test_vectors.length; i += 4) {
@@ -148,6 +146,7 @@ public class BCryptTest extends TestCase {
 	 * Test method for 'BCrypt.checkpw(String, String)'
 	 * expecting success
 	 */
+	@Test
 	public void testCheckpw_success() {
 		System.out.print("BCrypt.checkpw w/ good passwords: ");
 		for (int i = 0; i < test_vectors.length; i++) {
@@ -163,6 +162,7 @@ public class BCryptTest extends TestCase {
 	 * Test method for 'BCrypt.checkpw(String, String)'
 	 * expecting failure
 	 */
+	@Test
 	public void testCheckpw_failure() {
 		System.out.print("BCrypt.checkpw w/ bad passwords: ");
 		for (int i = 0; i < test_vectors.length; i++) {
@@ -178,6 +178,7 @@ public class BCryptTest extends TestCase {
 	/**
 	 * Test for correct hashing of non-US-ASCII passwords
 	 */
+	@Test
 	public void testInternationalChars() {
 		System.out.print("BCrypt.hashpw w/ international chars: ");
 		String pw1 = "ππππππππ";

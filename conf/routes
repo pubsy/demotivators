@@ -4,10 +4,10 @@
 
 # Home page
 GET     /                                       Application.index
-GET     /add                                    Application.add
-POST	/create									Application.create
-GET     /single/{id}                            Application.single
+GET     /single/{id}                      		Application.single
 GET     /locale/{language}                      Application.locale
+GET     /Creator/add                            Creator.add
+POST	/Creator/create							Creator.create
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
@@ -15,6 +15,7 @@ GET     /favicon.ico                            404
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 
+
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
-*      /                						module:secure
+*       /                						module:secure

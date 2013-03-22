@@ -20,6 +20,7 @@ public class Demotivator extends Model{
 		this.title = title;
 		this.fileName = fileName;
 		this.author = author;
+		this.date = new Date();
 	}
 
 	public String getTitle() {

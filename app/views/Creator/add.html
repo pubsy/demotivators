@@ -7,27 +7,21 @@
 	</div>
 </div>
 
-#{ifErrors}
-   <h1>Oops…</h1>
- 
-   #{errors}
-       <li>${error}</li>
-   #{/errors}
-#{/ifErrors}
-
 <div id="add_demo_form" class="fixed_width margin_auto">
-	<form action="@{Application.create}" method="POST" enctype="multipart/form-data">
+	<form action="@{Creator.create}" method="POST" enctype="multipart/form-data" name="demoForm">
+		    <label for="image">&{'demo_image'}</label>
+		    <input type="file" name="image" />
+		    <div class="error">#{error 'image' /}</div>
+		    
 	    	<label for="title">&{'demo_title'}</label>
-		    <input type="text" name="title" value=""/>
+		    <input type="text" name="title" value="${flash.title}"/>
+	    	<div class="error">#{error 'title' /}</div>
 		    
 		    <label for="text">&{'demo_text'}</label>
-		    <input type="text" name="text" value=""/>
+		    <input type="text" name="text" value="${flash.text}"/>
+		    <div class="error">#{error 'text' /}</div>
 		    
-		    <label for="image">&{'demo_image'}</label>
-		    <input type="file" name="image"/>
-		    
-		    <input type="button" name="Priview" id="preview" value="&{'preview'}"/>
-		    <input type="submit" name="Submit" id="submit" value="&{'submit'}"/>
+		    <input type="submit" name="create" id="create" value="&{'submit'}"/>
 	</form>
 </div>
 

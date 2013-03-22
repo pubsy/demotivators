@@ -35,3 +35,6 @@ changed_your_mind=Changed your mind?
 you_can_come=You can always come back. Continue browsing our collection.
 display_name=Display name
 confirm_password=Confirm password
+please.select.an.image=Please select an image.
+title.cant.be.longer=Title can't be longer than 30 characters.
+text.cant.be.longer=Text can't be longer than 120 characters.

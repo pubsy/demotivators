@@ -19,14 +19,7 @@ import security.SecureController;
 import services.DemotivatorCreator;
 
 
-public class Application extends DemotivatorsController {
-	
-	/**
-	 * We don't really need IOC in here. 
-	 * It's injected just for the sake of it.
-	 */
-	@Inject
-	static DemotivatorCreator creator;
+public class Application extends Controller {
 
 	public static void index() {
 		List<Demotivator> demotivators = Demotivator.find("order by date desc").fetch(10);
@@ -53,36 +46,5 @@ public class Application extends DemotivatorsController {
 	    }else{
 	        redirect(referer.value());
 	    }
-	}
-
-	@SecureController
-	public static void add(){		
-		render();
-	}
-
-	@SecureController
-	public static void create(@Required @MaxLength(30) String title, @Required @MaxLength(120) String text, File[] image) {
-
-		validation.required(image[0]); 
-		if (Validation.hasErrors()) {
-			params.flash();
-			Validation.keep();
-			add();
-		}
-
-		String fileName = null;
-		try {
-			fileName = creator.createDemotivator(image[0], title, text);
-		} catch (IOException e) {
-			e.printStackTrace();
-			error(e.getMessage());
-		}
-		
-		User user = DemotivatorsSecurity.connectedUser();
-		
-		Demotivator d = new Demotivator(title, fileName, user);
-		d.save();
-		
-		single(d.id);
 	}
 }

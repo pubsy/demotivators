@@ -1,5 +1,7 @@
 package controllers;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hamcrest.core.Is;
 import org.junit.*;
@@ -7,6 +9,7 @@ import org.junit.Before;
 
 import play.test.*;
 import play.cache.Cache;
+import play.i18n.Lang;
 import play.jobs.Job;
 import play.mvc.*;
 import play.mvc.Http.*;
@@ -64,8 +67,6 @@ public class ApplicationTest extends FunctionalTest {
 
 		assertNotNull(response);
 		assertIsOk(response);
-		assertContentType("text/html", response);
-		assertCharset(play.Play.defaultWebEncoding, response);
 	}
     
     /**
@@ -85,7 +86,52 @@ public class ApplicationTest extends FunctionalTest {
         assertNotNull(demotivator);
         assertEquals("An ugly demotivator", demotivator.getTitle());
         assertEquals("Frank Sinatra", demotivator.getAuthor().getDisplayName());
-        assertEquals("ugly.jpg", demotivator.getFileName());
-        
+        assertEquals("ugly.jpg", demotivator.getFileName());   
     }
+    
+    
+    @Test
+    public void testLocaleControllerAccessible(){
+    	Response response = GET("/locale/ua");
+    	
+    	assertNotNull(response);
+    	assertStatus(302, response);
+    }
+    
+    /**
+     * Verifying locale controller. Try changing locale. Then changing back.
+     */
+    @Test
+    public void testLocaleChange(){
+    	//Cheking default locale
+    	assertEquals("en", Lang.getLocale().getLanguage());
+
+    	//Changing to Ukrainian
+    	Response response = GET("/locale/ua");
+    	String value = response.cookies.get("PLAY_LANG").value;
+    	assertEquals("ua", value);
+
+    	//Changing to English
+    	response = GET("/locale/en");
+    	value = response.cookies.get("PLAY_LANG").value;
+    	assertEquals("en", value);
+   
+    }
+    
+    @Test
+    public void testLocaleControllerRedirectsBackToReferingPage(){
+
+    	//Verifying redirected to default path
+    	Response response = GET("/locale/ua");
+    	
+    	assertHeaderEquals("Location", "/", response);
+    	
+    	//Verifying redirected to the page where the call was made
+    	Request request = newRequest();
+    	request.headers.put("referer", new Header("Location", "/users/register"));
+    	response = GET(request, "/locale/en");
+
+     	assertHeaderEquals("Location", "/users/register", response);
+    }
+    
 }
