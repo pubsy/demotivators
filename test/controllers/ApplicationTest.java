@@ -3,7 +3,11 @@ import java.util.List;
 
 import org.hamcrest.core.Is;
 import org.junit.*;
+import org.junit.Before;
+
 import play.test.*;
+import play.cache.Cache;
+import play.jobs.Job;
 import play.mvc.*;
 import play.mvc.Http.*;
 import models.*;
@@ -15,7 +19,7 @@ public class ApplicationTest extends FunctionalTest {
 	 */
     @Test
     public void testIndexPage() {
-
+    	
         Response response = GET("/");
         
         assertNotNull(response);
@@ -30,9 +34,10 @@ public class ApplicationTest extends FunctionalTest {
      */
     @Test
     public void testIndexPageRenderingCorrectData() {
-    	Fixtures.deleteAllModels();
-    	Fixtures.loadModels("data/application.yml");
     	
+    	Fixtures.deleteAllModels();
+    	Fixtures.loadModels("data/index.yml");
+
     	GET("/");
     	
     	List<Demotivator> demotivators = (List<Demotivator>)renderArgs("demotivators");
@@ -43,36 +48,44 @@ public class ApplicationTest extends FunctionalTest {
         assertEquals("five.jpg", demotivators.get(9).getFileName());
     }
     
+  
     /**
 	 * Going to single Demotivator page. Sanity test.
 	 */
-    @Test
-    public void testSinglePage() {
+	@Test
+	public void testSinglePage() {
+		
+    	Fixtures.deleteAllModels();
+    	Fixtures.loadModels("data/single.yml");
 
-        Response response = GET("/single/1");
-        
-        assertNotNull(response);
-        assertIsOk(response);
-        assertContentType("text/html", response);
-        assertCharset(play.Play.defaultWebEncoding, response); 
-    }
+		Demotivator demo = Demotivator.find("order by date desc").first();
+
+		Response response = GET("/single/" + demo.id);
+
+		assertNotNull(response);
+		assertIsOk(response);
+		assertContentType("text/html", response);
+		assertCharset(play.Play.defaultWebEncoding, response);
+	}
     
     /**
      * Verifying single controller is rendering Demotivator passed by id.
      */
     @Test
     public void testSinglePageRenderingCorrectData() {
+    	
     	Fixtures.deleteAllModels();
-    	Fixtures.loadModels("data/application.yml");
+    	Fixtures.loadModels("data/single.yml");
     	
-    	GET("/single/1");
+    	Demotivator demo = Demotivator.find("order by date desc").first();
     	
+    	GET("/single/" + demo.id);
+
     	Demotivator demotivator = (Demotivator)renderArgs("demotivator");
         assertNotNull(demotivator);
-        assertEquals("A pretty demotivator", demotivator.getTitle());
-        assertEquals("George Washington", demotivator.getAuthor().getDisplayName());
-        assertEquals("five.jpg", demotivator.getFileName());
+        assertEquals("An ugly demotivator", demotivator.getTitle());
+        assertEquals("Frank Sinatra", demotivator.getAuthor().getDisplayName());
+        assertEquals("ugly.jpg", demotivator.getFileName());
         
     }
-    
 }
