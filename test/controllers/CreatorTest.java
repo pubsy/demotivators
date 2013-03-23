@@ -26,7 +26,7 @@ public class CreatorTest extends FunctionalTest{
      */
     @Test
     public void testAddDemotivatorPageRequiresAuthentication(){
-    	Response response = GET("/Creator/add");
+    	Response response = GET("/add");
         
         assertNotNull(response);
         assertStatus(302, response);
@@ -46,7 +46,7 @@ public class CreatorTest extends FunctionalTest{
     	authenticate();
 
         //Going to add Demotivator page
-    	Response response = GET("/Creator/add");
+    	Response response = GET("/add");
         
         assertNotNull(response);
         assertStatus(200, response);
@@ -71,7 +71,7 @@ public class CreatorTest extends FunctionalTest{
     	File file = new File("test/data/image.jpg");
     	fileParams.put("image", file);
 
-    	Response response = POST("/Creator/create", createDemoParams, fileParams);
+    	Response response = POST("/create", createDemoParams, fileParams);
 
     	assertStatus(302, response);
     	
@@ -97,10 +97,10 @@ public class CreatorTest extends FunctionalTest{
     	File file = new File("test/data/image.jpg");
     	fileParams.put("image", file);
 
-    	Response response = POST("/Creator/create", createDemoParams, fileParams);
+    	Response response = POST("/create", createDemoParams, fileParams);
 
     	assertStatus(302, response);
-    	assertHeaderEquals("Location", "/Creator/add", response);
+    	assertHeaderEquals("Location", "/add", response);
     }
     
     @Test
@@ -117,10 +117,10 @@ public class CreatorTest extends FunctionalTest{
     	File file = new File("test/data/image.jpg");
     	fileParams.put("image", file);
 
-    	Response response = POST("/Creator/create", createDemoParams, fileParams);
+    	Response response = POST("/create", createDemoParams, fileParams);
 
     	assertStatus(302, response);
-    	assertHeaderEquals("Location", "/Creator/add", response);
+    	assertHeaderEquals("Location", "/add", response);
     }
     
     @Test
@@ -137,10 +137,10 @@ public class CreatorTest extends FunctionalTest{
     	File file = new File("test/data/image.jpg");
     	fileParams.put("image", file);
 
-    	Response response = POST("/Creator/create", createDemoParams, fileParams);
+    	Response response = POST("/create", createDemoParams, fileParams);
 
     	assertStatus(302, response);
-    	assertHeaderEquals("Location", "/Creator/add", response);
+    	assertHeaderEquals("Location", "/add", response);
     }
     
     @Test
@@ -154,10 +154,10 @@ public class CreatorTest extends FunctionalTest{
     	createDemoParams.put("title", "ordinary title");
     	createDemoParams.put("text", "ordinary text");
     	
-    	Response response = POST("/Creator/create", createDemoParams);
+    	Response response = POST("/create", createDemoParams);
 
     	assertStatus(302, response);
-    	assertHeaderEquals("Location", "/Creator/add", response);
+    	assertHeaderEquals("Location", "/add", response);
     }
     
     @Test
@@ -174,10 +174,10 @@ public class CreatorTest extends FunctionalTest{
     	File notExistingFile = new File("test/data/not.existin.file");
     	fileParams.put("image", notExistingFile);
     	
-    	Response response = POST("/Creator/create", createDemoParams);
+    	Response response = POST("/create", createDemoParams);
 
     	assertStatus(302, response);
-    	assertHeaderEquals("Location", "/Creator/add", response);
+    	assertHeaderEquals("Location", "/add", response);
     }
     
     private void authenticate() {

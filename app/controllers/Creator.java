@@ -20,6 +20,7 @@ public class Creator extends Controller{
 	private static final String TEXT_CANT_MESSAGE_KEY = "text.cant.be.longer";
 	private static final String TITLE_CANT_MESSAGE_KEY = "title.cant.be.longer";
 	private static final String PLEASE_SELECT_MESSAGE_KEY = "please.select.an.image";
+	
 	/**
 	 * We don't really need IOC in here. 
 	 * It's injected just for the sake of it.
@@ -27,14 +28,13 @@ public class Creator extends Controller{
 	@Inject
 	static DemotivatorCreator creator;
 	
-	
 	public static void add(){		
 		render();
 	}
 
 	public static void create(@Required String title, String text, File[] image) {
 
-		validateCreateParameters(title, text, image);
+		validateParameters(title, text, image);
 
 		String fileName = null;
 		try {
@@ -43,15 +43,19 @@ public class Creator extends Controller{
 			e.printStackTrace();
 			error(e.getMessage());
 		}
-		
-		User user = DemotivatorsSecurity.connectedUser();
-		Demotivator demo = new Demotivator(title, fileName, user);
+
+		Demotivator demo = new Demotivator(title, fileName, currentUser());
 		demo.save();
 		
 		Application.single(demo.getId());
 	}
 
-	private static void validateCreateParameters(String title, String text, File[] image) {
+	private static User currentUser() {
+		String email = Secure.Security.connected();
+		return User.find("byEmail", email).first();
+	}
+
+	private static void validateParameters(String title, String text, File[] image) {
 		if(title.length() > 30){
 			validation.addError("title", TITLE_CANT_MESSAGE_KEY);
 		}
@@ -60,7 +64,7 @@ public class Creator extends Controller{
 		}
 		
 		//can not populate <input type="file"> with value, so user
-		//has to select a file every time he makes mistakes.
+		//has to select a file every time he makes a mistake filling the form.
 		if(image == null || image[0] == null || Validation.hasErrors()){
 			validation.addError("image", PLEASE_SELECT_MESSAGE_KEY);
 		}

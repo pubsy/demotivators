@@ -1,5 +1,9 @@
 #{extends 'main.html' /}
 
+#{set 'moreStyles'}
+	#{stylesheet 'secure.css' /}
+#{/set}
+
 <div class="black_block">
 	<div class="black_block_inner fixed_width">
 		<div class="black_block_title">&{'add_demo_title'}</div>
@@ -8,21 +12,28 @@
 </div>
 
 <div id="add_demo_form" class="fixed_width margin_auto">
+
+<div id="login">
 	<form action="@{Creator.create}" method="POST" enctype="multipart/form-data" name="demoForm">
-		    <label for="image">&{'demo_image'}</label>
-		    <input type="file" name="image" />
-		    <div class="error">#{error 'image' /}</div>
-		    
-	    	<label for="title">&{'demo_title'}</label>
-		    <input type="text" name="title" value="${flash.title}"/>
-	    	<div class="error">#{error 'title' /}</div>
-		    
-		    <label for="text">&{'demo_text'}</label>
-		    <input type="text" name="text" value="${flash.text}"/>
-		    <div class="error">#{error 'text' /}</div>
+		    <div class="vlidation_error">#{error 'image' /}</div>
+			<p>
+			    <label for="image">&{'demo_image'}</label>
+			    <input type="file" name="image" />
+		    </p>
+	    	<div class="vlidation_error">#{error 'title' /}</div>
+	    	<p>
+		    	<label for="title">&{'demo_title'}</label>
+			    <input type="text" name="title" value="${flash.title}"/>
+		    </p>
+		    <div class="vlidation_error">#{error 'text' /}</div>
+		    <p>
+			    <label for="text">&{'demo_text'}</label>
+			    <input type="text" name="text" value="${flash.text}"/>
+		    </p>
 		    
 		    <input type="submit" name="create" id="create" value="&{'submit'}"/>
 	</form>
+</div>
 </div>
 
 <div class="black_block">

@@ -6,8 +6,10 @@
 GET     /                                       Application.index
 GET     /single/{id}                      		Application.single
 GET     /locale/{language}                      Application.locale
-GET     /Creator/add                            Creator.add
-POST	/Creator/create							Creator.create
+GET     /add		                            Creator.add
+POST	/create									Creator.create
+GET     /register		                        Users.register
+POST    /registerNewUser		                Users.registerNewUser
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

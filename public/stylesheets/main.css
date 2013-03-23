@@ -87,13 +87,7 @@ body {
 	margin: 10px;
 }
 
-#add_demo_form input[type="text"],#add_demo_form input[type="file"] {
-	display: block;
-}
-
 #add_demo_form label {
-	display: block;
-	margin-top: 10px;
 	font-size: 14px;
 	font-family: San serif;
 }
@@ -139,11 +133,13 @@ input[type='text'],input[type="password"] {
 	text-align: center;
 }
 
-.error {
+.vlidation_error {
 	color: red;
 	font-size: 12px;
+	margin-left: 160px;
 }
 
 #create{
 	margin-top: 10px;	
+	margin-left: 155px;
 }

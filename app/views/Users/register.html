@@ -1,5 +1,9 @@
 #{extends 'main.html' /}
 
+#{set 'moreStyles'}
+	#{stylesheet 'secure.css' /}
+#{/set}
+
 <div class="black_block">
 	<div class="black_block_inner fixed_width">
 		<div class="black_block_title">&{'registering_is_good'}</div>
@@ -11,33 +15,25 @@
 	<div id="login">
 			
 		#{form @registerNewUser()}
-			
-			#{if flash.error}
-				<p class="error">
-					&{flash.error}
-				</p>
-			#{/if}
-			#{if flash.success}
-				<p class="success">
-					&{flash.success}
-				</p>
-			#{/if}
-		
+				<div class="vlidation_error">#{error 'email' /}</div>
 			<p id="email-field">
 				<label for="email">&{'secure.username'}</label>
 				<input type="text" name="email" id="email" value="${flash.email}" />
 			</p>
+				<div class="vlidation_error">#{error 'displayname' /}</div>
 			<p id="display-name-field">
 				<label for="displayname">&{'display_name'}</label>
 				<input type="text" name="displayname" id="displayname" value="${flash.displayname}" />
 			</p>
+				<div class="vlidation_error">#{error 'password' /}</div>
 			<p id="password-field">
 				<label for="password">&{'secure.password'}</label>
-				<input type="password" name="password" id="password" value=""/>
+				<input type="password" name="password" id="password" value="${flash.password}"/>
 			</p>
+				<div class="vlidation_error">#{error 'confirmpassword' /}</div>
 			<p id="confirm-password-field">
 				<label for="confirmpassword">&{'confirm_password'}</label>
-				<input type="password" name="confirmpassword" id="confirmpassword" value="" />
+				<input type="password" name="confirmpassword" id="confirmpassword" value="${flash.confirmpassword}" />
 			</p>
 			<p id="signin-field">
 				<input type="submit" id="register" value="&{'register'}" />

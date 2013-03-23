@@ -18,6 +18,7 @@ public class User extends Model{
 		this.email = email;
 		setPassword(password);
 		this.displayName = displayName;
+		this.date = new Date();
 	}
 
 	public String getEmail() {

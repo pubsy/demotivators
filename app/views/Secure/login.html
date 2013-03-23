@@ -1,5 +1,9 @@
 #{extends 'main.html' /}
 
+#{set 'moreStyles'}
+	#{stylesheet 'secure.css' /}
+#{/set}
+
 <div class="black_block">
 	<div class="black_block_inner fixed_width">
 		<div class="black_block_title">&{'please_login'}</div>
@@ -23,17 +27,17 @@
 				</p>
 			#{/if}
 		
-			<p id="username-field">
+			<p>
 				<label for="username">&{'secure.username'}</label>
 				<input type="text" name="username" id="username" value="${flash.username}" />
 			</p>
-			<p id="password-field">
+			<p>
 				<label for="password">&{'secure.password'}</label>
 				<input type="password" name="password" id="password" value="" />
 			</p>
 			<p id="remember-field">
-				<input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
 				<label for="remember">&{'secure.remember'}</label>
+				<input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
 			</p>
 			<p id="signin-field">
 				<input type="submit" id="signin" value="&{'secure.signin'}" />

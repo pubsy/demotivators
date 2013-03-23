@@ -42,7 +42,7 @@ public class ImageUtils{
 		
 		//------------------
 		
-		String[] lines = StringUtils.splitStringToTwo(text, 60);
+		String[] lines = StringUtils.splitTextInHalf(text, 60);
 		
 		verticalGap += 25;
 		for(String line: lines){

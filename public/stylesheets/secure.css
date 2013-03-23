@@ -14,7 +14,7 @@
 #login form {
     border: 10px solid #ccc;
     background: #fff;
-    padding: 10px;
+    padding: 20px 10px 10px 10px;
     text-align: left;
 }
 
@@ -22,13 +22,7 @@
     margin: 3px;
 }
 
-#username-field {
-    margin-top: 10px !important;
-}
-
-#username-field label, #password-field label, 
-#display-name-field label, #email-field label, 
-#password-field label, #confirm-password-field label {
+#login form p label {
     display: block;
     width: 150px;
     float: left;
@@ -38,18 +32,8 @@
     font-size: 15px;
 }
 
-#username-field input {
+#login form p input  {
     font-size: 13px;
-    display: block;
-}
-
-#password-field input {
-    font-size: 13px;
-    display: block;
-}
-
-#remember-field input {
-    margin-left: 155px;
 }
 
 #remember-field {

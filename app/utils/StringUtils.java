@@ -2,7 +2,7 @@ package utils;
 
 public class StringUtils {
 
-	public static String[] splitStringToTwo(String text, int maxWords) {
+	public static String[] splitTextInHalf(String text, int maxWords) {
 		text = text.trim();
 		StringBuilder firstLine = new StringBuilder();
 		StringBuilder secondLine = new StringBuilder();
