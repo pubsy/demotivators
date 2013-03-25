@@ -18,22 +18,22 @@
 				<div class="vlidation_error">#{error 'email' /}</div>
 			<p id="email-field">
 				<label for="email">&{'secure.username'}</label>
-				<input type="text" name="email" id="email" value="${flash.email}" />
+				<input type="email" name="email" id="email" value="" required />
 			</p>
 				<div class="vlidation_error">#{error 'displayname' /}</div>
 			<p id="display-name-field">
 				<label for="displayname">&{'display_name'}</label>
-				<input type="text" name="displayname" id="displayname" value="${flash.displayname}" />
+				<input type="text" name="displayname" id="displayname" value="" required />
 			</p>
 				<div class="vlidation_error">#{error 'password' /}</div>
 			<p id="password-field">
 				<label for="password">&{'secure.password'}</label>
-				<input type="password" name="password" id="password" value="${flash.password}"/>
+				<input type="password" name="password" id="password" value="" required />
 			</p>
 				<div class="vlidation_error">#{error 'confirmpassword' /}</div>
 			<p id="confirm-password-field">
 				<label for="confirmpassword">&{'confirm_password'}</label>
-				<input type="password" name="confirmpassword" id="confirmpassword" value="${flash.confirmpassword}" />
+				<input type="password" name="confirmpassword" id="confirmpassword" value="" required />
 			</p>
 			<p id="signin-field">
 				<input type="submit" id="register" value="&{'register'}" />

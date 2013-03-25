@@ -9,6 +9,9 @@ public class DemotivatorCreatorMock implements DemotivatorCreator{
 
 	@Override
 	public String createDemotivator(File file, String title, String text) throws IOException {
+		if(file.getName().equals("bad.file")){
+			throw new IOException("Bad file");
+		}
 		return "test.file.name";
 	}
 

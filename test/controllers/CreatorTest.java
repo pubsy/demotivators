@@ -161,7 +161,7 @@ public class CreatorTest extends FunctionalTest{
     }
     
     @Test
-    public void testNotExistingFileWasSent(){
+    public void testBadFileSent(){
     	Fixtures.deleteAllModels();
     	Fixtures.loadModels("data/user.yml");
     	
@@ -171,10 +171,10 @@ public class CreatorTest extends FunctionalTest{
     	createDemoParams.put("title", "ordinary title");
     	createDemoParams.put("text", "ordinary text");
     	Map<String, File> fileParams = new HashMap<String, File>();
-    	File notExistingFile = new File("test/data/not.existin.file");
-    	fileParams.put("image", notExistingFile);
+    	File file = new File("test/data/bad.file");
+    	fileParams.put("image", file);
     	
-    	Response response = POST("/create", createDemoParams);
+    	Response response = POST("/create", createDemoParams, fileParams);
 
     	assertStatus(302, response);
     	assertHeaderEquals("Location", "/add", response);

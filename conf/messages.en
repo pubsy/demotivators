@@ -38,3 +38,5 @@ confirm_password=Confirm password
 please.select.an.image=Please select an image.
 title.cant.be.longer=Title can't be longer than 30 characters.
 text.cant.be.longer=Text can't be longer than 120 characters.
+bad.file.error=Bad image file
+login=Login

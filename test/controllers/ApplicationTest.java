@@ -85,7 +85,7 @@ public class ApplicationTest extends FunctionalTest {
     	Demotivator demotivator = (Demotivator)renderArgs("demotivator");
         assertNotNull(demotivator);
         assertEquals("An ugly demotivator", demotivator.getTitle());
-        assertEquals("Frank Sinatra", demotivator.getAuthor().getDisplayName());
+        assertEquals("Martin Fowler", demotivator.getAuthor().getDisplayName());
         assertEquals("ugly.jpg", demotivator.getFileName());   
     }
     

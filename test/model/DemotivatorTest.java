@@ -21,16 +21,14 @@ public class DemotivatorTest extends UnitTest{
 
 	@Test
 	public void createDemotivator() {
-	    // Create a new user and save it
-	    User martin = new User("martin@fowler.com", "secret", "Martin").save();
-	    
-	    // Create a new demotivator
-	    new Demotivator("title", "file.name", martin).save();
-	    
+		Fixtures.loadModels("data/single.yml");
+		
 	    // Test that the demotivator has been created
 	    assertEquals(1, Demotivator.count());
 	    
-	    // Retrieve all demotivators created by bob
+	    User martin = User.find("byEmail", "martin.fowler@gmail.com").first();
+	    
+	    // Retrieve all demotivators created by Martin
 	    List<Demotivator> martinDemos = Demotivator.find("byAuthor", martin).fetch();
 	    
 	    // Tests
@@ -38,8 +36,8 @@ public class DemotivatorTest extends UnitTest{
 	    Demotivator demo = martinDemos.get(0);
 	    assertNotNull(demo);
 	    assertEquals(martin, demo.getAuthor());
-	    assertEquals("title", demo.getTitle());
-	    assertEquals("file.name", demo.getFileName());
+	    assertEquals("An ugly demotivator", demo.getTitle());
+	    assertEquals("ugly.jpg", demo.getFileName());
 	    assertNotNull(demo.getDate());
 	}
 }

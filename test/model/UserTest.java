@@ -1,24 +1,31 @@
 package model;
 import org.junit.*;
+
 import java.util.*;
 import play.test.*;
 import security.BCrypt;
 import models.*;
 
 public class UserTest extends UnitTest {
+	
+	@Before
+	public void deleteModels() {
+		Fixtures.deleteAllModels();
+	}
 
 	/**
 	 * Creating a new user. And retrieving it by email.
 	 */
 	@Test
 	public void saveAndGetUser() {
-	    new User("a@a.com", "pass", "Me").save();
-	    User user = User.find("byEmail", "a@a.com").first();
+		Fixtures.loadModels("data/user.yml");
+		
+	    User user = User.find("byEmail", "frank.sinatra@gmail.com").first();
 
 	    assertNotNull(user);
-	    assertEquals("Me", user.getDisplayName());
-	    assertEquals("a@a.com", user.getEmail());
-	    assertTrue(BCrypt.checkpw("pass", user.getPassword()));
+	    assertEquals("Frank Sinatra", user.getDisplayName());
+	    assertEquals("frank.sinatra@gmail.com", user.getEmail());
+	    assertTrue(BCrypt.checkpw("123", user.getPassword()));
 	}
 	
 	/**

@@ -5,9 +5,11 @@
         <title>&{'title'}</title>
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.min.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/bootstrap.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
     </head>
     <body>
@@ -17,11 +19,17 @@
     	</div>
     	<div id=header class="fixed_width margin_auto">
     		<div id="logo"><a href="@{Application.index}">&{'ukrainian_demotivators'}</a></div>
-    		<span class="menu_item"><a href="/about">&{'about'}</a></span>
-    		<span class="menu_item"><a href="mailto:vitalii.kravets@gmail.com">&{'contact'}</a></span>
-    		<span class="menu_item"><a href="https://github.com/pubsy/demotivators.com.ua">&{'contribute'}</a></span>
-    		<span class="menu_item"><a href="/best">&{'best'}</a></span>
-    		<span class="menu_item"><a href="@{Creator.add}">&{'add_demotivator'}</a></span>
+    		<div id="menu_items">
+	    		<ul class="nav nav-pills">
+				  <li class="active">
+				  	<a href="@{Creator.add}">&{'add_demotivator'}</a>
+				  </li>
+				  <li><a href="/best">&{'best'}</a></li>
+				  <li><a href="/register">&{'register'}</a></li>
+				  <li><a href="/login">&{'login'}</a></li>
+				  <li><a href="/about">&{'about'}</a></li>
+				</ul>
+    		</div>
     		<div class="clear"></div>
     	</div>
         #{doLayout /}

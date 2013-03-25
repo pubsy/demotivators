@@ -7,10 +7,19 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import utils.ImageUtils;
-import utils.ImageUtils;
+import utils.ImageUtilsImpl;
 
 public class DemotivatorCreatorImpl implements DemotivatorCreator{
+	private ImageUtils utils;
+	
+	public DemotivatorCreatorImpl(){
+		this.utils = new ImageUtilsImpl();
+	}
 
+	public DemotivatorCreatorImpl(ImageUtils utils){
+		this.utils = utils;
+	}
+	
 	@Override
 	public String createDemotivator(File imageFile, String title, String text) throws IOException {
 		createImageFolderIfNeeded();
@@ -18,20 +27,21 @@ public class DemotivatorCreatorImpl implements DemotivatorCreator{
 		long timestamp = System.currentTimeMillis();
 
 		//Create demotivator
-		ImageUtils utils = new ImageUtils();
-		BufferedImage image = ImageIO.read(imageFile);
+		BufferedImage image; 
+		image = utils.readFile(imageFile);
 		image = utils.scale(image, MAX_WIDTH, MAX_HEIGHT);
 		image = utils.addBorderAndTextSpace(image);
         image = utils.drawTitleAndText(image, title, text);
         
-        File outputfile = new File(IMAGE_DIR_PATH + File.separator + timestamp + "." + utils.getImageFormatName(imageFile));
-        ImageIO.write(image, utils.getImageFormatName(imageFile), outputfile);
+        String formatName = utils.getImageFormatName(imageFile);
+        File outputfile = new File(IMAGE_DIR_PATH + File.separator + timestamp + "." + formatName);
+        utils.writeImage(image, formatName, outputfile);
         
         //Create thumbnail
         BufferedImage thumb = utils.scale(image, MAX_THUMB_WIDTH, MAX_THUMB_HEIGHT);
         
-        File thumbfile = new File(IMAGE_DIR_PATH + File.separator + "thumb." + timestamp + "." + utils.getImageFormatName(imageFile));
-        ImageIO.write(thumb, utils.getImageFormatName(imageFile), thumbfile);
+        File thumbfile = new File(IMAGE_DIR_PATH + File.separator + "thumb." + timestamp + "." + formatName);
+        utils.writeImage(thumb, formatName, thumbfile);
         
         return outputfile.getName();
 	}

@@ -29,11 +29,11 @@
 		
 			<p>
 				<label for="username">&{'secure.username'}</label>
-				<input type="text" name="username" id="username" value="${flash.username}" />
+				<input type="email" name="username" id="username" value="${flash.username}" placeholder="some@email.com" required />
 			</p>
 			<p>
 				<label for="password">&{'secure.password'}</label>
-				<input type="password" name="password" id="password" value="" />
+				<input type="password" name="password" id="password" value="" required />
 			</p>
 			<p id="remember-field">
 				<label for="remember">&{'secure.remember'}</label>

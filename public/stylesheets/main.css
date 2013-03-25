@@ -16,10 +16,8 @@ body {
 	color: black;
 }
 
-.menu_item {
+#menu_items {
 	float: right;
-	margin-right: 10px;
-	color: #999;
 }
 
 .menu_item a {
@@ -115,7 +113,7 @@ body {
 	margin: 0 auto;
 }
 
-input[type='text'],input[type="password"] {
+input[type='text'], input[type="password"], input[type="email"] {
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;

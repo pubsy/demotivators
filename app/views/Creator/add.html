@@ -18,17 +18,17 @@
 		    <div class="vlidation_error">#{error 'image' /}</div>
 			<p>
 			    <label for="image">&{'demo_image'}</label>
-			    <input type="file" name="image" />
+			    <input type="file" name="image" required />
 		    </p>
 	    	<div class="vlidation_error">#{error 'title' /}</div>
 	    	<p>
 		    	<label for="title">&{'demo_title'}</label>
-			    <input type="text" name="title" value="${flash.title}"/>
+			    <input type="text" name="title" value="${flash.title}" pattern=".{1,30}" required/>
 		    </p>
 		    <div class="vlidation_error">#{error 'text' /}</div>
 		    <p>
 			    <label for="text">&{'demo_text'}</label>
-			    <input type="text" name="text" value="${flash.text}"/>
+			    <input type="text" name="text" value="${flash.text}" pattern=".{1,120}" required/>
 		    </p>
 		    
 		    <input type="submit" name="create" id="create" value="&{'submit'}"/>

@@ -38,3 +38,5 @@ confirm_password=Підтвердіть пароль
 please.select.an.image=Будь ласка оберіть зображення.
 title.cant.be.longer=Заголовок не може бути довшим ніж 30 символів.
 text.cant.be.longer=Текст не може бути довшим ніж 120 символів.
+bad.file.error=Поганий файл зображення
+login=Увійти

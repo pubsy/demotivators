@@ -1,8 +1,7 @@
 package controllers;
 
-import security.BCrypt;
 import models.User;
-import controllers.Secure;
+import security.BCrypt;
 
 public class DemotivatorsSecurity extends Secure.Security{
 
