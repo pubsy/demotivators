@@ -1,0 +1,25 @@
+*{ You can use plain selenium command using the selenium tag }*
+
+#{fixture delete:'all', load:'data/single.yml' /}
+
+#{selenium 'Check single page is shown without errors'}
+    open('/')
+    clickAndWait('//div[@id="demotivators_list"]/div[1]/a')
+    assertNotTitle('Application error')
+#{/selenium}
+
+#{selenium 'Check demotivator icons and content title present'}
+	open('/')
+    clickAndWait('//div[@id="demotivators_list"]/div[1]/a')
+	
+	assertElementPresent('//h4[@class="content_title"]')
+	assertText('//h4[@class="content_title"]', 'An ugly demotivator')
+	
+	assertElementPresent('//div[@id="single_demotivator"]')
+	
+	assertElementPresent('//div[@id="single_demotivator"]')
+	assertAttribute('//div[@id="single_demotivator"]/a@href', '/single/*#single_demotivator_image')
+	
+	assertElementPresent('//div[@id="single_demotivator"]/a/img')
+	assertAttribute('//div[@id="single_demotivator"]/a/img@src', '/public/images/demotivators/ugly.jpg')
+#{/selenium}

@@ -87,11 +87,6 @@ body {
 	margin: 10px;
 }
 
-#add_demo_form label {
-	font-size: 14px;
-	font-family: San serif;
-}
-
 #submit,#preview {
 	margin-top: 20px;
 }
@@ -142,5 +137,17 @@ input[type='text'], input[type="password"], input[type="email"] {
 #create{
 	margin-top: 10px;	
 	margin-left: 155px;
+}
+
+#menu_items ul li a:active{
+	color: red;
+}
+
+#preview{
+	text-align: center;
+	padding-bottom: 10px;
+	border: 10px solid #ccc;
+	margin-bottom: 10px;	
+	display: none;
 }
 

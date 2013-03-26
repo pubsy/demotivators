@@ -4,6 +4,10 @@
 	#{stylesheet 'secure.css' /}
 #{/set}
 
+#{set 'moreScripts'}
+    #{script 'demo.preview.js'/}
+#{/set}
+
 <div class="black_block">
 	<div class="black_block_inner fixed_width">
 		<div class="black_block_title">&{'add_demo_title'}</div>
@@ -11,14 +15,16 @@
 	</div>
 </div>
 
+
 <div id="add_demo_form" class="fixed_width margin_auto">
 
 <div id="login">
+<div id="preview"><img src="" width="300px" height="300px"/></div>
 	<form action="@{Creator.create}" method="POST" enctype="multipart/form-data" name="demoForm">
 		    <div class="vlidation_error">#{error 'image' /}</div>
 			<p>
 			    <label for="image">&{'demo_image'}</label>
-			    <input type="file" name="image" required />
+			    <input type="file" name="image" id="image" name="files[]" required />
 		    </p>
 	    	<div class="vlidation_error">#{error 'title' /}</div>
 	    	<p>

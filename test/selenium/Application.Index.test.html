@@ -1,0 +1,79 @@
+*{ You can use plain selenium command using the selenium tag }*
+
+#{fixture delete:'all', load:'data/index.yml' /}
+
+#{selenium 'Login to have an ability of verifying Add Demotivator page links'}
+	open('/login')
+	type('//input[@id="username"]', 'george.washington@gmail.com')
+	type('//input[@id="password"]', '123')
+	clickAndWait('//input[@id="signin"]')
+	
+	assertLocation('http://*/')
+	
+#{/selenium}
+
+#{selenium}
+    // Open the home page, and check that no error occured
+    open('/')
+    assertNotTitle('Application error')
+#{/selenium}
+
+
+#{selenium 'Check locales switching works on page title, logo and menu items'}
+    open('/')
+    assertElementPresent('//div[@id="locales"]')
+    
+    clickAndWait('//div[@id="locales"]/a[@href="/locale/ua"]')
+    assertTitle('Українські Демотиватори')
+    assertText('//div[@id="logo"]/a', 'Українські Демотиватори')
+    
+    assertText('//div[@id="menu_items"]/ul/li[1]/a', 'Головна')
+    assertText('//div[@id="menu_items"]/ul/li[2]/a', 'Додати')
+    assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Найкращі')
+    assertText('//div[@id="menu_items"]/ul/li[4]/a', 'Про')
+        
+    clickAndWait('//div[@id="locales"]/a[@href="/locale/en"]')
+    assertTitle('Ukrainian Demotivators')
+    assertText('//div[@id="logo"]/a', 'Ukrainian Demotivators')
+    assertText('//div[@id="menu_items"]/ul/li[1]/a', 'Home')
+    assertText('//div[@id="menu_items"]/ul/li[2]/a', 'Add')
+    assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Best')
+    assertText('//div[@id="menu_items"]/ul/li[4]/a', 'About')
+#{/selenium}
+
+#{selenium 'Check Menu buttons work'}
+	open('/')
+	assertLocation('http://*/')
+	assertElementPresent('//div[@id="menu_items"]/ul/li[1 and @class="active"]')
+	assertElementNotPresent('//div[@id="menu_items"]/ul/li[2][@class="active"]')
+	
+	clickAndWait('//div[@id="menu_items"]/ul/li[2]/a')
+	assertLocation('http://*/add')
+	assertElementPresent('//div[@id="menu_items"]/ul/li[2 and @class="active"]')
+	assertElementNotPresent('//div[@id="menu_items"]/ul/li[1][@class="active"]')
+	
+	clickAndWait('//div[@id="menu_items"]/ul/li[1]/a')
+	assertLocation('http://*/')
+	
+#{/selenium}
+
+#{selenium 'Check Create button works'}
+    open('/')
+    
+    clickAndWait('//div[@class="green_btn"]/a')
+	assertLocation('http://*/add')
+    
+#{/selenium}
+
+#{selenium 'Check demotivator icons and content title present'}
+	open('/')
+	
+	assertElementPresent('//h4[@class="content_title"]')
+	assertText('//h4[@class="content_title"]', 'Latest Demotivators')
+	
+	assertElementPresent('//div[@id="demotivators_list"]/div[1]/a')
+	assertAttribute('//div[@id="demotivators_list"]/div[1]/a@href', '/single/*#single_demotivator_image')
+	
+	assertElementPresent('//div[@id="demotivators_list"]/div[1]/a/img')
+	assertAttribute('//div[@id="demotivators_list"]/div[1]/a/img@src', '/public/images/demotivators/thumb.pretty.jpg')
+#{/selenium}

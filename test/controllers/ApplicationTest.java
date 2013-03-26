@@ -80,7 +80,7 @@ public class ApplicationTest extends FunctionalTest {
     	
     	Demotivator demo = Demotivator.find("order by date desc").first();
     	
-    	GET("/single/" + demo.id);
+    	GET("/single/" + demo.id);//id is changing from one tests run to another
 
     	Demotivator demotivator = (Demotivator)renderArgs("demotivator");
         assertNotNull(demotivator);

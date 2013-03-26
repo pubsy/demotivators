@@ -27,7 +27,8 @@ public class DemotivatorCreatorTest extends UnitTest{
 		String title = "Title";
 		String text = "text";
 		
-		BufferedImage image = ImageIO.read(imageFile);
+		BufferedImage image = null;
+		when(utils.readFile(imageFile)).thenReturn(image);
 		when(utils.scale(image, 710, 570)).thenReturn(image);
 		when(utils.addBorderAndTextSpace(image, 50, 130)).thenReturn(image);
 		when(utils.drawTitleAndText(image, title, text, 130)).thenReturn(image);
@@ -42,6 +43,7 @@ public class DemotivatorCreatorTest extends UnitTest{
 
 		assertTrue(result.endsWith(".JPG"));
 		
+		verify(utils, atLeastOnce()).readFile(any(File.class));
 		verify(utils, atLeastOnce()).scale(any(BufferedImage.class), eq(710), eq(570));
 		verify(utils, times(1)).addBorderAndTextSpace(any(BufferedImage.class), eq(50), eq(130));
 		verify(utils, times(1)).drawTitleAndText(any(BufferedImage.class), eq("Title"), eq("text"), anyInt());

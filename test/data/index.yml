@@ -3,13 +3,13 @@
 User(george):
     displayName:    George Washington
     email:          george.washington@gmail.com
-    password:       $2a$10$HwI4lNJD4sr3Gm06LKEe/.44.OM9p47kmY6BcXBz8NaGOhriB3VK.
+    password:       123
     date:           2009-03-25
 
 User(frank):
     displayName:    Frank Sinatra
     email:          frank.sinatra@gmail.com
-    password:       $2a$10$HwI4lNJD4sr3Gm06LKEe/.44.OM9p47kmY6BcXBz8NaGOhriB3VK.
+    password:       123
     date:           2009-03-26
 
 Demotivator(ugly):
