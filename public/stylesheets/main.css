@@ -20,9 +20,8 @@ body {
 	float: right;
 }
 
-.menu_item a {
-	text-decoration: none;
-	color: #999;
+#menu_items ul .active a{
+	background-color: green;
 }
 
 .black_block {
@@ -141,3 +140,4 @@ input[type='text'], input[type="password"], input[type="email"] {
 	margin-top: 10px;	
 	margin-left: 155px;
 }
+

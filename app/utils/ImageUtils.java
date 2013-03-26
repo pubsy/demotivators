@@ -6,8 +6,8 @@ import java.io.IOException;
 
 public interface ImageUtils {
 	
-	public BufferedImage drawTitleAndText(BufferedImage image, String title, String text);
-	public BufferedImage addBorderAndTextSpace(BufferedImage bufImage);
+	public BufferedImage drawTitleAndText(BufferedImage image, String title, String text, int textAreaSpace);
+	public BufferedImage addBorderAndTextSpace(BufferedImage bufImage, int borderSpace, int textAreaSpace);
 	public BufferedImage scale(BufferedImage bufImage, int max_width, int max_height);
 	public String getImageFormatName(File image) throws IOException;
 	public BufferedImage readFile(File imageFile) throws IOException;

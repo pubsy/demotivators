@@ -30,8 +30,8 @@ public class DemotivatorCreatorImpl implements DemotivatorCreator{
 		BufferedImage image; 
 		image = utils.readFile(imageFile);
 		image = utils.scale(image, MAX_WIDTH, MAX_HEIGHT);
-		image = utils.addBorderAndTextSpace(image);
-        image = utils.drawTitleAndText(image, title, text);
+		image = utils.addBorderAndTextSpace(image, BORDER_SPACE, TEXT_AREA_SPACE);
+        image = utils.drawTitleAndText(image, title, text, TEXT_AREA_SPACE);
         
         String formatName = utils.getImageFormatName(imageFile);
         File outputfile = new File(IMAGE_DIR_PATH + File.separator + timestamp + "." + formatName);

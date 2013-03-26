@@ -8,7 +8,10 @@ import play.Play;
 public interface DemotivatorCreator {
 	
 	final int MAX_WIDTH = 710;
-	final int MAX_HEIGHT = 550;
+	final int MAX_HEIGHT = 570;
+	
+	final int TEXT_AREA_SPACE = 130;
+	final int BORDER_SPACE = 50;
 	
 	final int MAX_THUMB_WIDTH = 150;
 	final int MAX_THUMB_HEIGHT = 150;

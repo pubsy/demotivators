@@ -19,11 +19,9 @@ import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 
 public class ImageUtilsImpl implements ImageUtils{
-
-	final int TEXT_AREA_SPACE = 150;
-	final int BORDER_SPACE = 50;
 	
-	public BufferedImage drawTitleAndText(BufferedImage image, String title, String text) {
+	@Override
+	public BufferedImage drawTitleAndText(BufferedImage image, String title, String text, int textAreaSpace) {
 		Graphics2D graphics2D = image.createGraphics();
 		int height = image.getHeight();
 		int width = image.getWidth();
@@ -36,37 +34,31 @@ public class ImageUtilsImpl implements ImageUtils{
 		
 		int verticalGap = 80;
 		//write title
-		graphics2D.drawString(title, start, height - TEXT_AREA_SPACE + 80);
-		
+		graphics2D.drawString(title, start, height - textAreaSpace + 80);
 		
 		
 		//------------------
-		
-		String[] lines = StringUtils.splitTextInHalf(text, 60);
-		
-		verticalGap += 25;
-		for(String line: lines){
-			font = calculateTextFont(graphics2D, 20, width - 50, line);
-			graphics2D.setFont(font);
+		verticalGap += 30;
+
+		font = calculateTextFont(graphics2D, 20, width - 50, text);
+		graphics2D.setFont(font);
 			
-			wdh = getTextWidth(graphics2D,font, line);
-			start = (width - wdh) / 2;
+		wdh = getTextWidth(graphics2D,font, text);
+		start = (width - wdh) / 2;
 			
-			//write text
-			graphics2D.drawString(line, start, height - TEXT_AREA_SPACE + verticalGap);
-			
-			verticalGap += 25;
-		}
+		//write text
+		graphics2D.drawString(text, start, height - textAreaSpace + verticalGap);
 
 		return image;
 	}
 
-	public BufferedImage addBorderAndTextSpace(BufferedImage bufImage) {
+	@Override
+	public BufferedImage addBorderAndTextSpace(BufferedImage bufImage, int borderSpace, int textAreaSpace) {
 		int scaledHeight = bufImage.getHeight();
 		int scaledWidth = bufImage.getWidth();
 		
 		//Creating a bigger image
-		BufferedImage biggerImage = new BufferedImage(scaledWidth + BORDER_SPACE, scaledHeight + TEXT_AREA_SPACE, BufferedImage.TYPE_INT_RGB);
+		BufferedImage biggerImage = new BufferedImage(scaledWidth + borderSpace, scaledHeight + textAreaSpace, BufferedImage.TYPE_INT_RGB);
 
 		Graphics2D graphics2D = biggerImage.createGraphics();
 		// Use of BILNEAR filtering to enable smooth scaling
@@ -75,21 +67,22 @@ public class ImageUtilsImpl implements ImageUtils{
 		// Setting black background
 		graphics2D.setPaint(Color.BLACK);
 		//Filling bigger image with black background
-		graphics2D.fill(new Rectangle2D.Double(0, 0, scaledWidth + BORDER_SPACE, scaledHeight + TEXT_AREA_SPACE));
+		graphics2D.fill(new Rectangle2D.Double(0, 0, scaledWidth + borderSpace, scaledHeight + textAreaSpace));
 		
 		//Setting border outline color and thickness
 		graphics2D.setPaint(Color.WHITE);
 		graphics2D.setStroke(new BasicStroke(3.0f));
 		
-		int borderGap = BORDER_SPACE / 2 - 10;
+		int borderGap = borderSpace / 2 - 10;
 		//Drawing border ouline
 		graphics2D.drawRect(borderGap, borderGap, scaledWidth + borderGap + 6, scaledHeight + borderGap + 6);
 		
 		// Drawing original image over bigger image
-		graphics2D.drawImage(bufImage, BORDER_SPACE / 2, BORDER_SPACE / 2, scaledWidth, scaledHeight, null);
+		graphics2D.drawImage(bufImage, borderSpace / 2, borderSpace / 2, scaledWidth, scaledHeight, null);
 		return biggerImage;
 	}
 
+	@Override
 	public BufferedImage scale(BufferedImage bufImage, int max_width, int max_height) {
 		int height = bufImage.getHeight();
 		int width = bufImage.getWidth();
@@ -112,6 +105,7 @@ public class ImageUtilsImpl implements ImageUtils{
 		return bi;
 	}
 	
+	@Override
 	public String getImageFormatName(File image) throws IOException{
 		String format = null;
 		
@@ -126,6 +120,21 @@ public class ImageUtilsImpl implements ImageUtils{
 		iis.close();
 		
 		return format;
+	}
+	
+	@Override
+	public BufferedImage readFile(File imageFile) throws IOException {
+		BufferedImage image = ImageIO.read(imageFile);
+		
+		if(image == null){
+			throw new IOException();
+		}
+		return image;
+	}
+	
+	@Override
+	public void writeImage(BufferedImage image, String formatName, File outputfile) throws IOException {
+		ImageIO.write(image, formatName, outputfile);
 	}
 	
 	private Font calculateTextFont(Graphics2D g, int maxFontSize, int width, String text){
@@ -146,20 +155,4 @@ public class ImageUtilsImpl implements ImageUtils{
 		FontMetrics metrics = g.getFontMetrics(font);
 		return metrics.stringWidth(text);
 	}
-
-	@Override
-	public BufferedImage readFile(File imageFile) throws IOException {
-		BufferedImage image = ImageIO.read(imageFile);
-		
-		if(image == null){
-			throw new IOException();
-		}
-		return image;
-	}
-	
-	@Override
-	public void writeImage(BufferedImage image, String formatName, File outputfile) throws IOException {
-		ImageIO.write(image, formatName, outputfile);
-	}
-
 }
