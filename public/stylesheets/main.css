@@ -145,7 +145,6 @@ input[type='text'], input[type="password"], input[type="email"] {
 
 #preview{
 	text-align: center;
-	padding-bottom: 10px;
 	border: 10px solid #ccc;
 	margin-bottom: 10px;	
 	display: none;
