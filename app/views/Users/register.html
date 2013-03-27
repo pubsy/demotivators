@@ -15,25 +15,28 @@
 	<div id="login">
 			
 		#{form @registerNewUser()}
-				<div class="vlidation_error">#{error 'email' /}</div>
-			<p id="email-field">
+			<div class="vlidation_error">#{error 'email' /}</div>
+			<p>
 				<label for="email">&{'secure.username'}</label>
-				<input type="email" name="email" id="email" value="" required />
+				<input type="email" name="email" id="email" value="${flash.email}"  placeholder="some@email.com" required />
 			</p>
-				<div class="vlidation_error">#{error 'displayname' /}</div>
-			<p id="display-name-field">
+			
+			<div class="vlidation_error">#{error 'displayname' /}</div>
+			<p>
 				<label for="displayname">&{'display_name'}</label>
-				<input type="text" name="displayname" id="displayname" value="" required />
+				<input type="text" name="displayname" id="displayname" value="${flash.displayname}" required />
 			</p>
-				<div class="vlidation_error">#{error 'password' /}</div>
+			
+			<div class="vlidation_error">#{error 'password' /}</div>
 			<p id="password-field">
 				<label for="password">&{'secure.password'}</label>
-				<input type="password" name="password" id="password" value="" required />
+				<input type="password" name="password" id="password" value="${flash.password}" required />
 			</p>
-				<div class="vlidation_error">#{error 'confirmpassword' /}</div>
-			<p id="confirm-password-field">
+			
+			<div class="vlidation_error">#{error 'confirmpassword' /}</div>
+			<p>
 				<label for="confirmpassword">&{'confirm_password'}</label>
-				<input type="password" name="confirmpassword" id="confirmpassword" value="" required />
+				<input type="password" name="confirmpassword" id="confirmpassword" value="${flash.confirmpassword}" required />
 			</p>
 			<p id="signin-field">
 				<input type="submit" id="register" value="&{'register'}" />

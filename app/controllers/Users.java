@@ -17,14 +17,14 @@ public class Users extends Controller {
 			@Required String displayname,
 			@Required @Email String email,
 			@Required String password,
-			@Required @Equals("password") String confirmpassword){
+			@Required @Equals("password") String confirmpassword) throws Throwable{
 		
 		validateParameters();
 		
 		User user = new User(email, password, displayname);
 		user.save();
 		
-		Application.index();
+		Secure.login();
 	}
 
 	private static void validateParameters() {
