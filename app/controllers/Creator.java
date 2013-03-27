@@ -59,7 +59,7 @@ public class Creator extends Controller{
 		if(title.length() > 30){
 			validation.addError("title", TITLE_CANT_MESSAGE_KEY);
 		}
-		if(text.length() > 120){
+		if(text.length() > 80){
 			validation.addError("text", TEXT_CANT_MESSAGE_KEY);
 		}
 		
