@@ -9,6 +9,11 @@ import javax.imageio.ImageIO;
 import utils.ImageUtils;
 import utils.ImageUtilsImpl;
 
+/**
+ * Demotivator creation service.
+ * Produces a Demotivator image and a thumbnail.
+ * @author vitaliikravets
+ */
 public class DemotivatorCreatorImpl implements DemotivatorCreator{
 	private ImageUtils utils;
 	

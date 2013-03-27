@@ -3,15 +3,21 @@ package controllers;
 import models.User;
 import security.BCrypt;
 
+/**
+ * This class is a part of Secure module API.
+ * It handles authentication.
+ */
 public class DemotivatorsSecurity extends Secure.Security{
 
-	/**
-	 * This method is a part of Secure module.
-	 * It handles login requests.
-	 */
 	static boolean authenticate(String username, String password) {
         User user = User.find("byEmail", username).first();
 
         return user != null && BCrypt.checkpw(password, user.getPassword());
     }
+	
+	
+	static User currentUser() {
+		String email = Secure.Security.connected();
+		return User.find("byEmail", email).first();
+	}
 }

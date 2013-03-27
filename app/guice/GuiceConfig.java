@@ -7,6 +7,11 @@ import services.DemotivatorCreatorImpl;
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 
+/**
+ * Google Guice module. 
+ * Helps keep classes loosely coupled and with integration testing.
+ * @author vitaliikravets
+ */
 public class GuiceConfig extends AbstractModule {
 	@Override
     protected void configure() {

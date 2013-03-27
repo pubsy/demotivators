@@ -7,7 +7,12 @@ import play.i18n.Lang;
 import play.mvc.Controller;
 import play.mvc.Http.Header;
 
-
+/**
+ * Main controller renders latest 10 Demotivators on index page.
+ * Displays single demotivator.
+ * Swithces locale.
+ * @author vitaliikravets
+ */
 public class Application extends Controller {
 
 	public static void index() {

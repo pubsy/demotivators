@@ -13,6 +13,13 @@ import play.mvc.Controller;
 import play.mvc.With;
 import services.DemotivatorCreator;
 
+/**
+ * Demotivator Creator controller .
+ * Handles rendering add page and logic of creating a new Demotivator, 
+ * including validation. 
+ * @author vitaliikravets
+ *
+ */
 @With(Secure.class)
 public class Creator extends Controller{
 	
@@ -21,10 +28,6 @@ public class Creator extends Controller{
 	private static final String PLEASE_SELECT_MESSAGE_KEY = "please.select.an.image";
 	private static final String BAD_FILE_MESSAGE_KEY = "bad.file.error";
 	
-	/**
-	 * We don't really need IOC in here. 
-	 * It's injected just for the sake of it.
-	 */
 	@Inject
 	static DemotivatorCreator creator;
 	
@@ -44,15 +47,12 @@ public class Creator extends Controller{
 			sendBackWithValidationErrors();
 		}
 
-		Demotivator demo = new Demotivator(title, fileName, currentUser());
+		User user = DemotivatorsSecurity.currentUser();
+		
+		Demotivator demo = new Demotivator(title, fileName, user);
 		demo.save();
 		
 		Application.single(demo.getId());
-	}
-
-	private static User currentUser() {
-		String email = Secure.Security.connected();
-		return User.find("byEmail", email).first();
 	}
 
 	private static void validateParameters(String title, String text, File[] image) {

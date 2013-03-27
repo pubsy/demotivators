@@ -18,6 +18,11 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 
+/**
+ * Image transformation utility class.
+ * Doing all the dirty of creating a Demotivator image.
+ * @author vitaliikravets
+ */
 public class ImageUtilsImpl implements ImageUtils{
 	
 	@Override

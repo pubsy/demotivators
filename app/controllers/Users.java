@@ -7,6 +7,11 @@ import play.data.validation.Required;
 import play.data.validation.Validation;
 import play.mvc.Controller;
 
+/**
+ * This controller renders register page.
+ * Handles register requests, including validation.
+ * @author vitaliikravets
+ */
 public class Users extends Controller {
 
 	public static void register(){

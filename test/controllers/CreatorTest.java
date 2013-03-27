@@ -19,7 +19,7 @@ import play.test.FunctionalTest;
 public class CreatorTest extends FunctionalTest{
 	
     private static final String THIRTY_CHARS_TITLE = "012345678901234567890123456789";
-    private static final String HUNDRER_TWENTY_CHARS_TEXT = "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789";
+    private static final String EIGHTY_CHARS_TEXT = "01234567890123456789012345678901234567890123456789012345678901234567890123456789";
     
 	/**
      * Add Demotivator page controller test. Check redirect to login page.
@@ -66,7 +66,7 @@ public class CreatorTest extends FunctionalTest{
     	
     	Map<String, String> createDemoParams = new HashMap<String, String>();
     	createDemoParams.put("title", THIRTY_CHARS_TITLE);
-    	createDemoParams.put("text", HUNDRER_TWENTY_CHARS_TEXT);
+    	createDemoParams.put("text", EIGHTY_CHARS_TEXT);
     	Map<String, File> fileParams = new HashMap<String, File>();
     	File file = new File("test/data/image.jpg");
     	fileParams.put("image", file);
@@ -132,7 +132,7 @@ public class CreatorTest extends FunctionalTest{
     	
     	Map<String, String> createDemoParams = new HashMap<String, String>();
     	createDemoParams.put("title", "ordinary title");
-    	createDemoParams.put("text", HUNDRER_TWENTY_CHARS_TEXT + "a");
+    	createDemoParams.put("text", EIGHTY_CHARS_TEXT + "a");
     	Map<String, File> fileParams = new HashMap<String, File>();
     	File file = new File("test/data/image.jpg");
     	fileParams.put("image", file);
