@@ -40,3 +40,4 @@ title.cant.be.longer=Title can't be longer than 30 characters.
 text.cant.be.longer=Text can't be longer than 80 characters.
 bad.file.error=Bad image file
 login=Login
+logout=Logout

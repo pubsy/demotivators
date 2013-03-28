@@ -1,4 +1,4 @@
-*{ You can use plain selenium command using the selenium tag }*
+﻿*{ You can use plain selenium command using the selenium tag }*
 
 #{fixture delete:'all', load:'data/index.yml' /}
 
@@ -29,19 +29,36 @@
     
     assertText('//div[@id="menu_items"]/ul/li[1]/a', 'Головна')
     assertText('//div[@id="menu_items"]/ul/li[2]/a', 'Додати')
-    assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Найкращі')
-    assertText('//div[@id="menu_items"]/ul/li[4]/a', 'Про')
+    assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Вийти')
+    
         
     clickAndWait('//div[@id="locales"]/a[@href="/locale/en"]')
+    
     assertTitle('Ukrainian Demotivators')
     assertText('//div[@id="logo"]/a', 'Ukrainian Demotivators')
     assertText('//div[@id="menu_items"]/ul/li[1]/a', 'Home')
     assertText('//div[@id="menu_items"]/ul/li[2]/a', 'Add')
-    assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Best')
-    assertText('//div[@id="menu_items"]/ul/li[4]/a', 'About')
+    assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Logout')
+    
+    open('/logout')
+    open('/')
+    
+    assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Register')
+    assertText('//div[@id="menu_items"]/ul/li[4]/a', 'Login')
+    
+    clickAndWait('//div[@id="locales"]/a[@href="/locale/ua"]')
+    
+    assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Зареєструватися')
+    assertText('//div[@id="menu_items"]/ul/li[4]/a', 'Увійти')
+    
 #{/selenium}
 
 #{selenium 'Check Menu buttons work'}
+	open('/login')
+	type('//input[@id="username"]', 'george.washington@gmail.com')
+	type('//input[@id="password"]', '123')
+	clickAndWait('//input[@id="signin"]')
+
 	open('/')
 	assertLocation('http://*/')
 	assertElementPresent('//div[@id="menu_items"]/ul/li[1 and @class="active"]')
@@ -67,6 +84,8 @@
 
 #{selenium 'Check demotivator icons and content title present'}
 	open('/')
+	
+	clickAndWait('//div[@id="locales"]/a[@href="/locale/en"]')
 	
 	assertElementPresent('//h4[@class="content_title"]')
 	assertText('//h4[@class="content_title"]', 'Latest Demotivators')

@@ -23,8 +23,13 @@
 	    		<ul class="nav nav-pills">
 	    		  <li><a href="@{Application.index}">&{'home'}</a></li>
 				  <li><a href="@{Creator.add}">&{'add_demotivator'}</a></li>
-				  <li><a href="#">&{'best'}</a></li>
-				  <li><a href="#">&{'about'}</a></li>
+				  	#{if !session.username }
+				  		<li><a href="@{Users.register}">&{'register'}</a></li>
+				  		<li><a href="@{Secure.login}">&{'login'}</a></li>
+					#{/if}
+					#{else}
+					    <li><a href="@{Secure.logout}">&{'logout'}</a></li>
+					#{/else}
 				</ul>
     		</div>
     		<div class="clear"></div>
