@@ -40,3 +40,4 @@ title.cant.be.longer=Заголовок не може бути довшим ні
 text.cant.be.longer=Текст не може бути довшим ніж 80 символів.
 bad.file.error=Поганий файл зображення
 login=Увійти
+logout=Вийти
