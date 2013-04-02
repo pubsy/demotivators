@@ -8,7 +8,5 @@
 /.classath
 /.project
 /.settings
-/public/images/demotivators
 /bin
 .classpath
-conf/prod.conf

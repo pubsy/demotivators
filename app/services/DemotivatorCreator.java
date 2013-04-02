@@ -16,7 +16,7 @@ public interface DemotivatorCreator {
 	final int MAX_THUMB_WIDTH = 150;
 	final int MAX_THUMB_HEIGHT = 150;
 	
-	final String IMAGE_DIR_PATH = Play.configuration.getProperty("image.dir.path");
+	public final String IMAGE_DIR_PATH = Play.configuration.getProperty("image.dir.path");
 
 	String createDemotivator(File file, String title, String text) throws IOException;
 
