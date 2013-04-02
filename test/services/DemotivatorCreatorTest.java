@@ -1,5 +1,6 @@
 package services;
 
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -28,9 +29,11 @@ public class DemotivatorCreatorTest extends UnitTest{
 		String text = "text";
 		
 		BufferedImage image = null;
+		BufferedImage biggerImage = null;
 		when(utils.readFile(imageFile)).thenReturn(image);
-		when(utils.scale(image, 710, 570)).thenReturn(image);
-		when(utils.addBorderAndTextSpace(image, 50, 130)).thenReturn(image);
+		when(utils.getScaledSize(biggerImage, 710, 570)).thenReturn(new Dimension(710, 355));
+		when(utils.getScaledSize(image, 150, 150)).thenReturn(new Dimension(150, 110));
+		when(utils.addBorderAndTextSpace(image, biggerImage, 50, 130)).thenReturn(image);
 		when(utils.drawTitleAndText(image, title, text, 130)).thenReturn(image);
 		when(utils.getImageFormatName(imageFile)).thenReturn("JPG");
 		
@@ -44,8 +47,9 @@ public class DemotivatorCreatorTest extends UnitTest{
 		assertTrue(result.endsWith(".JPG"));
 		
 		verify(utils, atLeastOnce()).readFile(any(File.class));
-		verify(utils, atLeastOnce()).scale(any(BufferedImage.class), eq(710), eq(570));
-		verify(utils, times(1)).addBorderAndTextSpace(any(BufferedImage.class), eq(50), eq(130));
+		verify(utils, times(1)).getScaledSize(any(BufferedImage.class), eq(710), eq(570));
+		verify(utils, times(1)).getScaledSize(any(BufferedImage.class), eq(150), eq(150));
+		verify(utils, times(1)).addBorderAndTextSpace(any(BufferedImage.class), any(BufferedImage.class), eq(50), eq(130));
 		verify(utils, times(1)).drawTitleAndText(any(BufferedImage.class), eq("Title"), eq("text"), anyInt());
 		verify(utils, atLeastOnce()).getImageFormatName(imageFile);
 	}

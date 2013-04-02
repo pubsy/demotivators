@@ -2,11 +2,10 @@ package utils;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -17,6 +16,9 @@ import java.util.Iterator;
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
+
+import play.libs.Images;
+import services.DemotivatorCreator;
 
 /**
  * Image transformation utility class.
@@ -58,12 +60,9 @@ public class ImageUtilsImpl implements ImageUtils{
 	}
 
 	@Override
-	public BufferedImage addBorderAndTextSpace(BufferedImage bufImage, int borderSpace, int textAreaSpace) {
-		int scaledHeight = bufImage.getHeight();
-		int scaledWidth = bufImage.getWidth();
-		
-		//Creating a bigger image
-		BufferedImage biggerImage = new BufferedImage(scaledWidth + borderSpace, scaledHeight + textAreaSpace, BufferedImage.TYPE_INT_RGB);
+	public BufferedImage addBorderAndTextSpace(BufferedImage image, BufferedImage biggerImage, int borderSpace, int textAreaSpace) {
+		int scaledHeight = image.getHeight();
+		int scaledWidth = image.getWidth();
 
 		Graphics2D graphics2D = biggerImage.createGraphics();
 		// Use of BILNEAR filtering to enable smooth scaling
@@ -83,14 +82,15 @@ public class ImageUtilsImpl implements ImageUtils{
 		graphics2D.drawRect(borderGap, borderGap, scaledWidth + borderGap + 6, scaledHeight + borderGap + 6);
 		
 		// Drawing original image over bigger image
-		graphics2D.drawImage(bufImage, borderSpace / 2, borderSpace / 2, scaledWidth, scaledHeight, null);
+		graphics2D.drawImage(image, borderSpace / 2, borderSpace / 2, scaledWidth, scaledHeight, null);
 		return biggerImage;
 	}
 
 	@Override
-	public BufferedImage scale(BufferedImage bufImage, int max_width, int max_height) {
-		int height = bufImage.getHeight();
-		int width = bufImage.getWidth();
+	public Dimension getScaledSize(BufferedImage image, int max_width, int max_height) throws IOException {
+		
+		int height = image.getHeight();
+		int width = image.getWidth();
 
 		if (height >= width) {
 			width = width * max_height / height ;
@@ -99,15 +99,8 @@ public class ImageUtilsImpl implements ImageUtils{
 			height = height * max_width / width ;
 			width = max_width;
 		}
-
-		Image image = bufImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 		
-		BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		Graphics graphics = bi.getGraphics();
-		graphics.drawImage(image, 0, 0, null);
-		graphics.dispose();
-		
-		return bi;
+		return new Dimension(width, height);
 	}
 	
 	@Override
@@ -123,6 +116,10 @@ public class ImageUtilsImpl implements ImageUtils{
 		}
 		
 		iis.close();
+		
+		if(format == null){
+			throw new IOException("Bad image");
+		}
 		
 		return format;
 	}

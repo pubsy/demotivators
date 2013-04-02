@@ -31,6 +31,16 @@ public class Application extends Controller {
 		render(demotivator);
 	}
 	
+	public static void next(long id) {
+		Demotivator demotivator = Demotivator.find("id < ? order by date desc", id).first();
+		
+		if(demotivator == null){
+			index();
+		}
+		
+		single(demotivator.id);
+	}
+	
 	public static void locale(String language){
 		Lang.change(language);
 		

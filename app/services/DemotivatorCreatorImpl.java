@@ -1,10 +1,13 @@
 package services;
 
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+
+import play.libs.Images;
 
 import utils.ImageUtils;
 import utils.ImageUtilsImpl;
@@ -32,23 +35,29 @@ public class DemotivatorCreatorImpl implements DemotivatorCreator{
 		long timestamp = System.currentTimeMillis();
 
 		//Create demotivator
-		BufferedImage image; 
-		image = utils.readFile(imageFile);
-		image = utils.scale(image, MAX_WIDTH, MAX_HEIGHT);
-		image = utils.addBorderAndTextSpace(image, BORDER_SPACE, TEXT_AREA_SPACE);
+		String formatName = utils.getImageFormatName(imageFile);
+		File outputFile = new File(IMAGE_DIR_PATH + File.separator + timestamp + "." + formatName);
+		BufferedImage image = utils.readFile(imageFile);
+		Dimension newSize = utils.getScaledSize(image, MAX_WIDTH, MAX_HEIGHT);
+		
+		Images.resize(imageFile, outputFile, newSize.width, newSize.height);
+		
+		image = utils.readFile(outputFile);
+		
+		//Creating a bigger image
+		BufferedImage biggerImage = new BufferedImage(newSize.width + BORDER_SPACE, newSize.height + TEXT_AREA_SPACE, BufferedImage.TYPE_INT_RGB);
+		image = utils.addBorderAndTextSpace(image, biggerImage, BORDER_SPACE, TEXT_AREA_SPACE);
         image = utils.drawTitleAndText(image, title, text, TEXT_AREA_SPACE);
         
-        String formatName = utils.getImageFormatName(imageFile);
-        File outputfile = new File(IMAGE_DIR_PATH + File.separator + timestamp + "." + formatName);
-        utils.writeImage(image, formatName, outputfile);
+        utils.writeImage(image, formatName, outputFile);
         
         //Create thumbnail
-        BufferedImage thumb = utils.scale(image, MAX_THUMB_WIDTH, MAX_THUMB_HEIGHT);
-        
         File thumbfile = new File(IMAGE_DIR_PATH + File.separator + "thumb." + timestamp + "." + formatName);
-        utils.writeImage(thumb, formatName, thumbfile);
+        image = utils.readFile(outputFile);
+        newSize = utils.getScaledSize(image, MAX_THUMB_WIDTH, MAX_THUMB_HEIGHT);
+        Images.resize(outputFile, thumbfile, newSize.width, newSize.height);
         
-        return outputfile.getName();
+        return outputFile.getName();
 	}
 	
 	private void createImageFolderIfNeeded() {

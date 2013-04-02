@@ -5,6 +5,7 @@
 # Home page
 GET     /                                       Application.index
 GET     /single/{id}                      		Application.single
+GET     /next/{id}                      		Application.next
 GET     /locale/{language}                      Application.locale
 GET     /add		                            Creator.add
 POST	/create									Creator.create
