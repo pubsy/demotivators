@@ -26,7 +26,7 @@ public class Users extends Controller {
 		
 		validateParameters();
 		
-		User user = new User(email, password, displayname);
+		User user = new User(email, password, displayname, false);
 		user.save();
 		
 		Secure.login();

@@ -16,6 +16,7 @@ import services.DemotivatorCreator;
  * @author vitaliikravets
  */
 public class Application extends Controller {
+	
 
 	public static void index() {
 		List<Demotivator> demotivators = Demotivator.find("order by date desc").fetch(10);

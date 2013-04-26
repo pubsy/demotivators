@@ -41,3 +41,4 @@ text.cant.be.longer=Text can't be longer than 80 characters.
 bad.file.error=Bad image file
 login=Login
 logout=Logout
+no_demotivators=No demotivators found

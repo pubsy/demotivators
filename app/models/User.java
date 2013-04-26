@@ -13,8 +13,9 @@ public class User extends Model{
 	private String password;
 	private String displayName;
 	private Date date;
+	private boolean activated;
 	
-	public User(String email, String password, String displayName) {
+	public User(String email, String password, String displayName, boolean activated) {
 		this.email = email;
 		setPassword(password);
 		this.displayName = displayName;
@@ -30,7 +31,7 @@ public class User extends Model{
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
@@ -52,5 +53,13 @@ public class User extends Model{
 
 	public Date getDate() {
 		return date;
+	}
+
+	public boolean isActivated() {
+		return activated;
+	}
+
+	public void setActivated(boolean activated) {
+		this.activated = activated;
 	}
 }

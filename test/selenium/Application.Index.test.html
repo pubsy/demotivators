@@ -43,13 +43,15 @@
     open('/logout')
     open('/')
     
-    assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Register')
-    assertText('//div[@id="menu_items"]/ul/li[4]/a', 'Login')
+    assertText('//div[@id="menu_items"]/ul/li[1]/a', 'Home')
+    assertText('//div[@id="menu_items"]/ul/li[2]/a', 'Register')
+    assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Login')
     
     clickAndWait('//div[@id="locales"]/a[@href="/locale/ua"]')
     
-    assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Зареєструватися')
-    assertText('//div[@id="menu_items"]/ul/li[4]/a', 'Увійти')
+    assertText('//div[@id="menu_items"]/ul/li[1]/a', 'Головна')
+    assertText('//div[@id="menu_items"]/ul/li[2]/a', 'Зареєструватися')
+    assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Увійти')
     
 #{/selenium}
 

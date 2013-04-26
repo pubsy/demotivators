@@ -1,13 +1,16 @@
 #{extends 'demo_page.html' /}
 
 <div class="fixed_width margin_auto">
-	<h4 class="content_title">&{'latest_demotivators'}</h4>
-	<div id="demotivators_list" class="center">
-		#{list items:demotivators, as:'demo' }
+	#{list items:demotivators, as:'demo' }
+		<h4 class="content_title">&{'latest_demotivators'}</h4>
+		<div id="demotivators_list" class="center">
 	        <div class="demotivator_icon">
 	        	<a href="@{Application.single(demo.id)}#single_demotivator_image"><img src="/image/thumb.${demo.fileName}" /></a>
 	        </div>
-	    #{/list}
-	    <div class="clear"></div>
-    </div>
+	    </div>
+    #{/list}
+    #{else}
+	    <h4 class="content_title">&{'no_demotivators'}</h4>
+	#{/else}
+    <div class="clear"></div>
 </div>
