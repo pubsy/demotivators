@@ -2,6 +2,7 @@
 
 #{set 'moreStyles'}
 	#{stylesheet 'play-pagination.css' /}
+	#{stylesheet 'play-pagination-override.css' /}
 #{/set}
 
 <div class="fixed_width margin_auto">
@@ -14,8 +15,7 @@
     	#{/paginate.list}
     	#{else}
 		    &{'no_demotivators'}
-		#{/else} 
-    	#{paginate.controls items:paginator /}
+		#{/else}	
 	</div>
-    <div class="clear"></div>
+    #{paginate.controls items:paginator /}
 </div>
