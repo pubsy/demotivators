@@ -1,15 +1,21 @@
 #{extends 'demo_page.html' /}
 
+#{set 'moreStyles'}
+	#{stylesheet 'play-pagination.css' /}
+#{/set}
+
 <div class="fixed_width margin_auto">
+	<h4 class="content_title">&{'latest_demotivators'}</h4>
 	<div id="demotivators_list" class="center">
-		#{list items:demotivators, as:'demo' }
-		        <div class="demotivator_icon">
-		        	<a href="@{Application.single(demo.id)}#single_demotivator_image"><img src="/image/thumb.${demo.fileName}" /></a>
-		        </div>
-	    #{/list}
-	    #{else}
-		    <h4 class="content_title">&{'no_demotivators'}</h4>
-		#{/else}
+		#{paginate.list items:paginator, as:'demo'}
+			<div class="demotivator_icon">
+		       	<a href="@{Application.single(demo.id)}#single_demotivator_image"><img src="/image/thumb.${demo.fileName}" /></a>
+		    </div> 
+    	#{/paginate.list}
+    	#{else}
+		    &{'no_demotivators'}
+		#{/else} 
+    	#{paginate.controls items:paginator /}
 	</div>
     <div class="clear"></div>
 </div>

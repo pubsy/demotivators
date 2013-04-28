@@ -5,3 +5,4 @@ require:
     - secure
     - play -> guice 1.2
     - play -> mockito 0.1
+    - play -> paginate head

@@ -1,0 +1,14 @@
+﻿*{ You can use plain selenium command using the selenium tag }*
+
+#{fixture delete:'all' /}
+
+#{selenium 'Check demotivator icons and content title present'}
+	open('/')
+	
+	clickAndWait('//div[@id="locales"]/a[@href="/locale/en"]')
+	
+	assertElementPresent('//h4[@class="content_title"]')
+	assertText('//h4[@class="content_title"]', 'Latest Demotivators')
+	
+	assertTextPresent('No demotivators found')
+#{/selenium}

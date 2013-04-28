@@ -1,19 +1,15 @@
 package controllers;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import models.Demotivator;
 
-import org.hamcrest.core.Is;
-import org.junit.*;
-import org.junit.Before;
+import org.junit.Test;
 
-import play.test.*;
-import play.cache.Cache;
 import play.i18n.Lang;
-import play.jobs.Job;
-import play.mvc.*;
-import play.mvc.Http.*;
-import models.*;
+import play.modules.paginate.ModelPaginator;
+import play.mvc.Http.Header;
+import play.mvc.Http.Request;
+import play.mvc.Http.Response;
+import play.test.Fixtures;
+import play.test.FunctionalTest;
 
 public class ApplicationTest extends FunctionalTest {
 
@@ -43,10 +39,11 @@ public class ApplicationTest extends FunctionalTest {
 
     	GET("/");
     	
-    	List<Demotivator> demotivators = (List<Demotivator>)renderArgs("demotivators");
+    	ModelPaginator<Demotivator> demotivators = (ModelPaginator<Demotivator>)renderArgs("paginator");
         assertNotNull(demotivators);
-        assertEquals(10, demotivators.size());
-        assertEquals("A pretty demotivator", demotivators.get(0).getTitle());
+        assertEquals(12, demotivators.size());
+        assertEquals(10, demotivators.getCurrentPage().size());
+        assertEquals("A pretty demotivator", demotivators.getCurrentPage().get(0).getTitle());
         assertEquals("George Washington", demotivators.get(1).getAuthor().getDisplayName());
         assertEquals("five.jpg", demotivators.get(9).getFileName());
     }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import models.Demotivator;
 import play.i18n.Lang;
+import play.modules.paginate.ModelPaginator;
 import play.mvc.Controller;
 import play.mvc.Http.Header;
 import services.DemotivatorCreator;
@@ -19,9 +20,9 @@ public class Application extends Controller {
 	
 
 	public static void index() {
-		List<Demotivator> demotivators = Demotivator.find("order by date desc").fetch(10);
-		
-		render(demotivators);
+		ModelPaginator<Demotivator> paginator = new ModelPaginator(Demotivator.class).orderBy("date desc");
+		paginator.setPageSize(10);
+	    render(paginator);
 	}
 	
 	public static void single(long id) {
