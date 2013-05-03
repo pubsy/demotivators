@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import play.mvc.Http.Request;
 import play.mvc.Http.Response;
 import play.mvc.Scope.Session;
 import play.test.Fixtures;
@@ -67,5 +68,24 @@ public class DemotivatorsSecurityTest extends FunctionalTest{
     	//Check that user was redirected back to login page
     	assertHeaderEquals("Location", "/secure/login", response);
 	}
+	
+    @Test
+    public void testReuestToWWWGetsRedirectedOnAuth(){
+   	
+		Fixtures.deleteAllModels();
+    	Fixtures.loadModels("data/user.yml");
+		
+		Map<String, String[]> loginUserParams = new HashMap<String, String[]>();
+    	loginUserParams.put("username", new String[]{"frank.sinatra@gmail.com"});
+    	loginUserParams.put("password", new String[]{"123"});
+
+    	Request r = newRequest();
+    	r.domain = "www.test.com";
+    	r.params.data = loginUserParams;
+    	Response response = POST(r, "/secure/authenticate");
+    	
+    	assertStatus(302, response);
+    	assertHeaderEquals("Location", "http://test.com/secure/authenticate", response);
+    }
 
 }
