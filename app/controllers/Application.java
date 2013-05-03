@@ -13,14 +13,15 @@ import services.DemotivatorCreator;
 /**
  * Main controller renders latest 10 Demotivators on index page.
  * Displays single demotivator.
- * Swithces locale.
+ * Switches locale.
  * @author vitaliikravets
  */
 public class Application extends Controller {
 	
 
 	public static void index() {
-		ModelPaginator<Demotivator> paginator = new ModelPaginator(Demotivator.class).orderBy("date desc");
+		ModelPaginator<Demotivator> paginator = new ModelPaginator(Demotivator.class, "domain=?", request.current().domain)
+			.orderBy("date desc");
 		paginator.setPageSize(10);
 	    render(paginator);
 	}

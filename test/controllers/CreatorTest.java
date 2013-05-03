@@ -180,6 +180,26 @@ public class CreatorTest extends FunctionalTest{
     	assertHeaderEquals("Location", "/add", response);
     }
     
+    @Test
+    public void testUserNotAuthenticatedSaveAction(){
+    	Fixtures.deleteAllModels();
+    	GET("/logout");
+    	
+    	Map<String, String> createDemoParams = new HashMap<String, String>();
+    	createDemoParams.put("title", THIRTY_CHARS_TITLE);
+    	createDemoParams.put("text", EIGHTY_CHARS_TEXT);
+    	Map<String, File> fileParams = new HashMap<String, File>();
+    	File file = new File("test/data/image.jpg");
+    	fileParams.put("image", file);
+
+    	Response response = POST("/create", createDemoParams, fileParams);
+
+    	 assertStatus(302, response);
+         
+         assertHeaderEquals("Location", "/secure/login", response);
+    }
+    
+    
     private void authenticate() {
     	Map<String, String> loginUserParams = new HashMap<String, String>();
     	loginUserParams.put("username", "frank.sinatra@gmail.com");

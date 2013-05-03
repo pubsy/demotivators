@@ -35,10 +35,16 @@ public class Creator extends Controller{
 		render();
 	}
 
-	public static void create(@Required String title, String text, File[] image) {
+	public static void create(@Required String title, String text, File[] image) throws Throwable {
 
 		validateParameters(title, text, image);
 
+		User user = DemotivatorsSecurity.currentUser();
+		
+		if(user == null){
+			Secure.login();
+		}
+		
 		String fileName = null;
 		try {
 			fileName = creator.createDemotivator(image[0], title, text);
@@ -46,10 +52,8 @@ public class Creator extends Controller{
 			validation.addError("image", BAD_FILE_MESSAGE_KEY);
 			sendBackWithValidationErrors();
 		}
-
-		User user = DemotivatorsSecurity.currentUser();
 		
-		Demotivator demo = new Demotivator(title, fileName, user);
+		Demotivator demo = new Demotivator(title, fileName, user, request.current().domain);
 		demo.save();
 		
 		Application.single(demo.getId());

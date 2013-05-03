@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import play.i18n.Lang;
 import play.modules.paginate.ModelPaginator;
+import play.mvc.Http;
 import play.mvc.Http.Header;
 import play.mvc.Http.Request;
 import play.mvc.Http.Response;
@@ -37,11 +38,13 @@ public class ApplicationTest extends FunctionalTest {
     	Fixtures.deleteAllModels();
     	Fixtures.loadModels("data/index.yml");
 
-    	GET("/");
+    	Request r = newRequest();
+    	r.domain = "localhost";
+    	GET(r, "/");
     	
     	ModelPaginator<Demotivator> demotivators = (ModelPaginator<Demotivator>)renderArgs("paginator");
         assertNotNull(demotivators);
-        assertEquals(12, demotivators.size());
+        assertEquals(10, demotivators.size());
         assertEquals(10, demotivators.getCurrentPage().size());
         assertEquals("A pretty demotivator", demotivators.getCurrentPage().get(0).getTitle());
         assertEquals("George Washington", demotivators.get(1).getAuthor().getDisplayName());

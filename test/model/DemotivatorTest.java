@@ -39,5 +39,6 @@ public class DemotivatorTest extends UnitTest{
 	    assertEquals("An ugly demotivator", demo.getTitle());
 	    assertEquals("ugly.jpg", demo.getFileName());
 	    assertNotNull(demo.getDate());
+	    assertEquals("localhost", demo.getDomain());
 	}
 }
