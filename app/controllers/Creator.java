@@ -21,7 +21,7 @@ import services.DemotivatorCreator;
  *
  */
 @With(Secure.class)
-public class Creator extends Controller{
+public class Creator extends DemotivatorsController{
 	
 	private static final String TEXT_CANT_MESSAGE_KEY = "text.cant.be.longer";
 	private static final String TITLE_CANT_MESSAGE_KEY = "title.cant.be.longer";

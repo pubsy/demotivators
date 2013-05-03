@@ -197,8 +197,7 @@ public class CreatorTest extends FunctionalTest{
     	 assertStatus(302, response);
          
          assertHeaderEquals("Location", "/secure/login", response);
-    }
-    
+    }    
     
     private void authenticate() {
     	Map<String, String> loginUserParams = new HashMap<String, String>();

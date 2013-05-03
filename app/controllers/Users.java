@@ -5,14 +5,13 @@ import play.data.validation.Email;
 import play.data.validation.Equals;
 import play.data.validation.Required;
 import play.data.validation.Validation;
-import play.mvc.Controller;
 
 /**
  * This controller renders register page.
  * Handles register requests, including validation.
  * @author vitaliikravets
  */
-public class Users extends Controller {
+public class Users extends DemotivatorsController {
 
 	public static void register(){
 		render();

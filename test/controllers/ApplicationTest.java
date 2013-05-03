@@ -134,4 +134,23 @@ public class ApplicationTest extends FunctionalTest {
      	assertHeaderEquals("Location", "/users/register", response);
     }
     
+    @Test
+    public void testReuestWithoutWWWDoesntGetRedirected(){
+    	Request r = newRequest();
+    	r.domain = "test.com";
+    	Response response = GET(r, '/');
+    	
+    	assertStatus(200, response);
+    }
+	
+    @Test
+    public void testReuestToWWWGetsRedirected(){
+    	Request r = newRequest();
+    	r.domain = "www.test.com";
+    	Response response = GET(r, '/');
+    	
+    	assertStatus(302, response);
+    	assertHeaderEquals("Location", "http://test.com/", response);
+    }
+    
 }

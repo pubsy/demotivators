@@ -1,12 +1,10 @@
 package controllers;
 
 import java.io.File;
-import java.util.List;
 
 import models.Demotivator;
 import play.i18n.Lang;
 import play.modules.paginate.ModelPaginator;
-import play.mvc.Controller;
 import play.mvc.Http.Header;
 import services.DemotivatorCreator;
 
@@ -16,8 +14,7 @@ import services.DemotivatorCreator;
  * Switches locale.
  * @author vitaliikravets
  */
-public class Application extends Controller {
-	
+public class Application extends DemotivatorsController {
 
 	public static void index() {
 		ModelPaginator<Demotivator> paginator = new ModelPaginator(Demotivator.class, "domain=?", request.current().domain)

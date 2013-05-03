@@ -8,6 +8,7 @@ import models.User;
 import org.junit.Before;
 import org.junit.Test;
 
+import play.mvc.Http.Request;
 import play.mvc.Http.Response;
 import play.test.Fixtures;
 import play.test.FunctionalTest;
@@ -147,4 +148,24 @@ public class UsersTest extends FunctionalTest{
     	assertStatus(302, response);
     	assertHeaderEquals("Location", "/register", response);
 	}
+	
+    @Test
+    public void testReuestWithoutWWWDoesntGetRedirected(){
+    	Request r = newRequest();
+    	r.domain = "test.com";
+    	Response response = GET(r, "/register");
+    	
+    	assertStatus(200, response);
+    }
+	
+    @Test
+    public void testReuestToWWWGetsRedirectedRegisterPage(){
+    	Request r = newRequest();
+    	r.domain = "www.test.com";
+    	Response response = GET(r, "/register");
+    	
+    	assertStatus(302, response);
+    	assertHeaderEquals("Location", "http://test.com/register", response);
+    }
+    
 }
