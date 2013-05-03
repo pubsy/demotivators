@@ -6,11 +6,15 @@ import play.mvc.Controller;
 public class DemotivatorsController extends Controller{
 
 	@Before
-	static void interception(){
+	static void interception(String url){
 		String domain = request.domain;
 		if (domain.startsWith("www.")){
 			request.domain = domain.substring(4);
-			redirect(request.url);
+			if(url == null){
+				redirect(request.url);
+			}else{
+				redirect(url);
+			}
 		}
 	}
 }

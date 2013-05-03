@@ -85,7 +85,7 @@ public class DemotivatorsSecurityTest extends FunctionalTest{
     	Response response = POST(r, "/secure/authenticate");
     	
     	assertStatus(302, response);
-    	assertHeaderEquals("Location", "http://test.com/secure/authenticate", response);
+    	assertHeaderEquals("Location", "http://test.com/secure/login", response);
     }
 
 }

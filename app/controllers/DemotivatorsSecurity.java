@@ -22,7 +22,7 @@ public class DemotivatorsSecurity extends Secure.Security{
 	}
 	
 	static void onAuthenticated(){
-		DemotivatorsController.interception();
+		DemotivatorsController.interception("/secure/login");
 	}
 
 }
