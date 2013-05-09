@@ -17,13 +17,13 @@ public class Demotivator extends Model{
 	private String fileName;
 	private Date date;
 	
-	@Column(columnDefinition="VARCHAR(32) NOT NULL")
-	private String domain;
+	@ManyToOne
+	private Domain domain;
 	
 	@ManyToOne
 	private User author;
 
-	public Demotivator(String title, String fileName, User author, String domain) {
+	public Demotivator(String title, String fileName, User author, Domain domain) {
 		this.title = title;
 		this.fileName = fileName;
 		this.author = author;
@@ -63,11 +63,11 @@ public class Demotivator extends Model{
 		return date;
 	}
 	
-	public void setDomain(String domain) {
+	public void setDomain(Domain domain) {
 		this.domain = domain;
 	}
 
-	public String getDomain() {
+	public Domain getDomain() {
 		return domain;
 	}
 }

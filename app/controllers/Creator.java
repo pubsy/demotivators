@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.inject.Inject;
 
 import models.Demotivator;
+import models.Domain;
 import models.User;
 import play.data.validation.Required;
 import play.data.validation.Validation;
@@ -53,7 +54,9 @@ public class Creator extends DemotivatorsController{
 			sendBackWithValidationErrors();
 		}
 		
-		Demotivator demo = new Demotivator(title, fileName, user, request.current().domain);
+		Domain domain = Domain.getOrCreate(request.domain);
+	
+		Demotivator demo = new Demotivator(title, fileName, user, domain);
 		demo.save();
 		
 		Application.single(demo.getId());

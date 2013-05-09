@@ -3,6 +3,7 @@ package controllers;
 import java.io.File;
 
 import models.Demotivator;
+import models.Domain;
 import play.i18n.Lang;
 import play.modules.paginate.ModelPaginator;
 import play.mvc.Http.Header;
@@ -17,7 +18,8 @@ import services.DemotivatorCreator;
 public class Application extends DemotivatorsController {
 
 	public static void index() {
-		ModelPaginator<Demotivator> paginator = new ModelPaginator(Demotivator.class, "domain=?", request.current().domain)
+		Domain domain = Domain.getOrCreate(request.domain);
+		ModelPaginator<Demotivator> paginator = new ModelPaginator(Demotivator.class, "domain = ?", domain)
 			.orderBy("date desc");
 		paginator.setPageSize(10);
 	    render(paginator);

@@ -3,10 +3,13 @@ User(martin):
     email:          martin.fowler@gmail.com
     password:       $2a$10$HwI4lNJD4sr3Gm06LKEe/.44.OM9p47kmY6BcXBz8NaGOhriB3VK.
     date:           2009-03-26
+    
+Domain(local):
+    name:    localhost
 
 Demotivator(ugly):
     title:          An ugly demotivator
     date:           2010-04-03
     author:         martin
     fileName:       ugly.jpg
-    domain:         localhost
+    domain:         local
