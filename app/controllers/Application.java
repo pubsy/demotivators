@@ -36,7 +36,8 @@ public class Application extends DemotivatorsController {
 	}
 	
 	public static void next(long id) {
-		Demotivator demotivator = Demotivator.find("id < ? order by date desc", id).first();
+		Domain domain = Domain.getOrCreate(request.domain);
+		Demotivator demotivator = Demotivator.find("id < ? and domain = ? order by date desc", id, domain).first();
 		
 		if(demotivator == null){
 			index();

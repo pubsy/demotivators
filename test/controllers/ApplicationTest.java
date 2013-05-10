@@ -1,6 +1,7 @@
 package controllers;
 import models.Demotivator;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import play.i18n.Lang;
@@ -14,6 +15,11 @@ import play.test.FunctionalTest;
 
 public class ApplicationTest extends FunctionalTest {
 
+	@Before
+	public void deleteModels() {
+		Fixtures.deleteAllModels();
+	}
+	
 	/**
 	 * Going to index page. Sanity test. Verifying response content type and encoding.
 	 */
@@ -34,8 +40,7 @@ public class ApplicationTest extends FunctionalTest {
      */
     @Test
     public void testIndexPageRenderingCorrectData() {
-    	
-    	Fixtures.deleteAllModels();
+
     	Fixtures.loadModels("data/index.yml");
 
     	Request r = newRequest();
@@ -58,7 +63,6 @@ public class ApplicationTest extends FunctionalTest {
 	@Test
 	public void testSinglePage() {
 		
-    	Fixtures.deleteAllModels();
     	Fixtures.loadModels("data/single.yml");
 
 		Demotivator demo = Demotivator.find("order by date desc").first();
@@ -75,7 +79,6 @@ public class ApplicationTest extends FunctionalTest {
     @Test
     public void testSinglePageRenderingCorrectData() {
     	
-    	Fixtures.deleteAllModels();
     	Fixtures.loadModels("data/single.yml");
     	
     	Demotivator demo = Demotivator.find("order by date desc").first();
@@ -151,6 +154,48 @@ public class ApplicationTest extends FunctionalTest {
     	
     	assertStatus(302, response);
     	assertHeaderEquals("Location", "http://test.com/", response);
+    }
+    
+    @Test
+    public void testNext(){
+    	Fixtures.loadModels("data/next.yml");
+    	
+    	Demotivator first = Demotivator.find("order by date desc").first();
+    	Demotivator second = Demotivator.find("id < ? and domain = ? order by date desc", first.id, first.getDomain()).first();
+    	
+    	Response response = GET("/next/" + first.id);//id is changing from one tests run to another
+
+    	assertEquals("/single/" + second.id, response.getHeader("Location"));
+    }
+    
+    @Test
+    public void testNextRedirectsHome(){
+    	Fixtures.loadModels("data/next.yml");
+    	
+    	Demotivator first = Demotivator.find("order by date desc").first();
+    	Demotivator second = Demotivator.find("id < ? order by date desc", first.id).first();
+    	
+    	Response response = GET("/next/" + second.id);//id is changing from one tests run to another
+
+    	assertEquals("/", response.getHeader("Location"));
+    }
+    
+    @Test
+    public void testNextChecksDomain(){
+    	Fixtures.loadModels("data/next_w_diff_domains.yml");
+    	
+    	Demotivator first = Demotivator.find("order by date desc").first();
+    	Demotivator second = Demotivator.find("id < ? order by date desc", first.id).first();
+    	
+    	assertNotNull(first);
+    	assertEquals("localhost", first.getDomain().getName());
+    	
+    	assertNotNull(second);
+    	assertEquals("other_domain", second.getDomain().getName());
+    	
+    	Response response = GET("/next/" + first.id);//id is changing from one tests run to another
+
+    	assertEquals("/", response.getHeader("Location"));
     }
     
 }
