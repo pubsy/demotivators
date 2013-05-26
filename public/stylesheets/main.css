@@ -134,7 +134,7 @@ input[type='text'], input[type="password"], input[type="email"] {
 	margin-left: 160px;
 }
 
-#create{
+.buttons{
 	margin-top: 10px;	
 	margin-left: 155px;
 }

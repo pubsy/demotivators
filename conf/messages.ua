@@ -47,3 +47,5 @@ play-paginate.first=&laquo;&nbsp; Перша
 play-paginate.prev=&lsaquo;&nbsp;Попередня
 play-paginate.next=Наступна&nbsp;&rsaquo;
 play-paginate.last=Остання&nbsp;&raquo;
+
+validation.required=Обовязкове поле

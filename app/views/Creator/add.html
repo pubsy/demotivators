@@ -5,8 +5,10 @@
 #{/set}
 
 #{set 'moreScripts'}
-    #{script 'demo.preview.js'/}
+    #{script 'jquery.form.js'/}
 #{/set}
+
+#{add_script /}
 
 <div class="black_block">
 	<div class="black_block_inner fixed_width">
@@ -20,24 +22,26 @@
 
 <div id="login">
 <div id="preview"><img src="" width="300px" height="300px"/></div>
-	<form action="@{Creator.create}" method="POST" enctype="multipart/form-data" name="demoForm">
-		    <div class="vlidation_error">#{error 'image' /}</div>
+	<form action="@{Creator.create}" method="POST" enctype="multipart/form-data" name="demoForm" id="demoForm">
+		    <div class="vlidation_error" id="image_error"></div>
 			<p>
 			    <label for="image">&{'demo_image'}</label>
-			    <input type="file" name="image" id="image" name="files[]" required />
+			    <input type="file" name="image" name="files[]" />
 		    </p>
-	    	<div class="vlidation_error">#{error 'title' /}</div>
+	    	<div class="vlidation_error" id="title_error"></div>
 	    	<p>
 		    	<label for="title">&{'demo_title'}</label>
-			    <input type="text" name="title" value="${flash.title}" pattern=".{1,30}" required/>
+			    <input type="text" name="title" value="${flash.title}" pattern=".{1,30}" />
 		    </p>
-		    <div class="vlidation_error">#{error 'text' /}</div>
+		    <div class="vlidation_error" id="text_error"></div>
 		    <p>
 			    <label for="text">&{'demo_text'}</label>
-			    <input type="text" name="text" value="${flash.text}" pattern=".{1,80}" required/>
+			    <input type="text" name="text" value="${flash.text}" pattern=".{1,80}" />
 		    </p>
-		    
-		    <input type="submit" name="create" id="create" value="&{'submit'}"/>
+		    <div class="buttons">
+		    	<button name="preview" id="previewBtn"/>&{'preview'}</button>
+		    	<button name="create" id="create"/>&{'submit'}</button>
+		    </div>
 	</form>
 </div>
 </div>

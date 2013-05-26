@@ -1,0 +1,69 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$("input[name='image']").change(handleFileSelect);
+		
+		$("#demoForm").submit(function(e){
+			e.preventDefault();
+		});
+		
+		$('#create, #previewBtn').click(function(evt){
+			crearValidationMessages();
+			
+			var options = {
+				url: '@{Creator.create()}',
+				data:{
+					mode: evt.target.name
+				},
+				success: function(data) {
+					processResponse(evt.target.name, data);
+				},
+				error: function(jqXHR) {
+					alert(jqXHR.responseText);
+					if(jqXHR.status == 403){
+						window.location.href = '/login';
+					}
+				}
+			};
+
+			$("#demoForm").ajaxSubmit(options);
+		});
+	});
+	
+	function processResponse(mode, data){		
+		if (data.status == 'success') {
+			if(mode == 'preview'){
+				$('#preview img').attr('src', data.fileName);
+			}else{
+				var url = '/single/' + data.id + '#single_demotivator_image';
+				window.location.href=url;
+			}
+		}else{
+			$.each( data, function( key, value ) {
+				$('#' + key).text(value);
+			});
+		}	
+	}
+	
+	function crearValidationMessages(){
+		$('#image_error').empty();
+		$('#title_error').empty();
+		$('#text_error').empty();
+	}
+	
+	function handleFileSelect(evt) {
+		
+		var files = evt.target.files;
+		
+		for (var i = 0, f; f = files[i]; i++) {
+			var reader = new FileReader();
+			reader.onload = (function(theFile) {
+				return function(e) {
+					$('#preview img').attr('src', e.target.result);
+					$('#preview').show();
+				};
+			})(f);
+			reader.readAsDataURL(f);
+		}
+	}
+</script>

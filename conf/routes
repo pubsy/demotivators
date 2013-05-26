@@ -5,11 +5,12 @@
 # Home page
 GET     /                                       Application.index
 GET     /single/{id}                      		Application.single
-GET     /next/{id}                      		Application.next
+GET     /next/{id}                              Application.next
 GET     /locale/{language}                      Application.locale
 GET     /image/{fileName}                       Application.image
 GET     /add		                            Creator.add
 POST	/create									Creator.create
+POST	/preview								Creator.preview
 GET     /register		                        Users.register
 POST    /registerNewUser		                Users.registerNewUser
 
