@@ -13,11 +13,11 @@ public interface DemotivatorCreator {
 	final int TEXT_AREA_SPACE = 130;
 	final int BORDER_SPACE = 50;
 	
-	final int MAX_THUMB_WIDTH = 150;
-	final int MAX_THUMB_HEIGHT = 150;
+	final int MAX_THUMB_WIDTH = 300;
+	final int MAX_THUMB_HEIGHT = 300;
 	
 	public final String IMAGE_DIR_PATH = Play.configuration.getProperty("image.dir.path");
 
-	String createDemotivator(File file, String title, String text) throws IOException;
+	String createDemotivator(File file, String title, String text, String mode) throws IOException;
 
 }

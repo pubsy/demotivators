@@ -81,7 +81,7 @@ public class CreatorTest extends FunctionalTest{
     	assertEquals(THIRTY_CHARS_TITLE, demos.get(0).getTitle());
     	long id = demos.get(0).getId().longValue();
     	
-    	assertContentEquals("{\"fileName\":\"/image/test.file.name\",\"id\":\"" + id + "\",\"status\":\"success\"}", response);
+    	assertContentEquals("{\"fileName\":\"/image/thumb.test.file.name\",\"id\":\"" + id + "\",\"status\":\"success\"}", response);
     }
     
     @Test
@@ -107,7 +107,7 @@ public class CreatorTest extends FunctionalTest{
     	List<Demotivator> demos = Demotivator.findAll();
     	assertEquals(0, demos.size());
     	
-    	assertContentEquals("{\"fileName\":\"/image/test.file.name\",\"status\":\"success\"}", response);
+    	assertContentEquals("{\"fileName\":\"/image/thumb.test.file.name\",\"status\":\"success\"}", response);
     }
     
     @Test

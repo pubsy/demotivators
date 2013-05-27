@@ -8,7 +8,7 @@ import services.DemotivatorCreator;
 public class DemotivatorCreatorMock implements DemotivatorCreator{
 
 	@Override
-	public String createDemotivator(File file, String title, String text) throws IOException {
+	public String createDemotivator(File file, String title, String text, String mode) throws IOException {
 		if(file.getName().equals("bad.file")){
 			throw new IOException("Bad file");
 		}

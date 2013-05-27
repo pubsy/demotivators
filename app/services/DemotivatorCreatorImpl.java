@@ -29,7 +29,7 @@ public class DemotivatorCreatorImpl implements DemotivatorCreator{
 	}
 	
 	@Override
-	public String createDemotivator(File imageFile, String title, String text) throws IOException {
+	public String createDemotivator(File imageFile, String title, String text, String mode) throws IOException {
 		createImageFolderIfNeeded();
 		
 		long timestamp = System.currentTimeMillis();
@@ -56,6 +56,13 @@ public class DemotivatorCreatorImpl implements DemotivatorCreator{
         image = utils.readFile(outputFile);
         newSize = utils.getScaledSize(image, MAX_THUMB_WIDTH, MAX_THUMB_HEIGHT);
         Images.resize(outputFile, thumbfile, newSize.width, newSize.height);
+        
+        if("preview".equals(mode)){
+        	boolean deleted = outputFile.delete();
+        	if(!deleted){
+            	throw new IOException("Big demo file not deleted!");
+            }
+        }
         
         return outputFile.getName();
 	}

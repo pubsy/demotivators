@@ -67,7 +67,7 @@ public class Creator extends DemotivatorsController{
 		
 		String fileName = null;
 		try {
-			fileName = creator.createDemotivator(image[0], title, text);
+			fileName = creator.createDemotivator(image[0], title, text, mode);
 		} catch (IOException e) {
 			errors.put("image_error", Messages.get(BAD_FILE_MESSAGE_KEY));
 			renderJSON(errors);
@@ -86,7 +86,7 @@ public class Creator extends DemotivatorsController{
 		}
 		
 		success.put("status", "success");
-		success.put("fileName", "/image/" + fileName);
+		success.put("fileName", "/image/thumb." + fileName);
 		
 		renderJSON(success);
 	}
