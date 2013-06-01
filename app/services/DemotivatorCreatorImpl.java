@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import play.libs.Files;
 import play.libs.Images;
 
 import utils.ImageUtils;
@@ -41,6 +42,11 @@ public class DemotivatorCreatorImpl implements DemotivatorCreator{
 		Dimension newSize = utils.getScaledSize(image, MAX_WIDTH, MAX_HEIGHT);
 		
 		Images.resize(imageFile, outputFile, newSize.width, newSize.height);
+		
+        if("create".equals(mode)){
+        	File origin = new File(IMAGE_DIR_PATH + File.separator + "origin." + timestamp + "." + formatName);
+        	Files.copy(outputFile, origin);
+        }
 		
 		image = utils.readFile(outputFile);
 		
