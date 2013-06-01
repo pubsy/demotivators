@@ -20,6 +20,7 @@ Domain(other):
 
 Demotivator(ugly):
     title:          An ugly demotivator
+    text:           Some ugly text
     date:           2010-04-03
     author:         george
     fileName:       ugly.jpg
@@ -27,6 +28,7 @@ Demotivator(ugly):
 
 Demotivator(pretty):
     title:          A pretty demotivator
+    text:           Some ugly text
     date:           2010-04-04
     author:         frank
     fileName:       pretty.jpg
@@ -34,6 +36,7 @@ Demotivator(pretty):
 
 Demotivator(three):
     title:          Demotivator title
+    text:           Some ugly text
     date:           2009-03-05
     author:         george
     fileName:       three.jpg
@@ -41,6 +44,7 @@ Demotivator(three):
 
 Demotivator(four):
     title:          Demotivator title
+    text:           Some ugly text
     date:           2009-04-06
     author:         frank
     fileName:       four.jpg
@@ -48,6 +52,7 @@ Demotivator(four):
 
 Demotivator(five):
     title:          Demotivator title
+    text:           Some ugly text
     date:           2009-04-07
     author:         george
     fileName:       five.jpg
@@ -55,6 +60,7 @@ Demotivator(five):
 
 Demotivator(six):
     title:          Demotivator title
+    text:           Some ugly text
     date:           2009-04-08
     author:         frank
     fileName:       six.jpg
@@ -62,6 +68,7 @@ Demotivator(six):
 
 Demotivator(seven):
     title:          Demotivator title
+    text:           Some ugly text
     date:           2009-04-09
     author:         george
     fileName:       seven.jpg
@@ -69,6 +76,7 @@ Demotivator(seven):
 
 Demotivator(eight):
     title:          Demotivator title
+    text:           Some ugly text
     date:           2009-04-10
     author:         frank
     fileName:       eight.jpg
@@ -76,6 +84,7 @@ Demotivator(eight):
 
 Demotivator(nine):
     title:          Demotivator title
+    text:           Some ugly text
     date:           2009-04-11
     author:         george
     fileName:       nine.jpg
@@ -83,6 +92,7 @@ Demotivator(nine):
 
 Demotivator(ten):
     title:          Demotivator title
+    text:           Some ugly text
     date:           2009-04-15
     author:         frank
     fileName:       ten.jpg
@@ -90,6 +100,7 @@ Demotivator(ten):
 
 Demotivator(eleven):
     title:          Demotivator title
+    text:           Some ugly text
     date:           2009-04-16
     author:         george
     fileName:       eleven.jpg
@@ -97,6 +108,7 @@ Demotivator(eleven):
 
 Demotivator(twelve):
     title:          Demotivator title
+    text:           Some ugly text
     date:           2009-04-17
     author:         frank
     fileName:       twelve.jpg

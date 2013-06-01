@@ -14,6 +14,7 @@ import play.i18n.Messages;
 @Entity
 public class Demotivator extends Model{
 	private String title;
+	private String text;
 	private String fileName;
 	private Date date;
 	
@@ -69,5 +70,13 @@ public class Demotivator extends Model{
 
 	public Domain getDomain() {
 		return domain;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public String getText() {
+		return text;
 	}
 }

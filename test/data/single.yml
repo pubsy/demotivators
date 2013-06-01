@@ -9,6 +9,7 @@ Domain(local):
 
 Demotivator(ugly):
     title:          An ugly demotivator
+    text:           Some ugly text
     date:           2010-04-03
     author:         martin
     fileName:       ugly.jpg

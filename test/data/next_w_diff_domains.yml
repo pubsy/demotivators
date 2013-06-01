@@ -12,6 +12,7 @@ Domain(other):
 
 Demotivator(ugly):
     title:          An ugly demotivator
+    text:           Some ugly text
     date:           2010-04-03
     author:         martin
     fileName:       ugly.jpg
@@ -19,6 +20,7 @@ Demotivator(ugly):
     
 Demotivator(pretty):
     title:          A pretty demotivator
+    text:           Some ugly text
     date:           2010-04-04
     author:         martin
     fileName:       pretty.jpg
