@@ -4,13 +4,13 @@
 
 #{selenium 'Check single page is shown without errors'}
     open('/')
-    clickAndWait('//div[@id="demotivators_list"]/div[1]/a')
+    clickAndWait('//ul[@id="demotivators_list"]/li[1]/div/a')
     assertNotTitle('Application error')
 #{/selenium}
 
 #{selenium 'Check demotivator icons and content title present'}
 	open('/')
-    clickAndWait('//div[@id="demotivators_list"]/div[1]/a')
+    clickAndWait('//ul[@id="demotivators_list"]/li[1]/div/a')
 	
 	assertElementPresent('//h4[@class="content_title"]')
 	assertText('//h4[@class="content_title"]', 'An ugly demotivator')

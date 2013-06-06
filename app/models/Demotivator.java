@@ -24,8 +24,9 @@ public class Demotivator extends Model{
 	@ManyToOne
 	private User author;
 
-	public Demotivator(String title, String fileName, User author, Domain domain) {
+	public Demotivator(String title, String text, String fileName, User author, Domain domain) {
 		this.title = title;
+		this.text = text;
 		this.fileName = fileName;
 		this.author = author;
 		this.domain = domain;

@@ -79,7 +79,7 @@ public class Creator extends DemotivatorsController{
 			Domain domain = Domain.getOrCreate(request.domain);
 			
 			User user = DemotivatorsSecurity.currentUser();	
-			Demotivator demo = new Demotivator(title, fileName, user, domain);
+			Demotivator demo = new Demotivator(title, text, fileName, user, domain);
 			demo.save();
 			
 			success.put("id", demo.id.toString());

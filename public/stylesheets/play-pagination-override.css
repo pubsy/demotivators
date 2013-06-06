@@ -1,9 +1,4 @@
-.pagination-container{
-	text-align: center;
-	padding-top: 25px;
-}
-
-ul.pagination{
+.thumbnails>li {
 	display: inline-block;
 	float: none;
 }

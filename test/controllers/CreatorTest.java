@@ -79,6 +79,8 @@ public class CreatorTest extends FunctionalTest{
     	List<Demotivator> demos = Demotivator.findAll();
     	assertEquals(1, demos.size());
     	assertEquals(THIRTY_CHARS_TITLE, demos.get(0).getTitle());
+    	assertEquals(EIGHTY_CHARS_TEXT, demos.get(0).getText());
+    	assertEquals("localhost", demos.get(0).getDomain().getName());
     	long id = demos.get(0).getId().longValue();
     	
     	assertContentEquals("{\"fileName\":\"/image/thumb.test.file.name\",\"id\":\"" + id + "\",\"status\":\"success\"}", response);

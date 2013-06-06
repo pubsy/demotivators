@@ -1,21 +1,32 @@
 #{extends 'demo_page.html' /}
 
+#{set 'moreScripts'}
+    #{script 'index.pagination.js'/}
+#{/set}
+
 #{set 'moreStyles'}
-	#{stylesheet 'play-pagination.css' /}
 	#{stylesheet 'play-pagination-override.css' /}
 #{/set}
 
 <div class="fixed_width margin_auto">
 	<h4 class="content_title">&{'latest_demotivators'}</h4>
-	<div id="demotivators_list" class="center">
+	
+	<ul class="thumbnails" id="demotivators_list">
 		#{paginate.list items:paginator, as:'demo'}
-			<div class="demotivator_icon">
-		       	<a href="@{Application.single(demo.id)}#single_demotivator_image"><img src="/image/thumb.${demo.fileName}" width="150px" height="150px"/></a>
-		    </div>
+			<li class="span2">
+		       	<div class="thumbnail">
+		       		<a href="@{Application.single(demo.id)}#single_demotivator_image" class="thumbnail">
+		       			<img src="/image/thumb.${demo.fileName}"/>
+		       		</a>
+			      	<h5>${demo.title}</h5>
+			      	<p>${demo.text}</p>
+		       	</div>
+		  </li>
     	#{/paginate.list}
     	#{else}
 		    &{'no_demotivators'}
 		#{/else}	
-	</div>
+    </ul>
+
     #{paginate.controls items:paginator /}
 </div>

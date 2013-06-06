@@ -21,7 +21,7 @@ public class Application extends DemotivatorsController {
 		Domain domain = Domain.getOrCreate(request.domain);
 		ModelPaginator<Demotivator> paginator = new ModelPaginator(Demotivator.class, "domain = ?", domain)
 			.orderBy("date desc");
-		paginator.setPageSize(10);
+		paginator.setPageSize(15);
 	    render(paginator);
 	}
 	
