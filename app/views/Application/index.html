@@ -4,10 +4,6 @@
     #{script 'index.pagination.js'/}
 #{/set}
 
-#{set 'moreStyles'}
-	#{stylesheet 'play-pagination-override.css' /}
-#{/set}
-
 <div class="fixed_width margin_auto">
 	<h4 class="content_title">&{'latest_demotivators'}</h4>
 	
@@ -15,7 +11,7 @@
 		#{paginate.list items:paginator, as:'demo'}
 			<li class="span2">
 		       	<div class="thumbnail">
-		       		<a href="@{Application.single(demo.id)}#single_demotivator_image" class="thumbnail">
+		       		<a href="@{Application.single(demo.id)}" class="thumbnail">
 		       			<img src="/image/thumb.${demo.fileName}"/>
 		       		</a>
 			      	<h5>${demo.title}</h5>

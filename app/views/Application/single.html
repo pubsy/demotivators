@@ -1,6 +1,10 @@
 #{extends 'demo_page.html' /}
 
+#{set 'moreScripts'}
+    #{script 'single.js'/}
+#{/set}
+
 <div class="fixed_width margin_auto" id="single_demotivator">
 	<h4 class="content_title">${demotivator.title}</h4>
-	<a href="@{Application.next(demotivator.id)}#single_demotivator_image"><img src="/image/${demotivator.fileName}" class="demotivator" id="single_demotivator_image" /></a>
+	<a href="@{Application.next(demotivator.id)}"><img src="/image/${demotivator.fileName}" class="demotivator" id="single_demotivator_image" /></a>
 </div>

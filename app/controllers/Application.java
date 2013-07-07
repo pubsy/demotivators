@@ -19,8 +19,7 @@ public class Application extends DemotivatorsController {
 
 	public static void index() {
 		Domain domain = Domain.getOrCreate(request.domain);
-		ModelPaginator<Demotivator> paginator = new ModelPaginator(Demotivator.class, "domain = ?", domain)
-			.orderBy("date desc");
+		ModelPaginator<Demotivator> paginator = new ModelPaginator(Demotivator.class, "domain = ?", domain).orderBy("date desc");
 		paginator.setPageSize(15);
 	    render(paginator);
 	}
