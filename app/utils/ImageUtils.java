@@ -13,5 +13,5 @@ public interface ImageUtils {
 	public String getImageFormatName(File image) throws IOException;
 	public BufferedImage readFile(File imageFile) throws IOException;
 	public void writeImage(BufferedImage image, String formatName, File outputfile) throws IOException;
-
+	public void addDomainSignature(BufferedImage image, String domain);
 }

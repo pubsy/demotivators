@@ -30,7 +30,7 @@ public class DemotivatorCreatorImpl implements DemotivatorCreator{
 	}
 	
 	@Override
-	public String createDemotivator(File imageFile, String title, String text, String mode) throws IOException {
+	public String createDemotivator(File imageFile, String title, String text, String mode, String domain) throws IOException {
 		createImageFolderIfNeeded();
 		
 		long timestamp = System.currentTimeMillis();
@@ -54,6 +54,9 @@ public class DemotivatorCreatorImpl implements DemotivatorCreator{
 		BufferedImage biggerImage = new BufferedImage(newSize.width + BORDER_SPACE, newSize.height + TEXT_AREA_SPACE, BufferedImage.TYPE_INT_RGB);
 		image = utils.addBorderAndTextSpace(image, biggerImage, BORDER_SPACE, TEXT_AREA_SPACE);
         image = utils.drawTitleAndText(image, title, text, TEXT_AREA_SPACE);
+        
+        //Adding domain signature
+        utils.addDomainSignature(biggerImage, domain);
         
         utils.writeImage(image, formatName, outputFile);
         

@@ -40,6 +40,10 @@ public class ImageUtilsImpl implements ImageUtils{
 		int start = (width - wdh) / 2;
 		
 		int verticalGap = 80;
+		
+		graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		
 		//write title
 		graphics2D.drawString(title, start, height - textAreaSpace + 80);
 		
@@ -54,6 +58,7 @@ public class ImageUtilsImpl implements ImageUtils{
 		start = (width - wdh) / 2;
 			
 		//write text
+		
 		graphics2D.drawString(text, start, height - textAreaSpace + verticalGap);
 
 		return image;
@@ -92,6 +97,11 @@ public class ImageUtilsImpl implements ImageUtils{
 		int height = image.getHeight();
 		int width = image.getWidth();
 
+		if(height < max_height && width < max_width){
+			max_height = height;
+			max_width = width;
+		}
+		
 		if (height >= width) {
 			width = width * max_height / height ;
 			height = max_height;
@@ -156,5 +166,15 @@ public class ImageUtilsImpl implements ImageUtils{
 	private int getTextWidth(Graphics2D g, Font font, String text){
 		FontMetrics metrics = g.getFontMetrics(font);
 		return metrics.stringWidth(text);
+	}
+
+	@Override
+	public void addDomainSignature(BufferedImage image, String domain) {
+		Graphics2D graphics2D = image.createGraphics();
+		
+		graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		
+		graphics2D.drawString(domain, 20, 30);
 	}
 }

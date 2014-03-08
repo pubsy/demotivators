@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>&{'title'}</title>
+        <title>&{request.domain}</title>
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.min.css'}">
@@ -21,10 +21,10 @@
     		<a href="/locale/en"><img src="/public/images/icons/uk.png" /></a>
     	</div>
     	<div id=header class="fixed_width margin_auto">
-    		<div id="logo"><a href="@{Application.index}">&{'ukrainian_demotivators'}</a></div>
+    		<div id="logo"><a href="@{Application.index}">&{request.domain}</a></div>
     		<div id="menu_items">
 	    		<ul class="nav nav-pills">
-	    		  <li><a href="@{Application.index}">&{'home'}</a></li>
+	    		  <li><a href="@{Application.index}">&nbsp;&{"home"}</a></li>
 				  	#{if session.username }
 						<li><a href="@{Creator.add}">&{'add_demotivator'}</a></li>
 					    <li><a href="@{Secure.logout}">&{'logout'}</a></li>

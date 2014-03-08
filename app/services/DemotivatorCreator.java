@@ -18,6 +18,6 @@ public interface DemotivatorCreator {
 	
 	public final String IMAGE_DIR_PATH = Play.configuration.getProperty("image.dir.path");
 
-	String createDemotivator(File file, String title, String text, String mode) throws IOException;
+	String createDemotivator(File file, String title, String text, String mode, String domain) throws IOException;
 
 }

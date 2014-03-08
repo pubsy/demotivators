@@ -1,4 +1,4 @@
-title=Українські Демотиватори
+demotivators.com.ua=Українські Демотиватори
 add_demotivator=Додати
 best=Найкращі
 contribute=Допомогти
@@ -49,3 +49,5 @@ play-paginate.next=Наступна&nbsp;&rsaquo;
 play-paginate.last=Остання&nbsp;&raquo;
 
 validation.required=Обовязкове поле
+
+localhost=Локальні демотиватори

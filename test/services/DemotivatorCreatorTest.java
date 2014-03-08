@@ -39,7 +39,7 @@ public class DemotivatorCreatorTest extends UnitTest{
 		
 		String result = null;
 		try {	
-			result = creator.createDemotivator(imageFile, title, text, "create");
+			result = creator.createDemotivator(imageFile, title, text, "create", "testdomain");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -51,6 +51,7 @@ public class DemotivatorCreatorTest extends UnitTest{
 		verify(utils, times(1)).getScaledSize(any(BufferedImage.class), eq(300), eq(300));
 		verify(utils, times(1)).addBorderAndTextSpace(any(BufferedImage.class), any(BufferedImage.class), eq(50), eq(130));
 		verify(utils, times(1)).drawTitleAndText(any(BufferedImage.class), eq("Title"), eq("text"), anyInt());
+		verify(utils, times(1)).addDomainSignature(any(BufferedImage.class), eq("testdomain"));
 		verify(utils, atLeastOnce()).getImageFormatName(imageFile);
 	}
 }

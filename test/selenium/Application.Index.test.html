@@ -24,8 +24,8 @@
     assertElementPresent('//div[@id="locales"]')
     
     clickAndWait('//div[@id="locales"]/a[@href="/locale/ua"]')
-    assertTitle('Українські Демотиватори')
-    assertText('//div[@id="logo"]/a', 'Українські Демотиватори')
+    assertTitle('Локальні демотиватори')
+    assertText('//div[@id="logo"]/a', 'Локальні демотиватори')
     
     assertText('//div[@id="menu_items"]/ul/li[1]/a', 'Головна')
     assertText('//div[@id="menu_items"]/ul/li[2]/a', 'Додати')
@@ -34,8 +34,8 @@
         
     clickAndWait('//div[@id="locales"]/a[@href="/locale/en"]')
     
-    assertTitle('Ukrainian Demotivators')
-    assertText('//div[@id="logo"]/a', 'Ukrainian Demotivators')
+    assertTitle('Localhost Demotivators')
+    assertText('//div[@id="logo"]/a', 'Localhost Demotivators')
     assertText('//div[@id="menu_items"]/ul/li[1]/a', 'Home')
     assertText('//div[@id="menu_items"]/ul/li[2]/a', 'Add')
     assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Logout')
@@ -93,7 +93,7 @@
 	assertText('//h4[@class="content_title"]', 'Latest Demotivators')
 	
 	assertElementPresent('//ul[@id="demotivators_list"]/li[1]/div/a')
-	assertAttribute('//ul[@id="demotivators_list"]/li[1]/div/a@href', '/single/*#single_demotivator_image')
+	assertAttribute('//ul[@id="demotivators_list"]/li[1]/div/a@href', '/single/*')
 	
 	assertElementPresent('//ul[@id="demotivators_list"]/li[1]/div/a/img')
 	assertAttribute('//ul[@id="demotivators_list"]/li[1]/div/a/img@src', '/image/thumb.pretty.jpg')

@@ -12,7 +12,6 @@ import javax.inject.Inject;
 import org.apache.commons.lang.StringUtils;
 
 import controllers.Secure.Security;
-
 import models.Demotivator;
 import models.Domain;
 import models.User;
@@ -65,9 +64,11 @@ public class Creator extends DemotivatorsController{
 			renderJSON(errors);
 		}
 		
+		String domainStr = request.domain;
+		
 		String fileName = null;
 		try {
-			fileName = creator.createDemotivator(image[0], title, text, mode);
+			fileName = creator.createDemotivator(image[0], title, text, mode, domainStr);
 		} catch (IOException e) {
 			errors.put("image_error", Messages.get(BAD_FILE_MESSAGE_KEY));
 			renderJSON(errors);
@@ -76,7 +77,7 @@ public class Creator extends DemotivatorsController{
 		Map<String, String> success = new HashMap<String, String>(3);
 		
 		if("create".equals(mode)){
-			Domain domain = Domain.getOrCreate(request.domain);
+			Domain domain = Domain.getOrCreate(domainStr);
 			
 			User user = DemotivatorsSecurity.currentUser();	
 			Demotivator demo = new Demotivator(title, text, fileName, user, domain);

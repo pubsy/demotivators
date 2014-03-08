@@ -1,26 +1,19 @@
 package utils;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
 import org.junit.Test;
-
-import com.mchange.util.AssertException;
 
 import play.test.UnitTest;
 
@@ -121,5 +114,18 @@ public class ImageUtilsTest extends UnitTest{
 			fail("should never come here");
 		}catch(IOException ex){}
 
+	}
+	
+	@Test
+	public void testAddDomainSignature(){
+		BufferedImage image = mock(BufferedImage.class);
+		Graphics2D graphics2D = mock(Graphics2D.class); 
+		
+		when(image.createGraphics()).thenReturn(graphics2D);
+		
+		unit.addDomainSignature(image, "TestDomainName");
+		
+		verify(graphics2D, times(1)).setRenderingHint(eq(RenderingHints.KEY_TEXT_ANTIALIASING), eq(RenderingHints.VALUE_TEXT_ANTIALIAS_ON));
+		verify(graphics2D, times(1)).drawString("TestDomainName", 20, 30);
 	}
 }
