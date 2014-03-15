@@ -4,6 +4,12 @@ User(martin):
     password:       $2a$10$HwI4lNJD4sr3Gm06LKEe/.44.OM9p47kmY6BcXBz8NaGOhriB3VK.
     date:           2009-03-26
     
+User(frank):
+    displayName:    Frank Sinatra
+    email:          frank.sinatra@gmail.com
+    password:       123
+    date:           2009-03-26
+    
 Domain(local):
     name:    localhost
 
@@ -14,3 +20,15 @@ Demotivator(ugly):
     author:         martin
     fileName:       ugly.jpg
     domain:         local
+    
+Comment(comment1):
+    text:           A very motivating demotivator1
+    date:           2014-03-09
+    user:           martin
+    demotivator:    ugly
+    
+Comment(comment2):
+    text:           A very motivating demotivator2
+    date:           2014-03-09
+    user:           martin
+    demotivator:    ugly

@@ -13,6 +13,7 @@ POST	/create									Creator.create
 POST	/preview								Creator.preview
 GET     /register		                        Users.register
 POST    /registerNewUser		                Users.registerNewUser
+POST    /comments/save/{demoId}		            Comments.addComment
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

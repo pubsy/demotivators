@@ -2,24 +2,23 @@ package controllers;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.apache.commons.lang.StringUtils;
-
-import controllers.Secure.Security;
 import models.Demotivator;
 import models.Domain;
 import models.User;
+
+import org.apache.commons.lang.StringUtils;
+
 import play.data.validation.Required;
 import play.i18n.Messages;
 import play.mvc.Util;
-import play.mvc.With;
 import services.DemotivatorCreator;
+import utils.SharedConstants;
+import controllers.Secure.Security;
 
 /**
  * Demotivator Creator controller .
@@ -36,7 +35,6 @@ public class Creator extends DemotivatorsController{
 	private static final String TITLE_CANT_MESSAGE_KEY = "title.cant.be.longer";
 	private static final String PLEASE_SELECT_MESSAGE_KEY = "please.select.an.image";
 	private static final String BAD_FILE_MESSAGE_KEY = "bad.file.error";
-	private static final String PLEASE_LOGIN = "please_login";
 	
 	@Inject
 	static DemotivatorCreator creator;
@@ -56,7 +54,7 @@ public class Creator extends DemotivatorsController{
 		
 		String userName = Security.connected();		
 		if(userName == null){
-			error(403, Messages.get(PLEASE_LOGIN));
+			error(403, Messages.get(SharedConstants.PLEASE_LOGIN));
 		}
 		
 		validateParameters(errors, title, text, image);

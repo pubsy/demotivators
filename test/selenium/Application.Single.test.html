@@ -3,6 +3,7 @@
 #{fixture delete:'all', load:'data/single.yml' /}
 
 #{selenium 'Check single page is shown without errors'}
+    open('/logout')
     open('/')
     clickAndWait('//ul[@id="demotivators_list"]/li[1]/div/a')
     assertNotTitle('Application error')

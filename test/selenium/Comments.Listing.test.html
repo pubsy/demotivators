@@ -1,0 +1,23 @@
+*{ You can use plain selenium command using the selenium tag }*
+
+#{fixture delete:'all', load:'data/comment.yml' /}
+
+#{selenium 'Check listing comments and adding comment'}
+    open('/logout')
+    open('/login')
+	type('//input[@id="username"]', 'frank.sinatra@gmail.com')
+	type('//input[@id="password"]', '123')
+	clickAndWait('//input[@id="signin"]')
+	assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Logout')
+	
+    clickAndWait('//ul[@id="demotivators_list"]/li[1]/div/a')
+    assertNotTitle('Application error')
+    
+    assertElementPresent('//div[@id="single_demotivator"]/div[@class="comments fixed_width"]')
+    assertElementPresent('//div[@id="single_demotivator"]/form/textarea[@class="add-comment-textarea"]')
+    assertElementPresent('//div[@id="single_demotivator"]/form/button')
+    assertElementPresent('//div[@id="single_demotivator"]/div[@class="comments fixed_width"]/div[1]')
+    
+    assertText('//div[@id="single_demotivator"]/div[@class="comments fixed_width"]/div[1]/div[2]', 'A very motivating demotivator')
+
+#{/selenium}

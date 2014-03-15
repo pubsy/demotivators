@@ -31,7 +31,14 @@ public class Application extends DemotivatorsController {
 			index();
 		}
 		
-		render(demotivator);
+		if(DemotivatorsSecurity.isConnected()){
+			flash.put("userDisplayName", DemotivatorsSecurity.currentUser().getDisplayName());
+		}
+		
+		//Additional text in page title
+		String pageTitle = demotivator.getTitle();
+		
+		render(demotivator, pageTitle );
 	}
 	
 	public static void next(long id) {

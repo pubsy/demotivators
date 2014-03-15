@@ -42,6 +42,7 @@ bad.file.error=Bad image file
 login=Login
 logout=Logout
 no_demotivators=No demotivators found
+send=Send
 
 play-paginate.first=&laquo;&nbsp;First
 play-paginate.prev=&lsaquo;&nbsp;Previous

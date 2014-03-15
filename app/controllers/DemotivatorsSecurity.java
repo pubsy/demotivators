@@ -17,8 +17,9 @@ public class DemotivatorsSecurity extends Secure.Security{
     }
 	
 	static User currentUser() {
-		String email = Secure.Security.connected();
-		return User.find("byEmail", email).first();
+		String email = connected();
+		User user = User.find("byEmail", email).first();
+		return user;
 	}
 	
 	static void onAuthenticated(){

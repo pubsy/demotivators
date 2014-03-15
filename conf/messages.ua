@@ -42,6 +42,7 @@ bad.file.error=Поганий файл зображення
 login=Увійти
 logout=Вийти
 no_demotivators=Жодного демотиватора не знайдено
+send=Відправити
 
 play-paginate.first=&laquo;&nbsp; Перша
 play-paginate.prev=&lsaquo;&nbsp;Попередня

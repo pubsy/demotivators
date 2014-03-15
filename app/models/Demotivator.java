@@ -1,15 +1,14 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import play.db.jpa.Model;
-import play.i18n.Messages;
 
 @Entity
 public class Demotivator extends Model{
@@ -23,6 +22,9 @@ public class Demotivator extends Model{
 	
 	@ManyToOne
 	private User author;
+	
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="demotivator")
+	private List<Comment> comments;
 
 	public Demotivator(String title, String text, String fileName, User author, Domain domain) {
 		this.title = title;
@@ -80,4 +82,13 @@ public class Demotivator extends Model{
 	public String getText() {
 		return text;
 	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+	
 }

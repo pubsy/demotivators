@@ -1,0 +1,22 @@
+User(frank):
+    displayName:    Frank Sinatra
+    email:          frank.sinatra@gmail.com
+    password:       123
+    date:           2009-03-26
+
+Domain(local):
+    name:           localhost
+
+Demotivator(ugly):
+    title:          An ugly demotivator
+    text:           Some ugly text
+    date:           2010-04-03
+    author:         frank
+    fileName:       ugly.jpg
+    domain:         local
+    
+Comment(comment):
+    text:           A very motivating demotivator
+    date:           2014-03-09
+    user:           frank
+    demotivator:    ugly

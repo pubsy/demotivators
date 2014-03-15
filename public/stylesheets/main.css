@@ -29,10 +29,6 @@ body {
 	height: 100px;
 }
 
-.clear {
-	clear: both;
-}
-
 .margin_auto {
 	margin: 0px auto;
 }
@@ -150,3 +146,11 @@ input[type='text'], input[type="password"], input[type="email"] {
 	display: none;
 }
 
+.add-comment-textarea {
+	padding: 0px;
+	width: 100%;
+}
+
+.user_display_name {
+	font-weight: bold;
+}

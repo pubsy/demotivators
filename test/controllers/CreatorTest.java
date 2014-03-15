@@ -16,7 +16,7 @@ import play.mvc.Http.Response;
 import play.test.Fixtures;
 import play.test.FunctionalTest;
 
-public class CreatorTest extends FunctionalTest{
+public class CreatorTest extends AutenticatedControllerTest {
 	
     private static final String THIRTY_CHARS_TITLE = "012345678901234567890123456789";
     private static final String EIGHTY_CHARS_TEXT = "01234567890123456789012345678901234567890123456789012345678901234567890123456789";
@@ -238,11 +238,5 @@ public class CreatorTest extends FunctionalTest{
     	assertContentType("text/html; charset=utf-8", response);
     	assertContentEquals("<h1>Please login</h1>", response);
     }    
-    
-    private void authenticate() {
-    	Map<String, String> loginUserParams = new HashMap<String, String>();
-    	loginUserParams.put("username", "frank.sinatra@gmail.com");
-    	loginUserParams.put("password", "123");
-    	POST("/secure/authenticate", loginUserParams);
-    }
+
 }

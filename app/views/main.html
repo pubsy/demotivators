@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>&{request.domain}</title>
+        <title>&{request.domain} ${pageTitle}</title>
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.min.css'}">
@@ -24,7 +24,7 @@
     		<div id="logo"><a href="@{Application.index}">&{request.domain}</a></div>
     		<div id="menu_items">
 	    		<ul class="nav nav-pills">
-	    		  <li><a href="@{Application.index}">&nbsp;&{"home"}</a></li>
+	    		  <li><a href="@{Application.index}">&{"home"}</a></li>
 				  	#{if session.username }
 						<li><a href="@{Creator.add}">&{'add_demotivator'}</a></li>
 					    <li><a href="@{Secure.logout}">&{'logout'}</a></li>
@@ -35,7 +35,7 @@
 					#{/else}
 				</ul>
     		</div>
-    		<div class="clear"></div>
+    		<div class="clearfix"></div>
     	</div>
         #{doLayout /}
     </body>

@@ -28,18 +28,19 @@ public class DemotivatorTest extends UnitTest{
 	    
 	    User martin = User.find("byEmail", "martin.fowler@gmail.com").first();
 	    
-	    // Retrieve all demotivators created by Martin
-	    List<Demotivator> martinDemos = Demotivator.find("byAuthor", martin).fetch();
+	    List<Demotivator> martinDemos = Demotivator.findAll();
 	    
 	    // Tests
 	    assertEquals(1, martinDemos.size());
 	    Demotivator demo = martinDemos.get(0);
-	    assertNotNull(demo);
 	    assertEquals(martin, demo.getAuthor());
 	    assertEquals("An ugly demotivator", demo.getTitle());
 	    assertEquals("ugly.jpg", demo.getFileName());
 	    assertNotNull(demo.getDate());
 	    assertEquals("localhost", demo.getDomain().getName());
 	    assertEquals("Some ugly text", demo.getText());
+	    assertNotNull(demo.getComments());
+	    assertEquals(2, demo.getComments().size());
+	    
 	}
 }

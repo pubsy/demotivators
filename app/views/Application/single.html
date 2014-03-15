@@ -1,5 +1,11 @@
 #{extends 'demo_page.html' /}
 
+<script type="text/javascript">
+   var saveCommentAction = #{jsRoute @Comments.addComment(':demoId') /};
+   var demoId = ${demotivator.id};
+   var userDisplayName = '${flash.userDisplayName}';
+</script>
+
 #{set 'moreScripts'}
     #{script 'single.js'/}
 #{/set}
@@ -7,4 +13,19 @@
 <div class="fixed_width margin_auto" id="single_demotivator">
 	<h4 class="content_title">${demotivator.title}</h4>
 	<a href="@{Application.next(demotivator.id)}"><img src="/image/${demotivator.fileName}" class="demotivator" id="single_demotivator_image" /></a>
+	<div class="comments fixed_width">
+		#{list items:demotivator.comments, as:'comment'}
+			<div class="well well-small">
+				<div class="user_display_name">${comment.user.displayName}</div>
+		       	<div>${comment.text}</div>
+			</div>
+    	#{/list}
+	</div>
+	#{if session.username }
+	    <form>
+			<textarea rows="3" class="add-comment-textarea" id="add_comment"></textarea>
+			<button class="btn pull-right" type="button" onclick="addComment()">&{'send'}</button>
+			<div class="clearfix"></div>
+		</form>
+	#{/if}
 </div>
