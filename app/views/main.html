@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>&{request.domain} ${pageTitle}</title>
+        <title>&{request.domain} - ${pageTitle}</title>
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.min.css'}">
@@ -16,10 +16,6 @@
         #{get 'moreScripts' /}
     </head>
     <body>
-    	<div id="locales">
-    		<a href="/locale/ua"><img src="/public/images/icons/ua.png" /></a>
-    		<a href="/locale/en"><img src="/public/images/icons/uk.png" /></a>
-    	</div>
     	<div id=header class="fixed_width margin_auto">
     		<div id="logo"><a href="@{Application.index}">&{request.domain}</a></div>
     		<div id="menu_items">

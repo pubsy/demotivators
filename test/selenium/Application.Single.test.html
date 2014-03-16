@@ -13,8 +13,7 @@
 	open('/')
     clickAndWait('//ul[@id="demotivators_list"]/li[1]/div/a')
 	
-	assertElementPresent('//h4[@class="content_title"]')
-	assertText('//h4[@class="content_title"]', 'An ugly demotivator')
+	assertText('//title', 'Localhost Demotivators - An ugly demotivator')
 	
 	assertElementPresent('//div[@id="single_demotivator"]')
 	

@@ -18,7 +18,7 @@
     assertNotTitle('Application error')
 #{/selenium}
 
-
+*{
 #{selenium 'Check locales switching works on page title, logo and menu items'}
     open('/')
     assertElementPresent('//div[@id="locales"]')
@@ -54,6 +54,7 @@
     assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Увійти')
     
 #{/selenium}
+}*
 
 #{selenium 'Check Menu buttons work'}
 	open('/login')
@@ -86,8 +87,6 @@
 
 #{selenium 'Check demotivator icons and content title present'}
 	open('/')
-	
-	clickAndWait('//div[@id="locales"]/a[@href="/locale/en"]')
 	
 	assertElementPresent('//h4[@class="content_title"]')
 	assertText('//h4[@class="content_title"]', 'Latest Demotivators')

@@ -11,7 +11,6 @@
 #{/set}
 
 <div class="fixed_width margin_auto" id="single_demotivator">
-	<h4 class="content_title">${demotivator.title}</h4>
 	<a href="@{Application.next(demotivator.id)}"><img src="/image/${demotivator.fileName}" class="demotivator" id="single_demotivator_image" /></a>
 	<div class="comments fixed_width">
 		#{list items:demotivator.comments, as:'comment'}

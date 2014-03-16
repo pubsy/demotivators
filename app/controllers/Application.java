@@ -1,13 +1,10 @@
 package controllers;
 
-import java.io.File;
-
 import models.Demotivator;
 import models.Domain;
 import play.i18n.Lang;
 import play.modules.paginate.ModelPaginator;
 import play.mvc.Http.Header;
-import services.DemotivatorCreator;
 
 /**
  * Main controller renders latest 10 Demotivators on index page.
@@ -61,11 +58,5 @@ public class Application extends DemotivatorsController {
 	    }else{
 	        redirect(referer.value());
 	    }
-	}
-	
-	public static void image(String fileName) {
-		String imgDirPath = DemotivatorCreator.IMAGE_DIR_PATH;
-		File image = new File(imgDirPath + fileName);
-	    renderBinary(image);
 	}
 }

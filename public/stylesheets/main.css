@@ -95,9 +95,10 @@ body {
 	width: 610px;
 }
 
-.demotivator_icon {
+#demotivators_list > .demotivator_icon {
 	display: inline-block;
 	margin: 3px;
+	float: none;
 }
 
 .demotivator {

@@ -7,7 +7,7 @@ GET     /                                       Application.index
 GET     /single/{id}                      		Application.single
 GET     /next/{id}                              Application.next
 GET     /locale/{language}                      Application.locale
-GET     /image/{fileName}                       Application.image
+GET     /image/{fileName}                       Images.image
 GET     /add		                            Creator.add
 POST	/create									Creator.create
 POST	/preview								Creator.preview

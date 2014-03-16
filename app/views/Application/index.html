@@ -9,7 +9,7 @@
 	
 	<ul class="thumbnails" id="demotivators_list">
 		#{paginate.list items:paginator, as:'demo'}
-			<li class="span2">
+			<li class="span2 demotivator_icon">
 		       	<div class="thumbnail">
 		       		<a href="@{Application.single(demo.id)}" class="thumbnail">
 		       			<img src="/image/thumb.${demo.fileName}"/>

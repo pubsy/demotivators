@@ -23,7 +23,7 @@ public class Domain extends Model{
 	public String getName() {
 		return name;
 	}
-	
+
 	public static Domain getOrCreate(String name){
 		if(StringUtils.isBlank(name)){
 			throw new RuntimeException("Domain name is empty");
