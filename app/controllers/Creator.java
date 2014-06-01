@@ -28,7 +28,7 @@ import controllers.Secure.Security;
  *
  */
 
-public class Creator extends DemotivatorsController{
+public class Creator extends BaseController{
 	
 	private static final String REQUIRED = "validation.required";
 	private static final String TEXT_CANT_MESSAGE_KEY = "text.cant.be.longer";
@@ -77,7 +77,7 @@ public class Creator extends DemotivatorsController{
 		if("create".equals(mode)){
 			Domain domain = Domain.getOrCreate(domainStr);
 			
-			User user = DemotivatorsSecurity.currentUser();	
+			User user = BaseSecurity.currentUser();	
 			Demotivator demo = new Demotivator(title, text, fileName, user, domain);
 			demo.save();
 			

@@ -43,6 +43,8 @@ login=Увійти
 logout=Вийти
 no_demotivators=Жодного демотиватора не знайдено
 send=Відправити
+delete=Видалити
+access_violation=Порушення прав доступу
 
 play-paginate.first=&laquo;&nbsp; Перша
 play-paginate.prev=&lsaquo;&nbsp;Попередня

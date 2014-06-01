@@ -11,7 +11,7 @@ import play.mvc.Scope.Session;
 import play.test.Fixtures;
 import play.test.FunctionalTest;
 
-public class DemotivatorsSecurityTest extends FunctionalTest{
+public class BaseSecurityTest extends FunctionalTest{
 
 	@Test
 	public void UserLoginSuccess(){

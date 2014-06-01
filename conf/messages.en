@@ -43,6 +43,8 @@ login=Login
 logout=Logout
 no_demotivators=No demotivators found
 send=Send
+delete=Delete
+access_violation=Access violation
 
 play-paginate.first=&laquo;&nbsp;First
 play-paginate.prev=&lsaquo;&nbsp;Previous

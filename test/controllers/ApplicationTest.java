@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import play.i18n.Lang;
 import play.modules.paginate.ModelPaginator;
-import play.mvc.Http;
 import play.mvc.Http.Header;
 import play.mvc.Http.Request;
 import play.mvc.Http.Response;
@@ -158,7 +157,7 @@ public class ApplicationTest extends FunctionalTest {
     
     @Test
     public void testNext(){
-    	Fixtures.loadModels("data/next.yml");
+    	Fixtures.loadModels("data/two_demos.yml");
     	
     	Demotivator first = Demotivator.find("order by date desc").first();
     	Demotivator second = Demotivator.find("id < ? and domain = ? order by date desc", first.id, first.getDomain()).first();
@@ -170,7 +169,7 @@ public class ApplicationTest extends FunctionalTest {
     
     @Test
     public void testNextRedirectsHome(){
-    	Fixtures.loadModels("data/next.yml");
+    	Fixtures.loadModels("data/two_demos.yml");
     	
     	Demotivator first = Demotivator.find("order by date desc").first();
     	Demotivator second = Demotivator.find("id < ? order by date desc", first.id).first();

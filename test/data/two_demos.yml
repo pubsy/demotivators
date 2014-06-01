@@ -1,7 +1,13 @@
 User(martin):
     displayName:    Martin Fowler
     email:          martin.fowler@gmail.com
-    password:       $2a$10$HwI4lNJD4sr3Gm06LKEe/.44.OM9p47kmY6BcXBz8NaGOhriB3VK.
+    password:       123
+    date:           2009-03-26
+
+User(frank):
+    displayName:    Frank Sinatra
+    email:          frank.sinatra@gmail.com
+    password:       123
     date:           2009-03-26
     
 Domain(local):
@@ -14,6 +20,7 @@ Demotivator(ugly):
     author:         martin
     fileName:       ugly.jpg
     domain:         local
+    deleted:        false
     
 Demotivator(pretty):
     title:          A pretty demotivator
@@ -22,3 +29,4 @@ Demotivator(pretty):
     author:         martin
     fileName:       pretty.jpg
     domain:         local
+    deleted:        false

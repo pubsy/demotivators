@@ -13,7 +13,7 @@ import play.i18n.Lang;
 import play.mvc.Before;
 import play.mvc.Controller;
 
-public class DemotivatorsController extends Controller{
+public class BaseController extends Controller{
 
 	@Before
 	static void interception(String url){

@@ -3,10 +3,14 @@ package models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Where;
 
 import play.db.jpa.Model;
 
@@ -16,14 +20,15 @@ public class Demotivator extends Model{
 	private String text;
 	private String fileName;
 	private Date date;
+	private boolean deleted;
 	
 	@ManyToOne
 	private Domain domain;
-	
-	@ManyToOne
+
+	@ManyToOne(fetch=FetchType.EAGER)
 	private User author;
 	
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="demotivator")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="demotivator", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Comment> comments;
 
 	public Demotivator(String title, String text, String fileName, User author, Domain domain) {
@@ -89,6 +94,14 @@ public class Demotivator extends Model{
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 	
 }

@@ -8,7 +8,7 @@ import security.BCrypt;
  * This class is a part of Secure module API.
  * It handles authentication.
  */
-public class DemotivatorsSecurity extends Secure.Security{
+public class BaseSecurity extends Secure.Security{
 	
 	static boolean authenticate(String username, String password) {
         User user = User.find("byEmail", username).first();
@@ -23,7 +23,7 @@ public class DemotivatorsSecurity extends Secure.Security{
 	}
 	
 	static void onAuthenticated(){
-		DemotivatorsController.interception("/secure/login");
+		BaseController.interception("/secure/login");
 	}
 
 }

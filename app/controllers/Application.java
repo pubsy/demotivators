@@ -1,10 +1,18 @@
 package controllers;
 
+import java.util.List;
+
+import controllers.Secure.Security;
+import models.Comment;
 import models.Demotivator;
 import models.Domain;
+import play.db.jpa.JPABase;
 import play.i18n.Lang;
+import play.i18n.Messages;
 import play.modules.paginate.ModelPaginator;
 import play.mvc.Http.Header;
+import play.mvc.Http.StatusCode;
+import utils.SharedConstants;
 
 /**
  * Main controller renders latest 10 Demotivators on index page.
@@ -12,24 +20,24 @@ import play.mvc.Http.Header;
  * Switches locale.
  * @author vitaliikravets
  */
-public class Application extends DemotivatorsController {
+public class Application extends BaseController {
 
 	public static void index() {
 		Domain domain = Domain.getOrCreate(request.domain);
-		ModelPaginator<Demotivator> paginator = new ModelPaginator(Demotivator.class, "domain = ?", domain).orderBy("date desc");
+		ModelPaginator<Demotivator> paginator = new ModelPaginator(Demotivator.class, "domain = ? and deleted = 0", domain).orderBy("date desc");
 		paginator.setPageSize(15);
 	    render(paginator);
 	}
 	
 	public static void single(long id) {
-		Demotivator demotivator = Demotivator.findById(id);
+		Demotivator demotivator = Demotivator.find("id = ? and deleted = 0", id).first();
 		
 		if(demotivator == null){
 			index();
 		}
 		
-		if(DemotivatorsSecurity.isConnected()){
-			flash.put("userDisplayName", DemotivatorsSecurity.currentUser().getDisplayName());
+		if(BaseSecurity.isConnected()){
+			flash.put("userDisplayName", BaseSecurity.currentUser().getDisplayName());
 		}
 		
 		//Additional text in page title
@@ -40,7 +48,7 @@ public class Application extends DemotivatorsController {
 	
 	public static void next(long id) {
 		Domain domain = Domain.getOrCreate(request.domain);
-		Demotivator demotivator = Demotivator.find("id < ? and domain = ? order by date desc", id, domain).first();
+		Demotivator demotivator = Demotivator.find("id < ? and domain = ? and deleted = 0 order by date desc", id, domain).first();
 		
 		if(demotivator == null){
 			index();
@@ -59,4 +67,5 @@ public class Application extends DemotivatorsController {
 	        redirect(referer.value());
 	    }
 	}
+
 }

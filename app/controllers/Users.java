@@ -11,7 +11,7 @@ import play.data.validation.Validation;
  * Handles register requests, including validation.
  * @author vitaliikravets
  */
-public class Users extends DemotivatorsController {
+public class Users extends BaseController {
 
 	public static void register(){
 		render();

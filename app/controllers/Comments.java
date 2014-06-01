@@ -12,16 +12,16 @@ import play.i18n.Messages;
 import utils.SharedConstants;
 import controllers.Secure.Security;
 
-public class Comments extends DemotivatorsController {
+public class Comments extends BaseController {
 	
 	public static void addComment(long demoId, String text){
 		
-		User user = DemotivatorsSecurity.currentUser();		
+		User user = BaseSecurity.currentUser();		
 		if(user == null){
 			error(403, Messages.get(SharedConstants.PLEASE_LOGIN));
 		}
 		
-		Demotivator demo = Demotivator.findById(demoId);
+		Demotivator demo = Demotivator.find("id = ? and deleted = 0", demoId).first();
 		if (demo == null) {
 			error(404, "Demotivator with id: " + demoId + " not found");
 		}
