@@ -24,23 +24,23 @@
 <div id="preview"><img src="" width="300px" height="300px"/></div>
 	<form action="@{Creator.create}" method="POST" enctype="multipart/form-data" name="demoForm" id="demoForm">
 		    <div class="vlidation_error" id="image_error"></div>
-			<p>
-			    <label for="image">&{'demo_image'}</label>
+			<div class="form-group">
+			    <label for="image" class="col-sm-2 control-label">&{'demo_image'}</label>
 			    <input type="file" name="image" name="files[]" />
-		    </p>
+		    </div>
 	    	<div class="vlidation_error" id="title_error"></div>
-	    	<p>
-		    	<label for="title">&{'demo_title'}</label>
-			    <input type="text" name="title" value="${flash.title}" pattern=".{1,30}" />
-		    </p>
+	    	<div class="form-group">
+		    	<label for="title" class="col-sm-2 control-label">&{'demo_title'}</label>
+			    <input type="text" name="title" value="${flash.title}" pattern=".{1,30}" class="form-control" />
+		    </div>
 		    <div class="vlidation_error" id="text_error"></div>
-		    <p>
-			    <label for="text">&{'demo_text'}</label>
-			    <input type="text" name="text" value="${flash.text}" pattern=".{1,80}" />
-		    </p>
+		    <div class="form-group">
+			    <label for="text" class="col-sm-2 control-label">&{'demo_text'}</label>
+			    <input type="text" name="text" value="${flash.text}" pattern=".{1,80}" class="form-control" />
+		    </div>
 		    <div class="buttons">
-		    	<button name="preview" id="previewBtn"/>&{'preview'}</button>
-		    	<button name="create" id="create"/>&{'submit'}</button>
+		    	<button name="preview" id="previewBtn" class="btn btn-default" />&{'preview'}</button>
+		    	<button name="create" id="create" class="btn btn-default"/>&{'submit'}</button>
 		    </div>
 	</form>
 </div>

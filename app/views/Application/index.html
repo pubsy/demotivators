@@ -7,22 +7,20 @@
 <div class="fixed_width margin_auto">
 	<h4 class="content_title">&{'latest_demotivators'}</h4>
 	
-	<ul class="thumbnails" id="demotivators_list">
+	<div class="thumbnails" id="demotivators_list">
 		#{paginate.list items:paginator, as:'demo'}
-			<li class="span2 demotivator_icon">
-		       	<div class="thumbnail">
-		       		<a href="@{Application.single(demo.id)}" class="thumbnail">
-		       			<img src="/image/thumb.${demo.fileName}"/>
-		       		</a>
-			      	<h5>${demo.title}</h5>
-			      	<p>${demo.text}</p>
-		       	</div>
-		  </li>
+            <div class="thumbnail span2 demotivator_icon">
+                    <a href="@{Application.single(demo.id)}" class="thumbnail">
+                    <img src="/image/thumb.${demo.fileName}"/>
+                </a>
+                <h5>${demo.title}</h5>
+                <p>${demo.text}</p>
+            </div>
     	#{/paginate.list}
     	#{else}
 		    &{'no_demotivators'}
 		#{/else}	
-    </ul>
+    </div>
 
     #{paginate.controls items:paginator /}
 </div>

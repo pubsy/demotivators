@@ -1,10 +1,14 @@
 package model;
-import org.junit.*;
+import javax.persistence.PersistenceException;
 
-import java.util.*;
-import play.test.*;
+import models.User;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import play.test.Fixtures;
+import play.test.UnitTest;
 import security.BCrypt;
-import models.*;
 
 public class UserTest extends UnitTest {
 	
@@ -37,5 +41,24 @@ public class UserTest extends UnitTest {
 	    
 	    assertNull(user);
 	}
+	
+    @Test(expected = PersistenceException.class)
+    public void testDisplayNameIsUnique(){
+    	User user = new User("email1@test.com", "password", "TestName", true);
+    	user.save();
+    	
+    	User otherUserWithSameDisplayName = new User("email2@test.com", "password", "TestName", true);
+    	otherUserWithSameDisplayName.save();
+    }
+    
+    @Test(expected = PersistenceException.class)
+    public void testDEmailIsUnique(){
+    	User user = new User("email@test.com", "password", "TestName!", true);
+    	user.save();
+    	
+    	User otherUserWithSameEmail = new User("email@test.com", "password", "TestName@", true);
+    	otherUserWithSameEmail.save();
+    }
+    
 
 }

@@ -26,7 +26,7 @@ public class DemotivatorsTest extends AutenticatedControllerTest {
     	Demotivator first = Demotivator.find("order by date desc").first();
     	assertFalse(first.isDeleted());
     	
-    	Response response = GET("/delete/" + first.id);
+    	Response response = POST("/delete/" + first.id);
     	
     	first.refresh();
     	assertTrue(first.isDeleted());
@@ -40,7 +40,7 @@ public class DemotivatorsTest extends AutenticatedControllerTest {
     	
     	Demotivator first = Demotivator.find("order by date desc").first();
     	
-    	Response response = GET("/delete/" + first.id);
+    	Response response = POST("/delete/" + first.id);
     	
     	assertStatus(403, response);
     }
@@ -54,7 +54,7 @@ public class DemotivatorsTest extends AutenticatedControllerTest {
     	
     	Demotivator first = Demotivator.find("order by date desc").first();
     	
-    	Response response = GET("/delete/" + first.id);
+    	Response response = POST("/delete/" + first.id);
     	
     	assertStatus(403, response);
     }
@@ -71,7 +71,7 @@ public class DemotivatorsTest extends AutenticatedControllerTest {
     	Response response = GET("/single/" + demo.id);
     	assertStatus(200, response);//Page is available
     	
-    	GET("/delete/" + demo.id);
+    	POST("/delete/" + demo.id);
 
     	response = GET("/single/" + demo.id);
     	assertStatus(302, response);//Page is NOT anymore available

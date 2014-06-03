@@ -10,7 +10,7 @@
 	clickAndWait('//input[@id="signin"]')
 	assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Logout')
 	
-    clickAndWait('//ul[@id="demotivators_list"]/li[1]/div/a')
+    clickAndWait('//div[@id="demotivators_list"]/div[1]/a')
     assertNotTitle('Application error')
     
     assertElementPresent('//div[@id="single_demotivator"]/div[@class="comments fixed_width"]')

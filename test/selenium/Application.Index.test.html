@@ -91,9 +91,9 @@
 	assertElementPresent('//h4[@class="content_title"]')
 	assertText('//h4[@class="content_title"]', 'Latest Demotivators')
 	
-	assertElementPresent('//ul[@id="demotivators_list"]/li[1]/div/a')
-	assertAttribute('//ul[@id="demotivators_list"]/li[1]/div/a@href', '/single/*')
+	assertElementPresent('//div[@id="demotivators_list"]/div[1]/a')
+	assertAttribute('//div[@id="demotivators_list"]/div[1]/a@href', '/single/*')
 	
-	assertElementPresent('//ul[@id="demotivators_list"]/li[1]/div/a/img')
-	assertAttribute('//ul[@id="demotivators_list"]/li[1]/div/a/img@src', '/image/thumb.pretty.jpg')
+	assertElementPresent('//div[@id="demotivators_list"]/div[1]/a/img')
+	assertAttribute('//div[@id="demotivators_list"]/div[1]/a/img@src', '/image/thumb.pretty.jpg')
 #{/selenium}

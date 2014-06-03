@@ -16,31 +16,31 @@
 			
 		#{form @registerNewUser()}
 			<div class="vlidation_error">#{error 'email' /}</div>
-			<p>
-				<label for="email">&{'secure.username'}</label>
-				<input type="email" name="email" id="email" value="${flash.email}"  placeholder="some@email.com" required />
-			</p>
+			<div class="form-group">
+				<label for="email" class="col-sm-2 control-label">&{'secure.username'}</label>
+				<input type="email" name="email" id="email" value="${flash.email}"  placeholder="some@email.com" class="form-control" required />
+			</div>
 			
 			<div class="vlidation_error">#{error 'displayname' /}</div>
-			<p>
-				<label for="displayname">&{'display_name'}</label>
-				<input type="text" name="displayname" id="displayname" value="${flash.displayname}" required />
-			</p>
+		    <div class="form-group">
+				<label for="displayname" class="col-sm-2 control-label">&{'display_name'}</label>
+				<input type="text" name="displayname" id="displayname" value="${flash.displayname}" class="form-control" required />
+			</div>
 			
 			<div class="vlidation_error">#{error 'password' /}</div>
-			<p id="password-field">
-				<label for="password">&{'secure.password'}</label>
-				<input type="password" name="password" id="password" value="${flash.password}" required />
-			</p>
+			<div class="form-group" id="password-field">
+				<label for="password" class="col-sm-2 control-label">&{'secure.password'}</label>
+				<input type="password" name="password" id="password" value="${flash.password}" class="form-control" required />
+			</div>
 			
 			<div class="vlidation_error">#{error 'confirmpassword' /}</div>
-			<p>
-				<label for="confirmpassword">&{'confirm_password'}</label>
-				<input type="password" name="confirmpassword" id="confirmpassword" value="${flash.confirmpassword}" required />
-			</p>
-			<p id="signin-field">
-				<input type="submit" id="register" value="&{'register'}" />
-			</p>
+			<div class="form-group">
+				<label for="confirmpassword" class="col-sm-2 control-label">&{'confirm_password'}</label>
+				<input type="password" name="confirmpassword" id="confirmpassword" value="${flash.confirmpassword}" class="form-control" required />
+			</div>
+			<div class="buttons" id="signin-field">
+				<input type="submit" id="register" class="btn btn-default" value="&{'register'}" />
+			</div>
 		#{/form}
 	</div>
 </div>

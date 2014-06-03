@@ -14,7 +14,7 @@ POST	/preview								Creator.preview
 GET     /register		                        Users.register
 POST    /registerNewUser		                Users.registerNewUser
 POST    /comments/save/{demoId}		            Comments.addComment
-GET     /delete/{id}                      		Demotivators.delete
+POST    /delete/{id}                      		Demotivators.delete
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

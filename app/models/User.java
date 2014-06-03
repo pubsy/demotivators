@@ -2,6 +2,7 @@ package models;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import play.db.jpa.Model;
@@ -9,10 +10,17 @@ import security.BCrypt;
 
 @Entity
 public class User extends Model{
+	
+	@Column(unique=true)
 	private String email;
+	
 	private String password;
+	
+	@Column(unique=true)
 	private String displayName;
+	
 	private Date date;
+	
 	private boolean activated;
 	
 	public User(String email, String password, String displayName, boolean activated) {

@@ -13,9 +13,9 @@
 <div class="fixed_width margin_auto" id="single_demotivator">
 	<a href="@{Application.next(demotivator.id)}"><img src="/image/${demotivator.fileName}" class="demotivator" id="single_demotivator_image" /></a>
 	#{if session.username != null && session.username.equals(demotivator.author.email)}
-		<div>
-			<a href="@{Demotivators.delete(demotivator.id)}">&{'delete'}</a>
-		</div>
+        <form action="@{Demotivators.delete(demotivator.id)}" method="post" class="clearfix">
+			<button name="foo" value="1" class="btn btn-danger pull-right">&{'delete'}</button>
+        </form>
 	#{/if}
 	<div class="comments fixed_width">
 		#{list items:demotivator.comments, as:'comment'}

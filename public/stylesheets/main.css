@@ -155,3 +155,17 @@ input[type='text'], input[type="password"], input[type="email"] {
 .user_display_name {
 	font-weight: bold;
 }
+
+#login form div label {
+    display: block;
+    width: 150px;
+    float: left;
+    text-align: right;
+    margin-right: 5px;
+    color: #333;
+    margin-top: 5px;
+}
+
+#login form div input[type=file] {
+    display: inline-block;
+}

@@ -27,21 +27,21 @@
 				</p>
 			#{/if}
 		
-			<p>
-				<label for="username">&{'secure.username'}</label>
-				<input type="email" name="username" id="username" value="${flash.username}" placeholder="some@email.com" required />
-			</p>
-			<p>
-				<label for="password">&{'secure.password'}</label>
-				<input type="password" name="password" id="password" value="" required />
-			</p>
-			<p id="remember-field">
-				<label for="remember">&{'secure.remember'}</label>
+			<div class="form-group">
+				<label for="username" class="col-sm-2 control-label">&{'secure.username'}</label>
+				<input type="email" name="username" id="username" value="${flash.username}" placeholder="some@email.com" class="form-control" required />
+			</div>
+			<div class="form-group">
+				<label for="password" class="col-sm-2 control-label">&{'secure.password'}</label>
+				<input type="password" name="password" id="password" value="" class="form-control" required />
+			</div>
+			<div class="form-group" id="remember-field">
+				<label for="remember" class="col-sm-2 control-label">&{'secure.remember'}</label>
 				<input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
-			</p>
-			<p id="signin-field">
-				<input type="submit" id="signin" value="&{'secure.signin'}" />
-			</p>
+			</div>
+			<div class="buttons" id="signin-field">
+				<input type="submit" id="signin" class="btn btn-default" value="&{'secure.signin'}" />
+			</div>
 		#{/form}
 	</div>
 </div>
