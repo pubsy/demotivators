@@ -169,3 +169,12 @@ input[type='text'], input[type="password"], input[type="email"] {
 #login form div input[type=file] {
     display: inline-block;
 }
+
+#demotivators_list > .demotivator_icon {
+	width: 170px;
+	vertical-align: top;
+}
+
+.thumbnail>img, .thumbnail a>img {
+	width: 150px;
+}
