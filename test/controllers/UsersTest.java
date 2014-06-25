@@ -37,6 +37,7 @@ public class UsersTest extends FunctionalTest{
 		
 		Map<String, String> registerUserParams = new HashMap<String, String>();
 		registerUserParams.put("email", "frank.sinatra@gmail.com");
+		registerUserParams.put("loginName", "franky");
 		registerUserParams.put("displayname", "Frank Sinatra");
 		registerUserParams.put("password", "123");
 		registerUserParams.put("confirmpassword", "123");
@@ -48,6 +49,7 @@ public class UsersTest extends FunctionalTest{
 		assertNotNull(user);
 		assertEquals("frank.sinatra@gmail.com", user.getEmail());
 		assertEquals("Frank Sinatra", user.getDisplayName());
+		assertEquals("franky", user.getLoginName());
 		
 		//Check that password is not saved as plain text
 		assertNotSame("123", user.getPassword());
@@ -60,6 +62,7 @@ public class UsersTest extends FunctionalTest{
 		
 		Map<String, String> registerUserParams = new HashMap<String, String>();
 		registerUserParams.put("displayname", "Frank Sinatra");
+		registerUserParams.put("loginName", "franky");
 		registerUserParams.put("password", "123");
 		registerUserParams.put("confirmpassword", "123");
 		
@@ -73,6 +76,7 @@ public class UsersTest extends FunctionalTest{
 		
 		Map<String, String> registerUserParams = new HashMap<String, String>();
 		registerUserParams.put("email", "frank.sinatra@gmail.com");
+		registerUserParams.put("loginName", "franky");
 		registerUserParams.put("password", "123");
 		registerUserParams.put("confirmpassword", "123");
 		
@@ -86,6 +90,7 @@ public class UsersTest extends FunctionalTest{
 		
 		Map<String, String> registerUserParams = new HashMap<String, String>();
 		registerUserParams.put("email", "frank.sinatra@gmail.com");
+		registerUserParams.put("loginName", "franky");
 		registerUserParams.put("displayname", "Frank Sinatra");
 		registerUserParams.put("confirmpassword", "123");
 		
@@ -99,8 +104,23 @@ public class UsersTest extends FunctionalTest{
 		
 		Map<String, String> registerUserParams = new HashMap<String, String>();
 		registerUserParams.put("email", "frank.sinatra@gmail.com");
+		registerUserParams.put("loginName", "franky");
 		registerUserParams.put("displayname", "Frank Sinatra");
 		registerUserParams.put("password", "123");
+		
+    	Response response = POST("/registerNewUser", registerUserParams);
+    	assertStatus(302, response);
+    	assertHeaderEquals("Location", "/register", response);
+	}
+	
+	@Test
+	public void testUserRegistrationFailsLoginNameRequired(){
+		
+		Map<String, String> registerUserParams = new HashMap<String, String>();
+		registerUserParams.put("email", "frank.sinatra@gmail.com");
+		registerUserParams.put("displayname", "Frank Sinatra");
+		registerUserParams.put("password", "123");
+		registerUserParams.put("confirmpassword", "123");
 		
     	Response response = POST("/registerNewUser", registerUserParams);
     	assertStatus(302, response);
@@ -112,6 +132,7 @@ public class UsersTest extends FunctionalTest{
 		
 		Map<String, String> registerUserParams = new HashMap<String, String>();
 		registerUserParams.put("email", "frank.sinatra@gmail.com");
+		registerUserParams.put("loginName", "franky");
 		registerUserParams.put("displayname", "Frank Sinatra");
 		registerUserParams.put("password", "123");
 		registerUserParams.put("confirmpassword", "321");
@@ -126,6 +147,7 @@ public class UsersTest extends FunctionalTest{
 		
 		Map<String, String> registerUserParams = new HashMap<String, String>();
 		registerUserParams.put("email", "frank.sinatra.gmail.com");
+		registerUserParams.put("loginName", "franky");
 		registerUserParams.put("displayname", "Frank Sinatra");
 		registerUserParams.put("password", "123");
 		registerUserParams.put("confirmpassword", "321");
@@ -140,6 +162,7 @@ public class UsersTest extends FunctionalTest{
 		
 		Map<String, String> registerUserParams = new HashMap<String, String>();
 		registerUserParams.put("email", "frank.sinatra@gmail");
+		registerUserParams.put("loginName", "franky");
 		registerUserParams.put("displayname", "Frank Sinatra");
 		registerUserParams.put("password", "123");
 		registerUserParams.put("confirmpassword", "321");

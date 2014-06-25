@@ -5,12 +5,16 @@ User(george):
     email:          george.washington@gmail.com
     password:       123
     date:           2009-03-25
-
+    encryption:     BCRYPT
+    loginName:      georgy
+    
 User(frank):
     displayName:    Frank Sinatra
     email:          frank.sinatra@gmail.com
     password:       123
     date:           2009-03-26
+    encryption:     BCRYPT
+    loginName:      franky
     
 Domain(local):
     name:    localhost

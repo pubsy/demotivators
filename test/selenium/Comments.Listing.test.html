@@ -5,7 +5,7 @@
 #{selenium 'Check listing comments and adding comment'}
     open('/logout')
     open('/login')
-	type('//input[@id="username"]', 'frank.sinatra@gmail.com')
+	type('//input[@id="username"]', 'franky')
 	type('//input[@id="password"]', '123')
 	clickAndWait('//input[@id="signin"]')
 	assertText('//div[@id="menu_items"]/ul/li[3]/a', 'Logout')
@@ -14,7 +14,7 @@
     assertNotTitle('Application error')
     
     assertElementPresent('//div[@id="single_demotivator"]/div[@class="comments fixed_width"]')
-    assertElementPresent('//div[@id="single_demotivator"]/form/textarea[@class="add-comment-textarea"]')
+    assertElementPresent('//textarea[@id="add_comment"]')
     assertElementPresent('//div[@id="single_demotivator"]/form/button')
     assertElementPresent('//div[@id="single_demotivator"]/div[@class="comments fixed_width"]/div[1]')
     

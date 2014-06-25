@@ -21,7 +21,7 @@ public class DemotivatorsTest extends AutenticatedControllerTest {
     	Fixtures.loadModels("data/two_demos.yml");
     	
     	//Authenticating
-    	authenticate("martin.fowler@gmail.com", "123");
+    	authenticate("martiny", "123");
     	
     	Demotivator first = Demotivator.find("order by date desc").first();
     	assertFalse(first.isDeleted());
@@ -50,7 +50,7 @@ public class DemotivatorsTest extends AutenticatedControllerTest {
     	Fixtures.loadModels("data/two_demos.yml");
     	
     	//Authenticating with different user
-    	authenticate("frank.sinatra@gmail.com", "123");
+    	authenticate("franky", "123");
     	
     	Demotivator first = Demotivator.find("order by date desc").first();
     	
@@ -64,7 +64,7 @@ public class DemotivatorsTest extends AutenticatedControllerTest {
     	Fixtures.loadModels("data/two_demos.yml");
     	
     	//Authenticating
-    	authenticate("martin.fowler@gmail.com", "123");
+    	authenticate("martiny", "123");
     	
     	Demotivator demo = Demotivator.find("order by date desc").first();
 

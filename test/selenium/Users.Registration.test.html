@@ -1,0 +1,17 @@
+﻿*{ You can use plain selenium command using the selenium tag }*
+
+#{fixture delete:'all' /}
+
+#{selenium 'Register new user'}
+    open('/register')
+    type('//input[@id="email"]', 'george.franklin@gmail.com')
+    type('//input[@id="loginname"]', 'georgy')
+    type('//input[@id="displayname"]', 'George Franklin')
+    type('//input[@id="password"]', '123')
+    type('//input[@id="confirmpassword"]', '123')
+    
+    clickAndWait('//input[@id="register"]')
+    
+    assertLocation('http://*/secure/login')
+    
+#{/selenium}

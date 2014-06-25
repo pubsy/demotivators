@@ -16,7 +16,7 @@ public class Demotivators extends BaseController {
 		}
 		
 		Demotivator demo = Demotivator.findById(id);
-		if(!demo.getAuthor().getEmail().equals(BaseSecurity.connected())){
+		if(!demo.getAuthor().getLoginName().equals(BaseSecurity.connected())){
 			error(StatusCode.FORBIDDEN, Messages.get(SharedConstants.ACCESS_VIOLATION));
 		}
 

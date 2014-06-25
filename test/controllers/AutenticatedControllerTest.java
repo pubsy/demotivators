@@ -14,7 +14,7 @@ public abstract class AutenticatedControllerTest extends FunctionalTest {
 
 	@Util
     public void authenticate() {
-    	authenticate("frank.sinatra@gmail.com", "123");
+    	authenticate("franky", "123");
     }
 	
 	@Util

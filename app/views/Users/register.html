@@ -17,15 +17,15 @@
 		#{form @registerNewUser()}
 			<div class="vlidation_error">#{error 'email' /}</div>
 			<div class="form-group">
-				<label for="email" class="control-label">&{'secure.username'}</label>
+				<label for="email" class="control-label">&{'secure.email'}</label>
 				<input type="email" name="email" id="email" value="${flash.email}"  placeholder="some@email.com" class="form-control" required />
 			</div>
 			
-			<div class="vlidation_error">#{error 'displayname' /}</div>
-		    <div class="form-group">
-				<label for="displayname" class="control-label">&{'display_name'}</label>
-				<input type="text" name="displayname" id="displayname" value="${flash.displayname}" class="form-control" required />
-			</div>
+			<div class="vlidation_error">#{error 'loginname' /}</div>
+			<div class="form-group">
+                <label for="loginname" class="control-label">&{'secure.username'}</label>
+                <input type="text" name="loginname" id="loginname" value="${flash.loginname}" class="form-control" required />
+            </div>
 			
 			<div class="vlidation_error">#{error 'password' /}</div>
 			<div class="form-group" id="password-field">
@@ -38,6 +38,13 @@
 				<label for="confirmpassword" class="control-label">&{'confirm_password'}</label>
 				<input type="password" name="confirmpassword" id="confirmpassword" value="${flash.confirmpassword}" class="form-control" required />
 			</div>
+			
+			<div class="vlidation_error">#{error 'displayname' /}</div>
+            <div class="form-group">
+                <label for="displayname" class="control-label">&{'display_name'}</label>
+                <input type="text" name="displayname" id="displayname" value="${flash.displayname}" class="form-control" required />
+            </div>
+			
 			<div class="buttons" id="signin-field">
 				<input type="submit" id="register" class="btn btn-default" value="&{'register'}" />
 			</div>

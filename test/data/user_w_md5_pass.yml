@@ -1,0 +1,6 @@
+User(frank):
+    displayName:    MD5 Sinatra
+    email:          md5.sinatra@gmail.com
+    password:       md5pass
+    date:           2009-03-26
+    encryption:     MD5

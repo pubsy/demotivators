@@ -1,5 +1,9 @@
 package controllers;
 
+import java.security.MessageDigest;
+
+import org.apache.commons.codec.digest.DigestUtils;
+
 import play.mvc.Before;
 import models.User;
 import security.BCrypt;
@@ -11,14 +15,20 @@ import security.BCrypt;
 public class BaseSecurity extends Secure.Security{
 	
 	static boolean authenticate(String username, String password) {
-        User user = User.find("byEmail", username).first();
+		User user = User.find("byLoginName", username).first();
 
-        return user != null && BCrypt.checkpw(password, user.getPassword());
+        if(user == null){
+        	return false;
+        }
+        if(user.getEncryption() == User.Encryption.MD5){
+        	return DigestUtils.md5Hex(password).equals(user.getPassword());
+        }
+        return BCrypt.checkpw(password, user.getPassword());
     }
 	
 	static User currentUser() {
-		String email = connected();
-		User user = User.find("byEmail", email).first();
+		String loginName = connected();
+		User user = User.find("byLoginName", loginName).first();
 		return user;
 	}
 	

@@ -14,9 +14,7 @@
 	<a href="@{Application.next(demotivator.id)}"><img src="/image/${demotivator.fileName}" class="demotivator" id="single_demotivator_image" /></a>
 	#{if session.username != null && session.username.equals(demotivator.author.email)}
         <form action="@{Demotivators.delete(demotivator.id)}" method="post" class="clearfix">
-
 			<button name="foo" value="1" class="btn btn-danger pull-right">&{'delete'}</button>
-			</div>
         </form>
 	#{/if}
 	<div class="comments fixed_width">
@@ -28,10 +26,11 @@
     	#{/list}
 	</div>
 	#{if session.username }
-	    <form>
-			<textarea rows="3" class="add-comment-textarea" id="add_comment"></textarea>
+	    <form class="clearfix">
+            <div class="form-group">
+                <textarea rows="3" class="add-comment-textarea" id="add_comment"></textarea>
+            </div>
 			<button class="btn pull-right" type="button" onclick="addComment()">&{'send'}</button>
-			<div class="clearfix"></div>
 		</form>
 	#{/if}
 </div>

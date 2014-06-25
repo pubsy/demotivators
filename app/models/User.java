@@ -4,6 +4,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+import org.apache.commons.codec.digest.DigestUtils;
 
 import play.db.jpa.Model;
 import security.BCrypt;
@@ -14,6 +18,9 @@ public class User extends Model{
 	@Column(unique=true)
 	private String email;
 	
+	@Column(unique=true)
+	private String loginName;
+	
 	private String password;
 	
 	@Column(unique=true)
@@ -23,8 +30,16 @@ public class User extends Model{
 	
 	private boolean activated;
 	
-	public User(String email, String password, String displayName, boolean activated) {
+	@Enumerated(EnumType.STRING)
+	private Encryption encryption = Encryption.BCRYPT;
+	
+	public enum Encryption{
+		BCRYPT, MD5
+	}
+	
+	public User(String email, String loginName, String password, String displayName, boolean activated) {
 		this.email = email;
+		this.loginName = loginName;
 		setPassword(password);
 		this.displayName = displayName;
 		this.date = new Date();
@@ -43,7 +58,12 @@ public class User extends Model{
 	}
 
 	public void setPassword(String password) {
-		String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+		String hashed = null;
+		if(encryption == Encryption.BCRYPT){
+			hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+		} else{
+			hashed = DigestUtils.md5Hex(password);
+		}
 		this.password = hashed;
 	}
 
@@ -70,4 +90,21 @@ public class User extends Model{
 	public void setActivated(boolean activated) {
 		this.activated = activated;
 	}
+
+	public Encryption getEncryption() {
+		return encryption;
+	}
+
+	public void setEncryption(Encryption encryption) {
+		this.encryption = encryption;
+	}
+
+	public String getLoginName() {
+		return loginName;
+	}
+
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+	
 }

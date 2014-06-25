@@ -3,12 +3,15 @@ User(martin):
     email:          martin.fowler@gmail.com
     password:       $2a$10$HwI4lNJD4sr3Gm06LKEe/.44.OM9p47kmY6BcXBz8NaGOhriB3VK.
     date:           2009-03-26
+    encryption:     BCRYPT
     
 User(frank):
     displayName:    Frank Sinatra
     email:          frank.sinatra@gmail.com
     password:       123
     date:           2009-03-26
+    encryption:     BCRYPT
+    loginName:      franky
     
 Domain(local):
     name:    localhost
