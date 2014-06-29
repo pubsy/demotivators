@@ -11,7 +11,7 @@
 #{/set}
 
 <div class="fixed_width margin_auto" id="single_demotivator">
-	<a href="@{Application.next(demotivator.id)}"><img src="/image/${demotivator.fileName}" class="demotivator" id="single_demotivator_image" /></a>
+	<a href="@{Application.next(demotivator.id)}"><img src="@{Images.image(demotivator.fileName)}" class="demotivator" id="single_demotivator_image" /></a>
 	#{if session.username != null && session.username.equals(demotivator.author.email)}
         <form action="@{Demotivators.delete(demotivator.id)}" method="post" class="clearfix">
 			<button name="foo" value="1" class="btn btn-danger pull-right">&{'delete'}</button>

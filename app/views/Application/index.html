@@ -11,7 +11,7 @@
 		#{paginate.list items:paginator, as:'demo'}
             <div class="thumbnail span2 demotivator_icon">
                     <a href="@{Application.single(demo.id)}" class="thumbnail">
-                    <img src="/image/thumb.${demo.fileName}"/>
+                    <img src="@{Images.image('thumb.' + demo.fileName)}"/>
                 </a>
                 <h5>${demo.title}</h5>
                 <p>${demo.text}</p>
