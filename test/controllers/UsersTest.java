@@ -37,7 +37,7 @@ public class UsersTest extends FunctionalTest{
 		
 		Map<String, String> registerUserParams = new HashMap<String, String>();
 		registerUserParams.put("email", "frank.sinatra@gmail.com");
-		registerUserParams.put("loginName", "franky");
+		registerUserParams.put("loginname", "franky");
 		registerUserParams.put("displayname", "Frank Sinatra");
 		registerUserParams.put("password", "123");
 		registerUserParams.put("confirmpassword", "123");
@@ -179,16 +179,6 @@ public class UsersTest extends FunctionalTest{
     	Response response = GET(r, "/register");
     	
     	assertStatus(200, response);
-    }
-	
-    @Test
-    public void testReuestToWWWGetsRedirectedRegisterPage(){
-    	Request r = newRequest();
-    	r.domain = "www.test.com";
-    	Response response = GET(r, "/register");
-    	
-    	assertStatus(302, response);
-    	assertHeaderEquals("Location", "http://test.com/register", response);
     }
     
 }

@@ -68,23 +68,6 @@ public class BaseSecurityTest extends FunctionalTest{
     	//Check that user was redirected back to login page
     	assertHeaderEquals("Location", "/secure/login", response);
 	}
-	
-    @Test
-    public void testReuestToWWWGetsRedirectedOnAuth(){
-    	Fixtures.loadModels("data/user.yml");
-		
-		Map<String, String[]> loginUserParams = new HashMap<String, String[]>();
-    	loginUserParams.put("username", new String[]{"franky"});
-    	loginUserParams.put("password", new String[]{"123"});
-
-    	Request r = newRequest();
-    	r.domain = "www.test.com";
-    	r.params.data = loginUserParams;
-    	Response response = POST(r, "/secure/authenticate");
-    	
-    	assertStatus(302, response);
-    	assertHeaderEquals("Location", "http://test.com/secure/login", response);
-    }
     
     @Test
     public void testLoginWithLoginName(){

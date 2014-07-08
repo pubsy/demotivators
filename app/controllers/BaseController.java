@@ -17,18 +17,7 @@ public class BaseController extends Controller{
 
 	@Before
 	static void interception(String url){
-		String domain = request.domain;
-		
-		if (domain.startsWith("www.")){
-			request.domain = domain.substring(4);
-			if(url == null){
-				redirect(request.url);
-			}else{
-				redirect(url);
-			}
-		}
-		
-		String domainLocale = Play.configuration.getProperty(domain);
+		String domainLocale = Play.configuration.getProperty(request.domain);
 		if(StringUtils.isNotBlank(domainLocale) && !domainLocale.equals(Lang.get())){
 			Lang.change(domainLocale);
 		}
