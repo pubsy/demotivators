@@ -3,7 +3,7 @@
 require:
     - play
     - secure
-    - play -> guice 1.2
+    - play -> guice 1.2:
         transitive: false
     - play -> mockito 0.1
     - play -> paginate head
