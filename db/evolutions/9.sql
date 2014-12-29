@@ -1,7 +1,7 @@
 # --- !Ups
 
-ALTER TABLE User MODIFY date timestamp not null default now();
+ALTER TABLE Users MODIFY date timestamp not null default now();
 
 # --- !Downs
 
-ALTER TABLE User MODIFY date DATETIME DEFAULT NULL;
+ALTER TABLE Users MODIFY date DATETIME DEFAULT NULL;
