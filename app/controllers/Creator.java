@@ -17,6 +17,7 @@ import play.data.validation.Required;
 import play.i18n.Messages;
 import play.mvc.Util;
 import services.DemotivatorCreator;
+import services.DemotivatorCreatorImpl;
 import utils.SharedConstants;
 import controllers.Secure.Security;
 
@@ -36,8 +37,7 @@ public class Creator extends BaseController{
 	private static final String PLEASE_SELECT_MESSAGE_KEY = "please.select.an.image";
 	private static final String BAD_FILE_MESSAGE_KEY = "bad.file.error";
 	
-	@Inject
-	static DemotivatorCreator creator;
+	static DemotivatorCreator creator = new DemotivatorCreatorImpl();
 	
 	
 	public static void add() throws Throwable{	
