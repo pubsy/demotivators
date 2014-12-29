@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Table;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -13,6 +14,7 @@ import play.db.jpa.Model;
 import security.BCrypt;
 
 @Entity
+@Table(name="Users")
 public class User extends Model{
 	
 	@Column(unique=true)
