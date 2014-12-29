@@ -3,6 +3,7 @@
 require:
     - play
     - secure
+    - com.google.guava -> guava r07
     - play -> guice 1.2
     - play -> mockito 0.1
     - play -> paginate head
