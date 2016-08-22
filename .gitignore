@@ -11,3 +11,5 @@
 /bin
 .classpath
 /precompiled
+.idea
+*.iml
