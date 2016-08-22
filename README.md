@@ -3,4 +3,4 @@
 Demotivators web site.
 View demotivator images or create one of you own.
 
-Demo: 
+Demo: https://demotivators.herokuapp.com
